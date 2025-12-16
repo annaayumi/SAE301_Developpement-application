@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Abyssinica SIL", serif;
+  background: black;
+  color: white;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0; 
+  height: 80px;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  z-index: 1000;
+
+  /* shadow */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
+  transition: transform 0.3s ease;
+}
+
+/* pour cacher le header */
+.header.hide {
+  transform: translateY(-100%);
+}
+
+.hero-content {
+  padding: 160px 40px 0;
+}
+
+.left {
+  font-size: 20px;
+}
+
+.nav {
+  margin-left: auto;
+  display: flex;
+  gap: 30px;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.nav a.active {
+  text-decoration: underline;
+}
+
+#map {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+.filters {
+  position: absolute;
+  top: 120px;
+  left: 40px;
+  width: 180px;
+  background: rgba(40,40,40,0.85);
+  border-radius: 20px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 10;
+}
+
+.filters-title {
+  text-align: center;
+  font-size: 20px;
+}
+
+.filters button {
+  background: #666;
+  border: none;
+  border-radius: 15px;
+  padding: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.filters button:hover {
+  background: #888;
+}

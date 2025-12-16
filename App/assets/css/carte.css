@@ -96,3 +96,17 @@ body {
 .filters button:hover {
   background: #888;
 }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .footer {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 30px 20px;
+    text-align: center;
+  }
+
+  .footer-github {
+    justify-content: center;
+  }
+}

@@ -11,13 +11,13 @@
 
     // Use page A propos
 
-    if($action == 'UsePage_a_propos'){
-        controller::UsePage('a_propos.php');
+    if($action == 'UsePage_apropos'){
+        controller::UsePage('apropos.php');
     }
 
     // Use page Contenu A propos
-    if($action == 'UsePage_Contenu_a_Propos'){
-        controller::UsePage('Contenu_a_propos.php');
+    if($action == 'UsePage_contenu_a_propos'){
+        controller::UsePage('contenu_a_propos.php');
     }
 
     // Use page Contact

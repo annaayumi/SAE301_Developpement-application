@@ -59,7 +59,7 @@ body {
 /* SECTION */
 .apropos {
   min-height: 100vh;
-  background: url("../assets/bgi.png") center cover no-repeat;
+  background: url("../img/bgi.png") center cover no-repeat;
   padding-top: 140px; 
   padding-bottom: 200px;
 }

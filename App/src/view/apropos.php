@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>A propos</title>
 
-<link rel="stylesheet" href="css/apropos.css">
+<link rel="stylesheet" href="../assets/css/apropos.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -16,10 +16,10 @@
   </div>
 
   <nav class="nav">
-    <a href="index.php">Accueil</a>
-    <a href="carte.php">Carte</a>
+    <a href="router.php?action=UsePage_index">Accueil</a>
+    <a href="router.php?action=UsePage_carte">Carte</a>
     <a href="#">Données</a>
-    <a href="routeur.php?action=UsePage_apropos" class="active">À propos</a>
+    <a href="router.php?action=UsePage_apropos" class="active">À propos</a>
     <a href="#">Contact</a>
   </nav>
 </header>

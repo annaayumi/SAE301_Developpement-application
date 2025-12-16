@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Carte</title>
 
-<link rel="stylesheet" href="css/carte.css">
+<link rel="stylesheet" href="../assets/css/carte.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -18,10 +18,10 @@
   </div>
 
   <nav class="nav">
-    <a href="accueil.php">Accueil</a>
-    <a href="carte.php" class="active">Carte</a>
+    <a href="router.php?action=UsePage_index">Accueil</a>
+    <a href="router.php?action=UsePage_carte" class="active">Carte</a>
     <a href="#">Données</a>
-    <a href="apropos.php">À propos</a>
+    <a href="router.php?action=UsePage_apropos">À propos</a>
     <a href="#">Contact</a>
   </nav>
 </header>

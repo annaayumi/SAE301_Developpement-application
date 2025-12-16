@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Accueil</title>
 
-<link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="../assets/css/index.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -17,10 +17,10 @@
   </div>
 
   <nav class="nav">
-    <a href="routeur.php?action=UsePage_index" class="active">Accueil</a>
-    <a href="carte.php">Carte</a>
+    <a href="router.php?action=UsePage_index" class="active">Accueil</a>
+    <a href="router.php?action=UsePage_carte">Carte</a>
     <a href="#">Données</a>
-    <a href="apropos.php">À propos</a>
+    <a href="router.php?action=UsePage_apropos">À propos</a>
     <a href="#">Contact</a>
   </nav>
 </header>
@@ -45,7 +45,7 @@
     </p>
   </div>
 
-<a href="carte.php" class="boutonScroll" aria-label="Accéder à la carte">
+<a href="router.php?action=UsePage_carte" class="boutonScroll" aria-label="Accéder à la carte">
   →
 </a>
 

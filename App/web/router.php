@@ -30,4 +30,10 @@
         controller::UsePage('carte.php');
     }
 
+
+    // Use page donnees
+    if($action == 'UsePage_donnees'){
+        controller::UsePage('donnees.php');
+    }
+
 ?>

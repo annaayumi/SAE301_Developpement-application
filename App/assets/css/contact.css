@@ -27,14 +27,9 @@ body {
   transition: transform 0.3s ease;
 }
 
-
 /* pour cacher le header */
 .header.hide {
   transform: translateY(-100%);
-}
-
-.hero-content {
-  padding: 160px 40px 0;
 }
 
 .left {
@@ -80,13 +75,11 @@ form {
   box-shadow: 0 30px 60px rgba(118, 119, 119, 0.562);
 }
 
-/* Groupe */
 .form-group {
   position: relative;
   margin-bottom: 28px;
 }
 
-/* Labels flottants */
 .form-group label {
   position: absolute;
   top: 50%;
@@ -98,7 +91,6 @@ form {
   transition: 0.25s ease;
 }
 
-/* Inputs transparents */
 .form-group input,
 .form-group textarea {
   width: 100%;
@@ -115,7 +107,6 @@ form {
   min-height: 90px;
 }
 
-/* Focus */
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
@@ -139,10 +130,9 @@ form {
 .form-group textarea:valid + label {
   top: -8px;
   font-size: 12px;
-  color: #DED44D;
+  color: #c6de4d;;
 }
 
-/* Bouton */
 button {
   margin-top: 15px;
   width: 100%;

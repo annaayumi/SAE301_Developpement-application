@@ -76,9 +76,9 @@
   <!-- Sources -->
   <div class="footer-col">
     <strong>Sources</strong><br>
-    Copernicus<br>
-    Ifremer<br>
-    Seanoe
+    <a href="https://www.copernicus.eu/en" target="_blank">Copernicus</a><br> 
+    <a href="https://www.ifremer.fr/" target="_blank">Ifremer</a><br>
+    <a href="https://www.seanoe.org/" target="_blank">Seanoe</a>
   </div>
 
   <!-- Membres -->

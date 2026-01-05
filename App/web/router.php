@@ -16,8 +16,8 @@
     }
 
     // Use page Contenu A propos
-    if($action == 'UsePage_contenu_a_propos'){
-        controller::UsePage('contenu_a_propos.php');
+    if($action == 'UsePage_phenomenes'){
+        controller::UsePage('phenomenes.php');
     }
 
     // Use page Contact

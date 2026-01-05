@@ -121,6 +121,15 @@ body {
   text-decoration: underline;
 }
 
+footer a {
+    color: white; 
+    text-decoration: underline; 
+}
+
+footer a:hover {
+    color: #ccc; 
+}
+
 /* GitHub */
 .footer-github {
   display: flex;

@@ -1,0 +1,99 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background: black;
+  color: white;
+}
+
+/* HEADER */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  z-index: 1000;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.8);
+}
+
+.left {
+  font-size: 20px;
+}
+
+.nav {
+  margin-left: auto;
+  display: flex;
+  gap: 30px;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.nav a.active {
+  text-decoration: underline;
+}
+
+.content-page {
+  min-height: 100vh;
+  padding: 160px 20px 100px;
+  color: rgba(255,255,255,0.88);
+}
+
+/* Titre principal */
+.content-hero {
+  max-width: 900px;
+  margin: 0 auto 80px;
+  text-align: left;
+}
+
+.content-hero h1 {
+  font-size: clamp(32px, 4vw, 46px);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Ligne deco */
+.hero-line {
+  width: 120px;
+  height: 3px;
+  margin-top: 20px;
+  background: linear-gradient(
+    90deg,
+    #5c91db,
+    #DED44D
+  );
+  border-radius: 999px;
+}
+
+/* Section texte */
+.content-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding-left: 30px;
+  border-left: 1px solid rgba(255,255,255,0.15);
+}
+
+.content-section h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.content-section p {
+  font-size: 16px;
+  line-height: 1.9;
+  margin-bottom: 20px;
+  color: rgba(255,255,255,0.8);
+}

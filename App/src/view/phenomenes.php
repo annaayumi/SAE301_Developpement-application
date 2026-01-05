@@ -97,6 +97,7 @@
     l’ONU, dans les îles Tuvalu dans le Pacifique, les nappes phréatiques d’eau douce sont
     submergées par l’eau salée ce qui rend l’eau potable difficile d’accès et menace donc la survie
     des habitants.
+    </p>
   </section>
 </main>
 

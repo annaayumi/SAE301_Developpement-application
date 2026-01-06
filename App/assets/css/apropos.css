@@ -104,6 +104,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
+}
+
+.arrow:link, .arrow:visited, .arrow:hover, .arrow:active {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
 }
 
 .footer {

@@ -2,7 +2,7 @@
     require_once '../src/Controller/controller.php';
 
     $action = $_GET['action'] ?? 'UsePage_index';
-    $lang = $_GET['lang'] ?? 'Français';
+    $lang = $_GET['lang'] ?? 'Francais';
 
 
     // Use page Index

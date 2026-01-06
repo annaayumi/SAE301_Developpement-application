@@ -31,18 +31,18 @@
   <div class="overlay"></div>
 
   <div class="hero-content">
-    <h1>BIENVENUE SUR GLEAUBAL</h1>
+    <h1>WELCOME TO GLEAUBAL</h1>
 
     <p>
-      Le changement climatique est un des enjeux majeurs que nous vivons aujourd’hui
-      en affectant les océans, provoquant une hausse des températures, une perturbation
-      de la biodiversité marine mais encore une acidification de l’eau.<br><br>
+      Climate change is one of the major challenges we face today,
+      affecting the oceans, causing rising temperatures, disrupting
+      marine biodiversity, and even acidifying the water.<br><br>
 
-      Ces phénomènes sont invisibles à l’œil nu mais sont importants à comprendre afin
-      de prévoir les conséquences sur le long terme et si possible éviter le pire.<br><br>
+      These phenomena are invisible to the naked eye, but it is important to understand them in order to
+      predict the long-term consequences and, if possible, avoid the worst.<br><br>
 
-      Notre application permet de visualiser les effets du changement climatique
-      sur les océans à partir de différentes API.
+      Our application allows you to visualize the effects of climate change
+      on the oceans using various APIs.
     </p>
   </div>
 

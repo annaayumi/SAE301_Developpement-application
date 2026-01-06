@@ -12,7 +12,7 @@
 <!-- HEADER -->
 <header class="header">
   <div class="left">
-    <a href="router.php?action=UsePage_contact&lang=Français">
+    <a href="router.php?action=UsePage_contact&lang=Francais">
     🌐 <span>FR</span>
     </a>
   </div>
@@ -32,12 +32,12 @@
 
 <div class="form-group">
   <input type="text" id="prenom" name="prenom" required>
-  <label for="prenom">Prénom</label>
+  <label for="prenom">First name</label>
 </div>
 
 <div class="form-group">
   <input type="tel" id="telephone" name="telephone" required>
-  <label for="telephone">Numéro de téléphone</label>
+  <label for="telephone">Phone number</label>
 </div>
 
 <div class="form-group">
@@ -47,9 +47,9 @@
 
 <div class="form-group">
   <textarea id="message" name="message" required></textarea>
-  <label for="message">Message</label>
+  <label for="message">Text</label>
 </div>
-            <button type="submit">Envoyer</button>
+            <button type="submit">Send</button>
         </form>
     </main>
 

@@ -68,5 +68,25 @@ fetch('api/releves.php?mesure=TEMP')
 
 </script>
 
+
+<script>
+const btn = document.getElementById("bouton_periode");
+const panel = document.getElementById("periode");
+const slider = document.getElementById("slider");
+const annee = document.getElementById("annee");
+
+/* ouvrir et fermer */
+btn.addEventListener("click", () => {
+  panel.classList.toggle("active");
+});
+
+/* permet d'afficher l'année */
+slider.addEventListener("input", () => {
+  annee.textContent = slider.value;
+});
+</script>
+
+
+
 </body> 
 </html>

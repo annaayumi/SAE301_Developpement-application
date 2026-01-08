@@ -48,9 +48,9 @@
   <textarea id="message" name="message" required></textarea>
   <label for="message">Message</label>
 </div>
-            <button type="submit">Envoyer</button>
-        </form>
-    </main>
+  <button class="bouton_envoyer" type="submit">Envoyer</button>
+  </form>
+</main>
 
 <footer class="footer">
   <!-- lien github -->

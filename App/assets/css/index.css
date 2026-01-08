@@ -27,11 +27,6 @@ body {
   transition: transform 0.3s ease;
 }
 
-/* pour cacher le header */
-.header.hide {
-  transform: translateY(-100%);
-}
-
 .hero-content {
   padding: 160px 40px 0;
 }
@@ -52,18 +47,21 @@ body {
 }
 
 .nav a {
-  color: white;
+  position: relative;
+  color: rgba(255,255,255,0.75);
   text-decoration: none;
   font-size: 18px;
+  transition: color 0.25s ease;
 }
 
-.nav a.active {
-  text-decoration: underline;
+.nav a:hover {
+  color: white;
 }
 
 .hero {
   position: relative;
   height: 100vh;
+  margin-bottom: 0;
   background: url("../img/bgi.png") center / cover no-repeat;
 }
 
@@ -124,77 +122,84 @@ body {
   box-shadow: 0 8px 12px rgba(0,0,0,0.35);
 }
 
-body {
-  padding-top: 80px; 
-}
-
-/* Contact */
-main {
-  min-height: calc(100vh - 80px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px 20px;
-}
-
-form {
-  background-color: rgba(255, 255, 255, 0.95);
-  color: #222;
-  padding: 32px;
-  border-radius: 12px;
-  width: 100%;
-  max-width: 700px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-}
-
-.form-group {
-  margin-bottom: 18px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 600;
-  color: #333;
-}
-
-.form-group input, .form-group textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  box-sizing: border-box;
-  font-size: 16px;
+/* page contenu accueil */
+.impact {
+  background: white;
   color: #111;
+  padding: 120px 60px;
+  text-align: center;
+  margin-top: 80px; 
 }
 
-.form-group textarea {
-  height: 140px;
-  resize: vertical;
+.impact h2 {
+  font-size: 38px;
+  margin-bottom: 70px;
 }
 
-button {
-  background-color: #3f8093;
-  color: white;
-  padding: 12px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  width: 100%;
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+  margin-bottom: 100px;
+}
+
+.stat .donnees {
+  font-size: 56px;
+  font-weight: 700;
+  color: #3f8093;
+}
+
+.stat p {
+  margin-top: 10px;
   font-size: 16px;
-  transition: background-color 0.3s;
 }
 
-button:hover {
-  background-color: #2c5e77;
+.themes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;  
 }
 
-@media (max-width: 700px) {
-  form {
-    padding: 20px;
-    border-radius: 8px;
-    margin: 0 10px;
-  }
+.carte {
+  color : #141414;
+  background: #f4f6f8;
+  padding: 35px;
+  border-radius: 18px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  text-decoration: none;
+}
+
+.carte:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 35px rgba(0,0,0,0.15);
+}
+
+.carte h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.carte p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.4;
+}
+
+.carte:active {
+  transform: scale(0.97);
+}
+
+/* animation des cartes */
+.carte {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* quand on scroll vers le bas les cartes apparaissent */
+.carte.animate {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .footer {
@@ -203,8 +208,6 @@ button:hover {
   grid-template-columns: 1.3fr 1fr 1.3fr 1.3fr;
   gap: 50px;
   padding: 40px 80px;
-  position: relative;
-  bottom: -270px;
   font-size: 14px;
   color: white;
 }
@@ -256,8 +259,6 @@ button:hover {
   padding: 12px;
   font-size: 13px;
   color: white;
-  position: relative;
-  bottom: -270px;
 }
 
 /* RESPONSIVE */
@@ -271,5 +272,19 @@ button:hover {
 
   .footer-github {
     justify-content: center;
+  }
+}
+
+/* Animation apparition accueil */
+.hero-content {
+  opacity: 0;
+  transform: translateY(25px);
+  animation: fadeUp 1s ease-out forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

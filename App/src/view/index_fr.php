@@ -49,6 +49,48 @@
 <a href="router.php?action=UsePage_carte&lang=Francais" class="boutonScroll" aria-label="Accéder à la carte">
   →
 </a>
+</section>
+
+<!-- CONTENU PAGE ACCUEIL !-->
+<section class="impact">
+
+  <h2>L'impact du changement climatique</h2>
+
+  <div class="stats">
+    <div class="stat">
+      <span class="donnees" data-target="1.4">0</span>
+      <p>°C de hausse moyenne mondiale</p>
+    </div>
+
+    <div class="stat">
+      <span class="donnees" data-target="40">0</span>
+      <p>% de banquise arctique perdue</p>
+    </div>
+
+    <div class="stat">
+      <span class="donnees" data-target="532">0</span>
+      <p>milliards de tonnes de glace perdues (Groenland)</p>
+    </div>
+  </div>
+
+  <div class="themes">
+    <a href="router.php?action=UsePage_phenomenes&lang=Francais" class="carte">
+      <h3>Hausse des températures & fonte des glaces</h3>
+      <p>CO₂, sécheresses, banquise, montée des eaux, glaciers</p>
+    </a>
+
+    <a href="router.php?action=UsePage_phenomenes&lang=Francais" class="carte">
+      <h3>Acidification des océans</h3>
+      <p>pH, coraux, biodiversité, CO₂</p>
+    </a>
+
+    <a href="router.php?action=UsePage_phenomenes&lang=Francais" class="carte">
+      <h3>Variation de la salinité</h3>
+      <p>Evaporation, précipitations, PSU, estuaires</p>
+    </a>
+  </div>
+
+</section>
 
 <footer class="footer">
   <!-- lien github -->
@@ -105,20 +147,50 @@
   © 2025-2026 Tous droits réservés | Mentions légales
 </div>
 
-<!-- pour cacher le header lorsqu'on scroll !-->
+<!-- animations javascript -->
 <script>
-let lastScrollY = window.scrollY;
-const header = document.querySelector('.header');
+document.addEventListener("DOMContentLoaded", () => {
 
-window.addEventListener('scroll', () => {
-  if (window.scrollY > lastScrollY && window.scrollY > 80) {
-    // scroll vers le bas
-    header.classList.add('hide');
-  } else {
-    // scroll vers le haut
-    header.classList.remove('hide');
+  const cards = document.querySelectorAll(".carte");
+  const counters = document.querySelectorAll(".donnees");
+  const impact = document.querySelector(".impact");
+  let countersDone = false;
+
+  function checkScroll() {
+
+    /* apparition des cartes */
+    cards.forEach(card => {
+      if (card.getBoundingClientRect().top < window.innerHeight * 0.85) {
+        card.classList.add("animate");
+      }
+    });
+
+    /* animation des chiffres */
+    if (!countersDone && impact.getBoundingClientRect().top < window.innerHeight * 0.8) {
+      countersDone = true;
+
+      counters.forEach(counter => {
+        const target = +counter.dataset.target;
+        let value = 0;
+        const step = target / 150;
+
+        function animate() {
+          value += step;
+          if (value < target) {
+            counter.textContent = value.toFixed(1);
+            requestAnimationFrame(animate);
+          } else {
+            counter.textContent = target;
+          }
+        }
+
+        animate();
+      });
+    }
   }
-  lastScrollY = window.scrollY;
+
+  window.addEventListener("scroll", checkScroll);
+  checkScroll(); // au cas où déjà visible
 });
 </script>
 

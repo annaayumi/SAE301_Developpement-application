@@ -137,14 +137,14 @@ form {
 .form-group textarea:valid + label {
   top: -8px;
   font-size: 12px;
-  color: #c6de4d;;
+  color: #3fc9c0;;
 }
 
 .bouton_envoyer {
   margin-top: 15px;
   width: 100%;
   padding: 14px;
-  background: rgba(222, 212, 77, 0.9);
+  background: #3fc9c0;
   color: black;
   border: none;
   border-radius: 999px;
@@ -156,7 +156,7 @@ form {
 
 .bouton_envoyer:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(208, 228, 242, 0.452);
+  box-shadow: 0 12px 30px rgba(110, 209, 211, 0.589);
 }
 
 .footer {

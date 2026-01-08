@@ -31,7 +31,7 @@
   <div class="overlay"></div>
 
   <div class="hero-content">
-    <h1>WELCOME TO GLEAUBAL</h1>
+    <h1>WELCOME TO <span class="site_nom">GLEAUBAL</span></h1>
 
     <p>
       Climate change is one of the major challenges we face today,

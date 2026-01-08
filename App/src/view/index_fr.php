@@ -31,7 +31,7 @@
   <div class="overlay"></div>
 
   <div class="hero-content">
-    <h1>BIENVENUE SUR GLEAUBAL</h1>
+    <h1>BIENVENUE SUR <span class="site_nom">GLEAUBAL</span></h1>
 
     <p>
       Le changement climatique est un des enjeux majeurs que nous vivons aujourd’hui

@@ -81,7 +81,7 @@
 </footer>
 
 <div class="copyright">
-  © 2025-2026 Tous droits réservés | Mentions légales
+  © 2025-2026 All rights reserved | Legal mentions
 </div>
 
 </body>

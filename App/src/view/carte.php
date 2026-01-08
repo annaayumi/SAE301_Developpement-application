@@ -29,10 +29,17 @@
 
 <div id="map"></div>
 
-<aside class="filters">
-  <div class="filters-title">Filtres</div>
-  <button>Période</button>
-  
+<aside class="filtres">
+  <div class="titre">Filtres</div>
+
+  <button id="bouton_periode">Période</button>
+
+  <div class="periode" id="periode">
+    <span id="annee">2020</span>
+    <input type="range" min="2020" max="2025" id="slider">
+    <button id="appliquer">Appliquer</button>
+  </div>
+
   <button>Type de mesure</button>
   <button>Type de plateforme</button>
 </aside>
@@ -65,8 +72,27 @@ fetch('api/releves.php?mesure=TEMP')
       .addTo(map);
     });
   });
-
 </script>
+
+
+<script>
+const btn = document.getElementById("bouton_periode");
+const panel = document.getElementById("periode");
+const slider = document.getElementById("slider");
+const annee = document.getElementById("annee");
+
+/* ouvrir et fermer */
+btn.addEventListener("click", () => {
+  panel.classList.toggle("active");
+});
+
+/* permet d'afficher l'année */
+slider.addEventListener("input", () => {
+  annee.textContent = slider.value;
+});
+</script>
+
+
 
 </body> 
 </html>

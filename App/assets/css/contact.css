@@ -48,13 +48,15 @@ body {
 }
 
 .nav a {
-  color: white;
+  position: relative;
+  color: rgba(255,255,255,0.75);
   text-decoration: none;
   font-size: 18px;
+  transition: color 0.25s ease;
 }
 
-.nav a.active {
-  text-decoration: underline;
+.nav a:hover {
+  color: white;
 }
 
 main {
@@ -65,7 +67,7 @@ main {
   padding: 120px 20px 60px;
 }
 
-/* Effet verre */
+/* Formulaire de contact */
 form {
   width: 100%;
   max-width: 420px;
@@ -138,7 +140,7 @@ form {
   color: #c6de4d;;
 }
 
-button {
+.bouton_envoyer {
   margin-top: 15px;
   width: 100%;
   padding: 14px;
@@ -152,7 +154,7 @@ button {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-button:hover {
+.bouton_envoyer:hover {
   transform: translateY(-3px);
   box-shadow: 0 12px 30px rgba(208, 228, 242, 0.452);
 }

@@ -46,10 +46,10 @@
     </p>
   </div>
 
-<a href="router.php?action=UsePage_carte&lang=English" class="boutonScroll" aria-label="Accéder à la carte">
-  →
-</a>
-
+  <a href="router.php?action=UsePage_carte&lang=English" class="boutonScroll" aria-label="Accéder à la carte">
+    →
+  </a>
+</section>
 
 
 
@@ -76,19 +76,19 @@
   </div>
 
   <div class="themes">
-    <a href="router.php?action=UsePage_phenomenes&lang=Francais" class="carte">
-      <h3>Hausse des températures & fonte des glaces</h3>
-      <p>CO₂, sécheresses, banquise, montée des eaux, glaciers</p>
+    <a href="router.php?action=UsePage_phenomenes&lang=English#temp" class="carte">
+      <h3>Rising temperatures and melting ice</h3>
+      <p>CO₂, drought, ice floe, rising waters, glaciers</p>
     </a>
 
-    <a href="router.php?action=UsePage_phenomenes&lang=Francais" class="carte">
-      <h3>Acidification des océans</h3>
-      <p>pH, coraux, biodiversité, CO₂</p>
+    <a href="router.php?action=UsePage_phenomenes&lang=English#acid" class="carte">
+      <h3>Acidification of oceans</h3>
+      <p>pH, corals, biodiversity, CO₂</p>
     </a>
 
-    <a href="router.php?action=UsePage_phenomenes&lang=Francais" class="carte">
-      <h3>Variation de la salinité</h3>
-      <p>Evaporation, précipitations, PSU, estuaires</p>
+    <a href="router.php?action=UsePage_phenomenes&lang=English#sal" class="carte">
+      <h3>Variation in salinity</h3>
+      <p>Evaporation, precipitations, PSU, estuaires</p>
     </a>
   </div>
 

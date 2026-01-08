@@ -74,17 +74,17 @@
   </div>
 
   <div class="themes">
-    <a href="router.php?action=UsePage_phenomenes&lang=Francais" class="carte">
+    <a href="router.php?action=UsePage_phenomenes&lang=Francais#temp" class="carte">
       <h3>Hausse des températures & fonte des glaces</h3>
       <p>CO₂, sécheresses, banquise, montée des eaux, glaciers</p>
     </a>
 
-    <a href="router.php?action=UsePage_phenomenes&lang=Francais" class="carte">
+    <a href="router.php?action=UsePage_phenomenes&lang=Francais#acid" class="carte">
       <h3>Acidification des océans</h3>
       <p>pH, coraux, biodiversité, CO₂</p>
     </a>
 
-    <a href="router.php?action=UsePage_phenomenes&lang=Francais" class="carte">
+    <a href="router.php?action=UsePage_phenomenes&lang=Francais#sal" class="carte">
       <h3>Variation de la salinité</h3>
       <p>Evaporation, précipitations, PSU, estuaires</p>
     </a>

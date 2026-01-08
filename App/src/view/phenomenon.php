@@ -33,6 +33,8 @@
     <div class="hero-line"></div>
   </section>
 
+  <span id="temp"><br><br><br><br><br></span>
+
   <section class="content-section">
 
   <h2>Rising temperatures and melting ice</h2>
@@ -64,6 +66,8 @@
 
   </section>
   
+  <span id="acid"><br><br><br><br><br></span>
+
   <section class="content-section">
     <h2>Ocean acidification</h2>
 
@@ -82,6 +86,8 @@
     As a result, ocean acidification is less visible than sea level rise, but its repercussions are just as severe. It weakens corals, mollusks, crustaceans, and plankton, which form the foundation of marine life. It jeopardizes the food and economic security of millions of people around the world and could profoundly alter the oceans by the end of the century if measures are not taken to reduce CO₂ emissions.
   </p>
   </section>
+
+  <span id="sal"><br><br><br><br><br></span>
 
   <section class="content-section">
     <h2>Variation in salinity</h2>

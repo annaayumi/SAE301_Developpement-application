@@ -4,10 +4,15 @@
   box-sizing: border-box;
 }
 
+html{
+  overscroll-behavior: none;
+}
+
 body {
   font-family: "Open Sans", sans-serif;
   background: black;
   color: white;
+  overscroll-behavior: none;
 }
 
 .header {

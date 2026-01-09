@@ -8,7 +8,7 @@ class Controller {
     }
 
     public static function ChangeLang(string $lang) : void {
-        require dirname(__DIR__)."/view/$Vue";// Charge la vue 
+        require dirname(__DIR__)."/view/$lang";// Charge la vue 
     }
     
      

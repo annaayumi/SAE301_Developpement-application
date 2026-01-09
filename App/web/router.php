@@ -52,6 +52,7 @@
         if($lang == "English"){Controller::UsePage('data.php');}
     }
 
+<<<<<<< HEAD
     // Use page phenomenes
 
     if($action == 'UsePage_phenomenes'){
@@ -60,4 +61,6 @@
     }
 
 
+=======
+>>>>>>> f3595f04db08990eb7a35c03d4a9de21c927f256
 ?>

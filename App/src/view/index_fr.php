@@ -144,7 +144,7 @@
 </footer>
 
 <div class="copyright">
-  © 2025-2026 Tous droits réservés | Mentions légales
+  © Gleaubal 2025-2026 Tous droits réservés | Mentions légales
 </div>
 
 <!-- animations javascript -->

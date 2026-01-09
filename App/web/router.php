@@ -1,5 +1,6 @@
 <?php
-    require_once '../src/Controller/controller.php';
+    namespace App\Gleaubal\Web;
+    use App\Gleaubal\Controller\Controller as Controller;
 
     $action = $_GET['action'] ?? 'UsePage_index';
     $lang = $_GET['lang'] ?? 'Francais';
@@ -8,38 +9,38 @@
     // Use page Index
 
     if($action == 'UsePage_index'){
-        if($lang == "Francais"){controller::UsePage('index_fr.php');}
-        if($lang == "English"){controller::UsePage('index_en.php');}
+        if($lang == "Francais"){Controller::UsePage('index_fr.php');}
+        if($lang == "English"){Controller::UsePage('index_en.php');}
     }
 
     // Use page A propos
 
     if($action == 'UsePage_apropos'){
-        if($lang == "Francais"){controller::UsePage('apropos.php');}
-        if($lang == "English"){controller::UsePage('about.php');}
+        if($lang == "Francais"){Controller::UsePage('apropos.php');}
+        if($lang == "English"){Controller::UsePage('about.php');}
     }
 
     // Use page Contenu A propos
 
     if($action == 'UsePage_phenomenes'){
-        if($lang == "Francais"){controller::UsePage('phenomenes.php');}
-        if($lang == "English"){controller::UsePage('phenomenon.php');}
+        if($lang == "Francais"){Controller::UsePage('phenomenes.php');}
+        if($lang == "English"){Controller::UsePage('phenomenon.php');}
     }
 
 
     // Use page Contact
 
     if($action == 'UsePage_contact'){
-        if($lang == "Francais"){controller::UsePage('contact_fr.php');}
-        if($lang == "English"){controller::UsePage('contact_en.php');}
+        if($lang == "Francais"){Controller::UsePage('contact_fr.php');}
+        if($lang == "English"){Controller::UsePage('contact_en.php');}
     }
 
 
     // Use page Carte
 
     if($action == 'UsePage_carte'){
-        if($lang == "Francais"){controller::UsePage('carte.php');}
-        if($lang == "English"){controller::UsePage('map.php');}
+        if($lang == "Francais"){Controller::UsePage('carte.php');}
+        if($lang == "English"){Controller::UsePage('map.php');}
     }
 
 
@@ -47,15 +48,15 @@
     // Use page donnees
 
     if($action == 'UsePage_donnees'){
-        if($lang == "Francais"){controller::UsePage('donnees.php');}
-        if($lang == "English"){controller::UsePage('data.php');}
+        if($lang == "Francais"){Controller::UsePage('donnees.php');}
+        if($lang == "English"){Controller::UsePage('data.php');}
     }
 
     // Use page phenomenes
 
     if($action == 'UsePage_phenomenes'){
-        if($lang == "Francais"){controller::UsePage('phenomenes.php');}
-        if($lang == "English"){controller::UsePage('phenomenon.php');}
+        if($lang == "Francais"){Controller::UsePage('phenomenes.php');}
+        if($lang == "English"){Controller::UsePage('phenomenon.php');}
     }
 
 

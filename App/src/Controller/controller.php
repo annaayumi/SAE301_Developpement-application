@@ -1,7 +1,8 @@
 <?php
 
+namespace App\Gleaubal\Controller;
 
-class controller{
+class Controller {
 
 
     public static function UsePage(string $Vue) : void {

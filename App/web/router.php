@@ -51,12 +51,4 @@
         if($lang == "English"){controller::UsePage('data.php');}
     }
 
-    // Use page phenomenes
-
-    if($action == 'UsePage_phenomenes'){
-        if($lang == "Francais"){controller::UsePage('phenomenes.php');}
-        if($lang == "English"){controller::UsePage('phenomenon.php');}
-    }
-
-
 ?>

@@ -150,7 +150,7 @@
 </footer>
 
 <div class="copyright">
-  © 2025-2026 All rights reserved | Legal mentions
+  © Gleaubal 2025-2026 All rights reserved | Legal mentions
 </div>
 
 <!-- animations javascript -->

@@ -38,8 +38,8 @@
     <div class="hero-line"></div>
   </section>
 
-  <span id="temp"><br><br><br><br><br></span>
-  
+  <span id="temp"></span>
+
   <section class="content-section">
     <h2>Hausse des températures et fonte des glaces</h2>
 
@@ -64,7 +64,7 @@
     Les courants océaniques jouent un rôle important dans la régulation de la température ainsi que du climat de notre planète. Ils transportent de la chaleur, les nutriments ainsi que le sel d’un océan à un autre. Ce courant se nomme la thermohaline et dépend de deux facteurs, la salinité ainsi que la température de l’eau. Malheureusement, le réchauffement climatique et la fonte des glaces perturbent ce système de circulation. Lorsque la glace fond, une très grande quantité d’eau douce se déverse dans l’océan. Cette eau qui est moins salée se mélange avec l’eau salée des océans ce qui ralenti les courants océaniques.
     </p>
   </section>
-  <span id="acid"><br><br><br><br><br></span>
+  <span id="acid"></span>
   <section class="content-section">
     <h2>Acidification des océans</h2>
 
@@ -83,7 +83,7 @@
     De ce fait, l'acidification des océans représente un enjeu moins perceptible que l'élévation du niveau de la mer, mais ses répercussions sont tout aussi sévères. Elle affaiblit les coraux, les mollusques, les crustacés et le plancton, qui constituent les fondements de la vie marine. Elle met en péril la sécurité alimentaire et économique de millions de personnes à travers le monde et pourrait modifier en profondeur les océans d'ici la fin du siècle si des mesures ne sont pas prises pour diminuer les émissions de CO₂.
     </p>
   </section>
-  <span id="sal"><br><br><br><br><br></span>
+  <span id="sal"></span>
   <section class="content-section">
     <h2>Variation de la salinité</h2>
     <p>

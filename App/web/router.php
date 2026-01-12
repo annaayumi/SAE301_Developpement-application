@@ -1,5 +1,4 @@
 <?php
-    
     require_once '../src/Controller/controller.php';
 
     $action = $_GET['action'] ?? 'UsePage_index';
@@ -51,4 +50,5 @@
         if($lang == "Francais"){Controller::UsePage('donnees.php');}
         if($lang == "English"){Controller::UsePage('data.php');}
     }
+
 ?>

@@ -277,7 +277,7 @@ body {
   color: white;
 }
 
-/* Animation texte accueil */
+/* Animation apparition accueil */
 .hero-content {
   opacity: 0;
   transform: translateY(25px);
@@ -291,8 +291,10 @@ body {
   }
 }
 
-/* Responsive */
+
+/* responsive */
 @media (max-width: 768px) {
+
   /* menu */
   .burger {
     display: none;
@@ -333,25 +335,9 @@ body {
     transform: translateX(0);
   }
 
-  .boutonScroll {
-    position: static;
-    margin: 40px auto 0;
-    transform: none;
-  }
-
-  .themes {
-    grid-template-columns: 1fr;
-    gap: 25px;
-  }
-
-  .stats {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
   .footer {
     grid-template-columns: 1fr;
     gap: 30px;
   }
-
+  
 }

@@ -77,8 +77,8 @@ body {
 
 .filtres {
   position: absolute;
-  top: 120px;
-  left: 40px;
+  top: 150px;
+  left: 65px;
   width: 180px;
   background: rgba(40,40,40,0.85);
   border-radius: 20px;
@@ -90,8 +90,12 @@ body {
 }
 
 .titre {
+  grid-column: 1 / -1;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
+  padding: 12px;
+  cursor: grab;
+  border-radius: 22px 22px 0 0;
 }
 
 .filtres button {

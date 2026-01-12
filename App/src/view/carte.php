@@ -41,16 +41,35 @@
 
   <button id="bouton_periode">Période</button>
 
+  <!-- PERIODE -->
   <div class="periode" id="periode">
-    <span id="annee">2020</span>
+    <span id="annee">2023</span>
     <input type="range" min="2020" max="2025" id="slider">
-    <button id="appliquer">Appliquer</button>
+
   </div>
 
-  <button>Type de mesure</button>
-  <button>Type de plateforme</button>
+  <!-- TYPE DE MESURE -->
+  <div class="types">
+    <div class="type">Type de mesure</div>
+    <div class="options">
+      <button class="option" data-mesure="ph">pH</button>
+      <button class="option" data-mesure="chlorophylle">Chlorophylle A</button>
+      <button class="option" data-mesure="temperature">Température</button>
+    </div>
+  </div>
+
+  <!-- TYPE DE PLATEFORME -->
+  <div class="types">
+    <div class="type">Type de plateforme</div>
+    <div class="options">
+      <button class="option" data-plateforme="satellite">Satellite</button>
+      <button class="option" data-plateforme="bouee">Bouée</button>
+    </div>
+  </div>
 </aside>
 
+
+<!-- carte -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <script>
@@ -81,7 +100,7 @@ fetch('api/releves.php?mesure=TEMP')
   });
 </script>
 
-
+<!-- scripts filtres période -->
 <script>
 const btn = document.getElementById("bouton_periode");
 const panel = document.getElementById("periode");
@@ -99,7 +118,34 @@ slider.addEventListener("input", () => {
 });
 </script>
 
+<script>
+const filtres = document.querySelector(".filtres");
+const dragBar = document.querySelector(".titre");
 
+let isDragging = false;
+let offsetX = 0;
+let offsetY = 0;
+
+dragBar.addEventListener("mousedown", (e) => {
+  isDragging = true;
+  offsetX = e.clientX - filtres.offsetLeft;
+  offsetY = e.clientY - filtres.offsetTop;
+  dragBar.style.cursor = "grabbing";
+});
+
+/* déplacer le filtre */
+document.addEventListener("mousemove", (e) => {
+  if (!isDragging) return;
+
+  filtres.style.left = (e.clientX - offsetX) + "px";
+  filtres.style.top  = (e.clientY - offsetY) + "px";
+});
+
+document.addEventListener("mouseup", () => {
+  isDragging = false;
+  dragBar.style.cursor = "grab";
+});
+</script>
 
 </body> 
 </html>

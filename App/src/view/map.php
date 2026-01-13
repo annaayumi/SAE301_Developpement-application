@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Accueil</title>
+<title>Map</title>
 
 <link rel="stylesheet" href="../assets/css/carte.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
@@ -21,7 +21,6 @@
   <nav class="nav">
     <a href="router.php?action=UsePage_index&lang=English">Welcome</a>
     <a href="router.php?action=UsePage_carte&lang=English" class="active">Map</a>
-    <a href="router.php?action=UsePage_donnees&lang=English">Data</a>
     <a href="router.php?action=UsePage_apropos&lang=English">About</a>
     <a href="router.php?action=UsePage_contact&lang=English">Contact</a>
   </nav>
@@ -33,16 +32,38 @@
   </div>
 </header>
 
-
 <div id="map"></div>
 
-<aside class="filters">
-  <div class="filters-title">Filtres</div>
-  <button>Période</button>
-  <button>Type de mesure</button>
-  <button>Type de plateforme</button>
+<aside class="filtres">
+  <div class="titre">Filters</div>
+
+<div class="type">Période</div>
+  <div class="periode" id="periode">
+    <span id="annee">2023</span>
+    <input type="range" min="2020" max="2025" id="slider">
+  </div>
+
+  <!-- TYPE DE MESURE -->
+  <div class="types">
+    <div class="type">Type of measurement</div>
+    <div class="options">
+      <button class="option" data-mesure="ph">pH</button>
+      <button class="option" data-mesure="chlorophylle">Chlorophyll A</button>
+      <button class="option" data-mesure="temperature">Temperature</button>
+    </div>
+  </div>
+
+  <!-- TYPE DE PLATEFORME -->
+  <div class="types">
+    <div class="type">Type of platform</div>
+    <div class="options">
+      <button class="option" data-plateforme="satellite">Satellite</button>
+      <button class="option" data-plateforme="bouee">Buoy</button>
+    </div>
+  </div>
 </aside>
 
+<!-- carte -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <script>
@@ -71,20 +92,12 @@ fetch('api/releves.php?mesure=TEMP')
       .addTo(map);
     });
   });
-
 </script>
 
-
+<!-- scripts filtres période -->
 <script>
-const btn = document.getElementById("bouton_periode");
-const panel = document.getElementById("periode");
 const slider = document.getElementById("slider");
 const annee = document.getElementById("annee");
-
-/* ouvrir et fermer */
-btn.addEventListener("click", () => {
-  panel.classList.toggle("active");
-});
 
 /* permet d'afficher l'année */
 slider.addEventListener("input", () => {
@@ -92,7 +105,49 @@ slider.addEventListener("input", () => {
 });
 </script>
 
+<script>
+const filtres = document.querySelector(".filtres");
+const dragBar = document.querySelector(".titre");
 
+let isDragging = false;
+let offsetX = 0;
+let offsetY = 0;
+
+dragBar.addEventListener("mousedown", (e) => {
+  isDragging = true;
+  offsetX = e.clientX - filtres.offsetLeft;
+  offsetY = e.clientY - filtres.offsetTop;
+  dragBar.style.cursor = "grabbing";
+});
+
+/* déplacer le filtre */
+document.addEventListener("mousemove", (e) => {
+  if (!isDragging) return;
+
+  filtres.style.left = (e.clientX - offsetX) + "px";
+  filtres.style.top  = (e.clientY - offsetY) + "px";
+});
+
+document.addEventListener("mouseup", () => {
+  isDragging = false;
+  dragBar.style.cursor = "grab";
+});
+</script>
+
+<script>
+const options = document.querySelectorAll(".option");
+
+options.forEach(option => {
+  option.addEventListener("click", () => {
+    option.classList.toggle("active");
+
+    console.log("Sélections actuelles :");
+    document.querySelectorAll(".option.active").forEach(btn => {
+      console.log(btn.dataset);
+    });
+  });
+});
+</script>
 
 </body> 
 </html>

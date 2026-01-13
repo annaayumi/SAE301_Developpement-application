@@ -108,7 +108,7 @@ body {
 }
 
 .filtres button:hover {
-  background: #888;
+  background:#3f7f93ca;
 }
 
 /* slider */
@@ -130,4 +130,9 @@ body {
   border-radius: 50%;
   cursor: pointer;
   box-shadow: 0 0 6px rgba(0,0,0,0.5);
+}
+
+.option.active {
+  background: #3f8093;
+  font-weight: bold;
 }

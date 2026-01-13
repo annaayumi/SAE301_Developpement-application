@@ -20,7 +20,6 @@
   <nav class="nav">
     <a href="router.php?action=UsePage_index&lang=Francais" class="active">Accueil</a>
     <a href="router.php?action=UsePage_carte&lang=Francais">Carte</a>
-    <a href="router.php?action=UsePage_donnees&lang=Francais">Données</a>
     <a href="router.php?action=UsePage_apropos&lang=Francais">À propos</a>
     <a href="router.php?action=UsePage_contact&lang=Francais">Contact</a>
   </nav>

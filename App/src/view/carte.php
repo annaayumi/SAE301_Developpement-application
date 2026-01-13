@@ -21,7 +21,6 @@
   <nav class="nav">
     <a href="router.php?action=UsePage_index&lang=Francais">Accueil</a>
     <a href="router.php?action=UsePage_carte&lang=Francais" class="active">Carte</a>
-    <a href="router.php?action=UsePage_donnees&lang=Francais">Données</a>
     <a href="router.php?action=UsePage_apropos&lang=Francais">À propos</a>
     <a href="router.php?action=UsePage_contact&lang=Francais">Contact</a>  
   </nav>
@@ -39,13 +38,11 @@
 <aside class="filtres">
   <div class="titre">Filtres</div>
 
-  <button id="bouton_periode">Période</button>
-
-  <!-- PERIODE -->
+<!-- PERIODE -->
+<div class="type">Période</div>
   <div class="periode" id="periode">
     <span id="annee">2023</span>
     <input type="range" min="2020" max="2025" id="slider">
-
   </div>
 
   <!-- TYPE DE MESURE -->
@@ -67,7 +64,6 @@
     </div>
   </div>
 </aside>
-
 
 <!-- carte -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -102,15 +98,8 @@ fetch('api/releves.php?mesure=TEMP')
 
 <!-- scripts filtres période -->
 <script>
-const btn = document.getElementById("bouton_periode");
-const panel = document.getElementById("periode");
 const slider = document.getElementById("slider");
 const annee = document.getElementById("annee");
-
-/* ouvrir et fermer */
-btn.addEventListener("click", () => {
-  panel.classList.toggle("active");
-});
 
 /* permet d'afficher l'année */
 slider.addEventListener("input", () => {
@@ -146,6 +135,22 @@ document.addEventListener("mouseup", () => {
   dragBar.style.cursor = "grab";
 });
 </script>
+
+<script>
+const options = document.querySelectorAll(".option");
+
+options.forEach(option => {
+  option.addEventListener("click", () => {
+    option.classList.toggle("active");
+
+    console.log("Sélections actuelles :");
+    document.querySelectorAll(".option.active").forEach(btn => {
+      console.log(btn.dataset);
+    });
+  });
+});
+</script>
+
 
 </body> 
 </html>

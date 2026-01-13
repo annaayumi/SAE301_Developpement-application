@@ -43,12 +43,4 @@
     }
 
 
-
-    // Use page donnees
-
-    if($action == 'UsePage_donnees'){
-        if($lang == "Francais"){Controller::UsePage('donnees.php');}
-        if($lang == "English"){Controller::UsePage('data.php');}
-    }
-
 ?>

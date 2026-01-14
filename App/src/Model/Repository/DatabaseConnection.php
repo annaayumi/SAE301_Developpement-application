@@ -1,6 +1,9 @@
 <?php
 namespace App\Gleaubal\Model\Repository;
 use App\Gleaubal\Config\Conf as Conf;
+
+use App\Gleaubal\Model\DataObject\Releve;
+
 use PDO;
 class DatabaseConnection {
     // Attributs
@@ -20,7 +23,8 @@ class DatabaseConnection {
         // Le dernier argument sert à ce que toutes les chaines de caractères
         // en entrée et sortie de MySql soit dans le codage UTF-8
         $this->pdo = new PDO("mysql:host=$this->hostname;dbname=$this->databaseName",
-        $this->login, $this->password,array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+            $this->login, $this->password,array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8")
+        );
         // On active le mode d'affichage des erreurs, et le lancement d'exception
         // en cas d'erreur
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -38,5 +42,101 @@ class DatabaseConnection {
         }
         return static::$instance;
     }
+
+
+    public static function doQuery_with_filters(string $annee, string $mois , string $unite , string $plateforme){
+        
+        
+
+        $sql = "
+        select releves.id_releve, mesure.unite, releves.id_plateforme, type_plateforme.type, 
+        type_plateforme.desc, releves.latitude, releves.longitude, releves.date, releves.valeur 
+        from releves
+        join mesure on releves.id_mesure = mesure.id_mesure
+        join plateforme on releves.id_plateforme = plateforme.id
+        join type_plateforme on plateforme.id_type = type_plateforme.id_type";
+
+        
+        $date = "";
+        //concat
+
+        if($annee != "" and $mois != ""){
+            $date = $annee."-".$mois;
+        }
+        
+
+        // check filters, concat and bind param
+        if ($date != "") { 
+            $sql = $sql." where releves.date = :date";
+        }
+
+        if ($unite != "") {
+            if ($annee != ""){
+                $sql = $sql." and ";
+            }
+            else{
+                $sql = $sql." where ";
+            }
+
+            $sql = $sql." mesure.unite = :unite";
+
+        }
+
+        if ($plateforme != "")  {
+
+            if ($annee != "" or $unite != ""){
+                $sql = $sql." and ";
+            }
+            else{
+                $sql = $sql." where ";
+            }
+
+            $sql = $sql." type_plateforme.type = :plateforme";
+
+        }
+        
+
+        $sql = $sql." ;";
+
+        // prep sql
+        $PdoStatement = DatabaseConnection::getPdo()->prepare($sql);
+        
+        if ($date != "") { 
+        $PdoStatement->bindParam(':date',$date, PDO::PARAM_STR);}
+
+        if ($unite != "") { 
+        $PdoStatement->bindParam(':unite',$unite, PDO::PARAM_STR);}
+
+        if ($plateforme != "") { 
+        $PdoStatement->bindParam(':plateforme',$plateforme, PDO::PARAM_STR);}
+        
+
+        // exec
+        $PdoStatement->execute();
+
+        // create dataset
+        $DataSet = [];
+
+        $PdoStatement->fetch();
+
+        foreach ( $PdoStatement as $row ){
+            $tempObj = new Releve(
+                    $row['id_releve'], 
+                    $row['id_plateforme'], 
+                    $row['type'], 
+                    $row['desc'], 
+                    $row['unite'], 
+                    $row['latitude'],
+                    $row['longitude'],
+                    $row['date'],
+                    $row['valeur']);
+
+            $DataSet[] = $tempObj;
+  
+        }
+        return $DataSet;
+       
+    }
+
 }
 ?>

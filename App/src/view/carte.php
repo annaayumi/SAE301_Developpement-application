@@ -10,7 +10,7 @@
 </head>
 
 <body>
-<!-- HEADER -->
+<!-- HEADER 
 <header class="header">
   <div class="left">
     <a href="router.php?action=UsePage_carte&lang=English">
@@ -32,46 +32,62 @@
     <span></span>
   </div>
 
-</header>
+</header>-->
 
 <div id="map"></div>
 
 <aside class="filtres">
-  <div class="titre">Filtres</div>
+  <form method="get">
 
-  <button id="bouton_periode">Période</button>
+    <div class="titre">Filtres</div>
 
-  <!-- PERIODE -->
-  <div class="periode" id="periode">
-    <span id="annee">2023</span>
-    <input type="range" min="2020" max="2025" id="slider">
+    <span>Période</span>
 
-  </div>
+    <!-- PERIODE -->
+    <div class="periode" id="periode">
+      <span id="annee">2023</span>
+      <input type="range" min="2020" max="2025" name="annee" id="slider">
 
-  <!-- TYPE DE MESURE -->
-  <div class="types">
-    <div class="type">Type de mesure</div>
-    <div class="options">
-      <button class="option" data-mesure="ph">pH</button>
-      <button class="option" data-mesure="chlorophylle">Chlorophylle A</button>
-      <button class="option" data-mesure="temperature">Température</button>
     </div>
-  </div>
 
-  <!-- TYPE DE PLATEFORME -->
-  <div class="types">
-    <div class="type">Type de plateforme</div>
-    <div class="options">
-      <button class="option" data-plateforme="satellite">Satellite</button>
-      <button class="option" data-plateforme="bouee">Bouée</button>
+    <!-- unite DE MESURE -->
+    
+    <div class="types">
+      
+      <div class="type">Type de mesure</div>
+      <div class="options">
+        <input type="radio" class="option" name="unite" value="PSAL">Salinité</input>
+        <input type="radio" class="option" name="unite" value="CHLT">Chlorophylle A</input>
+        <input type="radio" class="option" name="unite" value="TEMP">Température</input>
+
+      </div>
     </div>
-  </div>
+
+    <!-- TYPE DE PLATEFORME -->
+    <div class="types">
+      <div class="type">Type de plateforme</div>
+      <div class="options">
+        <input type="radio" class="option" name="platforme" value="satellite">Satellite</input>
+        <input type="radio" class="option" name="platforme" value="DB">Bouée</input>
+      </div>
+    </div>
+    
+    <input  type="submit" value="Appliquer"></input>
+
+
+    <input type="hidden" name="action" value="UsePage_carte">
+    <input type="hidden" name="lang" value="Francais">
+
+
+  </form>
 </aside>
 
 
 <!-- carte -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
+
+<!-- CARTE -->
 <script>
 const map = L.map('map', {
   center: [46.5, 2.5], 
@@ -82,25 +98,31 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '© OpenStreetMap'
 }).addTo(map);
 
-
-fetch('api/releves.php?mesure=TEMP')
-  .then(response => response.json())
-  .then(data => {
-    data.forEach(p => {
-      L.circleMarker([p.latitude, p.longitude], {
-        radius: 5,
-        color: '#5c91dbff',
-        fillOpacity: 0.8
-      })
-      .bindPopup(`
-        <strong>Valeur :</strong> ${p.valeur}
-      `)
-      .addTo(map);
-    });
-  });
 </script>
 
-<!-- scripts filtres période -->
+<!-- marqueur -->
+<?php
+
+echo "<script>";
+foreach  ($dataSet as $obj) {
+  
+  echo "L.marker([".$obj->getLatitude().",".$obj->getLongitude()."])
+  .bindPopup(`<strong>Valeur :</strong> ".$obj->getValeur()." ". $obj->getUnite()."<br>
+  <strong>Date :</strong> ".$obj->getDate()."<br>
+  <strong>Id plateforme :</strong>". $obj->getIdPlateforme()."<br>
+  <strong>Type plateforme :</strong> ".$obj->getPlateformeType()."<br>
+  <strong>Description :</strong> ".$obj->getPlateformeTypeDesc()."<br>
+  `).addTo(map);";
+}
+echo "</script>";
+?>
+
+
+
+
+
+
+<!-- FILTRES -->
 <script>
 const btn = document.getElementById("bouton_periode");
 const panel = document.getElementById("periode");

@@ -39,28 +39,46 @@
   <div class="titre">Filtres</div>
 
 <!-- PERIODE -->
-<div class="type">Période</div>
+<div class="type">Période (Mois / Année)</div>
   <div class="periode" id="periode">
+    <span id="mois">Juillet</span>
+    <input type="range" min="0" max="11" id="sliderMois">
+
     <span id="annee">2023</span>
-    <input type="range" min="2020" max="2025" id="slider">
+    <input type="range" min="2020" max="2025" id="sliderAnnee">
   </div>
 
   <!-- TYPE DE MESURE -->
   <div class="types">
     <div class="type">Type de mesure</div>
-    <div class="options">
-      <button class="option" data-mesure="ph">pH</button>
-      <button class="option" data-mesure="chlorophylle">Chlorophylle A</button>
-      <button class="option" data-mesure="temperature">Température</button>
+      <div class="options">
+      <button class="option">Salinité</button>
+      <button class="option">Chlorophylle A</button>
+      <button class="option">Température</button>
     </div>
   </div>
 
   <!-- TYPE DE PLATEFORME -->
   <div class="types">
     <div class="type">Type de plateforme</div>
+      <span class="help"> ? 
+        <div class="help-popup"> Description ....... 
+      </div>
+      </span>
     <div class="options">
-      <button class="option" data-plateforme="satellite">Satellite</button>
-      <button class="option" data-plateforme="bouee">Bouée</button>
+      <button class="option">Boreholes/ Bottom Landers (BO)</button>
+      <button class="option">CTD Profiles (CT)</button>
+      <button class="option">Drifting Buoys (DB)</button>
+      <button class="option">FerryBoxes (FB)</button>
+      <button class="option">Gliders (GL)</button>
+      <button class="option">Mini-Loggers (ML)</button>
+      <button class="option">Fixed Mooring / Moored Buoys (MO)</button>
+      <button class="option">Profiling Floats (PF)</button>
+      <button class="option">Profiling Floats - Alternative code (PR)</button>
+      <button class="option">Saildrones / Surface Drifters (SD)</button>
+      <button class="option">Tide Gauges (TG)</button>
+      <button class="option">ThermoSalinographs (TS)</button>  
+      <button class="option">Expendable Bathythermographs (XB)</button>
     </div>
   </div>
 </aside>
@@ -72,6 +90,7 @@
 const map = L.map('map', {
   center: [46.5, 2.5], 
   zoom: 6,
+  minZoom: 4
 });
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -96,16 +115,29 @@ fetch('api/releves.php?mesure=TEMP')
   });
 </script>
 
-<!-- scripts filtres période -->
-<script>
-const slider = document.getElementById("slider");
-const annee = document.getElementById("annee");
 
-/* permet d'afficher l'année */
-slider.addEventListener("input", () => {
-  annee.textContent = slider.value;
+<script>
+const sliderAnnee = document.getElementById("sliderAnnee");
+const sliderMois = document.getElementById("sliderMois");
+const annee = document.getElementById("annee");
+const mois = document.getElementById("mois");
+
+const moisNoms = [
+  "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+  "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+];
+
+/* afficher année */
+sliderAnnee.addEventListener("input", () => {
+  annee.textContent = sliderAnnee.value;
+});
+
+/* afficher mois */
+sliderMois.addEventListener("input", () => {
+  mois.textContent = moisNoms[sliderMois.value];
 });
 </script>
+
 
 <script>
 const filtres = document.querySelector(".filtres");
@@ -150,7 +182,6 @@ options.forEach(option => {
   });
 });
 </script>
-
 
 </body> 
 </html>

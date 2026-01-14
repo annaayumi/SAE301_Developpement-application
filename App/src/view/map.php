@@ -47,9 +47,9 @@
   <div class="types">
     <div class="type">Type of measurement</div>
     <div class="options">
-      <button class="option" data-mesure="ph">pH</button>
-      <button class="option" data-mesure="chlorophylle">Chlorophyll A</button>
-      <button class="option" data-mesure="temperature">Temperature</button>
+      <button class="option">Salinity</button>
+      <button class="option">Chlorophyll A</button>
+      <button class="option">Temperature</button>
     </div>
   </div>
 
@@ -57,8 +57,19 @@
   <div class="types">
     <div class="type">Type of platform</div>
     <div class="options">
-      <button class="option" data-plateforme="satellite">Satellite</button>
-      <button class="option" data-plateforme="bouee">Buoy</button>
+      <button class="option">Boreholes/ Bottom Landers (BO)</button>
+      <button class="option">CTD Profiles (CT)</button>
+      <button class="option">Drifting Buoys (DB)</button>
+      <button class="option">FerryBoxes (FB)</button>
+      <button class="option">Gliders (GL)</button>
+      <button class="option">Mini-Loggers (ML)</button>
+      <button class="option">Fixed Mooring / Moored Buoys (MO)</button>
+      <button class="option">Profiling Floats (PF)</button>
+      <button class="option">Profiling Floats - Alternative code (PR)</button>
+      <button class="option">Saildrones / Surface Drifters (SD)</button>
+      <button class="option">Tide Gauges (TG)</button>
+      <button class="option">ThermoSalinographs (TS)</button>  
+      <button class="option">Expendable Bathythermographs (XB)</button>
     </div>
   </div>
 </aside>
@@ -70,6 +81,7 @@
 const map = L.map('map', {
   center: [46.5, 2.5], 
   zoom: 6,
+  minZoom: 4
 });
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

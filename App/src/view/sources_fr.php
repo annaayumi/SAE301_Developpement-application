@@ -2,9 +2,9 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>A propos</title>
+<title>Sources</title>
 
-<link rel="stylesheet" href="../assets/css/apropos.css">
+<link rel="stylesheet" href="../assets/css/sources.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -31,28 +31,50 @@
 
 </header>
 
-<!-- CONTENU -->
-<section class="apropos">
+<a href="router.php?action=UsePage_apropos&lang=Francais" class="bouton-retour">
+  ← Retour
+</a>
 
-  <div class="cards">
+<section class="sources">
 
-    <div class="card">
-      <p>Les principaux phénomènes liés au réchauffement climatique</p>
-      <a href="router.php?action=UsePage_phenomenes&lang=Francais" class="arrow">→</a>
+  <h1>Sources de données scientifiques</h1>
+  <p class="intro">
+    Les données utilisées dans GLEAUBAL proviennent de différents organismes scientifiques reconnus.
+    Elles permettent d’analyser l’évolution des océans et les impacts du changement climatique.
+  </p>
 
+    <!-- Copernicus -->
+    <div class="source-card">
+      <h2>Copernicus</h2>
+      <p>
+        Programme européen d’observation de la Terre par satellite.
+        Copernicus possède une vision sur le monde entier grâce à ses satellites.
+      </p>
     </div>
 
-    <div class="card">
-      <p>Les différentes sources de données scientifiques et ses formats proposés</p>
-      <a href="router.php?action=UsePage_sources&lang=Francais" class="arrow">→</a>
+    <!-- Ifremer -->
+    <div class="source-card">
+      <h2>Ifremer</h2>
+      <p>
+        Institut français spécialisé dans les sciences marines.
+        Ifremer possède une vision limitée car il s’étend principalement sur la France et les
+        outre-mer notamment avec ses océans et la biodiversité marine qui lui sont liés mais aussi une
+        implication à l’international en publiant à l’échelle mondiale.
+      </p>
     </div>
 
-    <div class="card">
-      <p>Notre missions et les objectifs que nous nous sommes fixés dans ce projet</p>
-      <a href="router.php?action=UsePage_missions&lang=Francais" class="arrow">→</a>
+    <!-- SeaNoe -->
+    <div class="source-card">
+      <h2>SeaNoe</h2>
+      <p>
+        Plateforme ouverte de partage de données scientifiques marines.
+      </p>
     </div>
 
   </div>
+
+</section>
+
 
 </section>
 <footer class="footer">

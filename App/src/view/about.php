@@ -45,12 +45,12 @@
 
     <div class="card">
       <p>The different sources of scientific data and their proposed format</p>
-      <span class="arrow">→</span>
+      <a href="router.php?action=UsePage_sources&lang=English" class="arrow">→</a>
     </div>
 
     <div class="card">
       <p>Our missions and goals we have set for ourselves in this project</p>
-      <span class="arrow">→</span>
+      <a href="router.php?action=UsePage_missions&lang=English" class="arrow">→</a>
     </div>
 
   </div>

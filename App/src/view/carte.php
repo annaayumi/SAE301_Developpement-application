@@ -10,7 +10,7 @@
 </head>
 
 <body>
-<!-- HEADER 
+<!-- HEADER -->
 <header class="header">
   <div class="left">
     <a href="router.php?action=UsePage_carte&lang=English">
@@ -31,7 +31,7 @@
     <span></span>
   </div>
 
-</header>-->
+</header>
 
 <div id="map"></div>
 

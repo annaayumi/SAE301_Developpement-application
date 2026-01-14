@@ -74,19 +74,19 @@
       </div>
       </span>
     <div class="options">
-      <input class="option" name="platforme" value="BO">Boreholes/ Bottom Landers (BO)</input>
-      <input class="option" name="platforme" value="CT">CTD Profiles (CT)</input>
-      <input class="option" name="platforme" value="DB">Drifting Buoys (DB)</input>
-      <input class="option" name="platforme" value="FB">FerryBoxes (FB)</input>
-      <input class="option" name="platforme" value="GL">Gliders (GL)</input>
-      <input class="option" name="platforme" value="ML">Mini-Loggers (ML)</input>
-      <input class="option" name="platforme" value="MO">Fixed Mooring / Moored Buoys (MO)</input>
-      <input class="option" name="platforme" value="PF">Profiling Floats (PF)</input>
-      <input class="option" name="platforme" value="PR">Profiling Floats - Alternative code (PR)</input>
-      <input class="option" name="platforme" value="SD">Saildrones / Surface Drifters (SD)</input>
-      <input class="option" name="platforme" value="TG">Tide Gauges (TG)</input>
-      <input class="option" name="platforme" value="TS">ThermoSalinographs (TS)</input>  
-      <input class="option" name="platforme" value="XB">Expendable Bathythermographs (XB)</input>
+      <input class="option" name="platforme" value="BO" type="radio">Boreholes/ Bottom Landers (BO)</input>
+      <input class="option" name="platforme" value="CT" type="radio">CTD Profiles (CT)</input>
+      <input class="option" name="platforme" value="DB" type="radio">Drifting Buoys (DB)</input>
+      <input class="option" name="platforme" value="FB" type="radio">FerryBoxes (FB)</input>
+      <input class="option" name="platforme" value="GL" type="radio">Gliders (GL)</input>
+      <input class="option" name="platforme" value="ML" type="radio">Mini-Loggers (ML)</input>
+      <input class="option" name="platforme" value="MO" type="radio">Fixed Mooring / Moored Buoys (MO)</input>
+      <input class="option" name="platforme" value="PF" type="radio">Profiling Floats (PF)</input>
+      <input class="option" name="platforme" value="PR" type="radio">Profiling Floats - Alternative code (PR)</input>
+      <input class="option" name="platforme" value="SD" type="radio">Saildrones / Surface Drifters (SD)</input>
+      <input class="option" name="platforme" value="TG" type="radio">Tide Gauges (TG)</input>
+      <input class="option" name="platforme" value="TS" type="radio">ThermoSalinographs (TS)</input>  
+      <input class="option" name="platforme" value="XB" type="radio">Expendable Bathythermographs (XB)</input>
     </div>
     
     <input  type="submit" value="Appliquer"></input>

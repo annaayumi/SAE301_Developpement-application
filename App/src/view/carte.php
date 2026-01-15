@@ -35,6 +35,7 @@
 
 <div id="map"></div>
 
+<!-- Filtres -->
 <aside class="filtres">
   <form method="get">
 
@@ -46,7 +47,7 @@
   <div class="type">Période (Mois / Année)</div>
   <div class="periode" id="periode">
     <span id="mois">Juillet</span>
-    <input type="range" min="01" max="12" id="sliderMois" name="mois">
+    <input type="range" min="1" max="12" id="sliderMois" name="mois">
 
     <span id="annee">2023</span>
     <input type="range" min="2020" max="2025" id="sliderAnnee" name="annee">
@@ -99,7 +100,7 @@
   </form>
 </aside>
 
-<!-- carte -->
+<!-- Import leaflet -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 

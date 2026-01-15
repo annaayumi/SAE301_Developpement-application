@@ -15,17 +15,26 @@
 
     // filtres carte
     $annee = $_GET['annee'] ?? "";
-    $mois = $_GET['mois'] ?? "01";
+    $mois = $_GET['mois'] ?? "";
     $unite = $_GET['unite'] ?? ""; 
     $plateforme = $_GET['platforme'] ?? "";
 
 
+    // annee + mois concat
+    $date = "";
+
+    if ((int)$mois < 10 and $mois != ""){
+        $mois = "0".$mois;
+        $date = $annee."-".$mois;
+    }
+
+
 
     // page carte avec filtres
-    if ($unite != "" or $annee != "" or $plateforme != ""){
+    if ($unite != "" or $date != "" or $plateforme != ""){
 
 
-        $dataSet = DatabaseConnection::doQuery_with_filters($annee,$mois,$unite,$plateforme);
+        $dataSet = DatabaseConnection::doQuery_with_filters($date,$unite,$plateforme);
 
         if($lang == "Francais"){Controller::UsePage('carte.php',['dataSet' => $dataSet]);}
         if($lang == "English"){Controller::UsePage('map.php',['dataSet' => $dataSet]);}

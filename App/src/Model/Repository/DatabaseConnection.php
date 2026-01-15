@@ -44,7 +44,7 @@ class DatabaseConnection {
     }
 
 
-    public static function doQuery_with_filters(string $annee, string $mois , string $unite , string $plateforme){
+    public static function doQuery_with_filters(string $date, string $unite , string $plateforme){
         
         
 
@@ -57,13 +57,6 @@ class DatabaseConnection {
         join type_plateforme on plateforme.id_type = type_plateforme.id_type";
 
         
-        $date = "";
-        //concat
-
-        if($annee != "" and $mois != ""){
-            $date = $annee."-".$mois;
-        }
-        
 
         // check filters, concat and bind param
         if ($date != "") { 
@@ -71,7 +64,7 @@ class DatabaseConnection {
         }
 
         if ($unite != "") {
-            if ($annee != ""){
+            if ($date != ""){
                 $sql = $sql." and ";
             }
             else{
@@ -84,7 +77,7 @@ class DatabaseConnection {
 
         if ($plateforme != "")  {
 
-            if ($annee != "" or $unite != ""){
+            if ($date != "" or $unite != ""){
                 $sql = $sql." and ";
             }
             else{

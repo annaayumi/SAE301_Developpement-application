@@ -20,15 +20,10 @@ body {
   left: 0;
   right: 0; 
   height: 80px;
-  background: rgba(0, 0, 0, 0.85);
   display: flex;
   align-items: center;
   padding: 0 40px;
   z-index: 1000;
-
-  /* shadow */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
-  transition: transform 0.3s ease;
 }
 
 .left {
@@ -45,9 +40,11 @@ body {
 }
 
 .nav {
-  margin-left: auto;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  gap: 30px;
+  gap: 40px;
 }
 
 .nav a {
@@ -55,15 +52,35 @@ body {
   color: white;
   text-decoration: none;
   font-size: 18px;
+  padding: 2px 0;
   transition: color 0.25s ease;
 }
 
-.nav a:hover {
-  color: rgba(255,255,255,0.75);
+/* le trait */
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: #ffffff;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .nav a.active {
-  color: rgba(255,255,255,0.75);
+  color: #ffffff;
+}
+
+.nav a.active::after {
+  transform: scaleX(1);
 }
 
 main {

@@ -20,15 +20,10 @@ body {
   left: 0;
   right: 0; 
   height: 80px;
-  background: rgba(0, 0, 0, 0.85);
   display: flex;
   align-items: center;
   padding: 0 40px;
   z-index: 1000;
-
-  /* shadow */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
-  transition: transform 0.3s ease;
 }
 
 .left {
@@ -45,9 +40,11 @@ body {
 }
 
 .nav {
-  margin-left: auto;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  gap: 30px;
+  gap: 40px;
 }
 
 .nav a {
@@ -55,15 +52,35 @@ body {
   color: white;
   text-decoration: none;
   font-size: 18px;
+  padding: 2px 0;
   transition: color 0.25s ease;
 }
 
-.nav a:hover {
-  color: rgba(255,255,255,0.75);
+/* le trait */
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: #ffffff;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .nav a.active {
-  color: rgba(255,255,255,0.75);
+  color: #ffffff;
+}
+
+.nav a.active::after {
+  transform: scaleX(1);
 }
 
 #map {
@@ -79,10 +96,9 @@ body {
   max-height: calc(100vh - 200px);
   overflow-y: auto;  
   position: absolute;
-  padding-right: 10px;
   top: 150px;
   left: 65px;
-  width: 210px;
+  width: 230px;
   background: rgba(40,40,40,0.85);
   border-radius: 20px;
   padding: 15px;
@@ -119,7 +135,7 @@ body {
   -webkit-appearance: none;
   width: 85%;
   height: 6px;
-  background: linear-gradient(to right, #c6de4d, #3f8093);
+  background: linear-gradient(to right, #5c91db, #DED44D);
   border-radius: 6px;
   outline: none;
 }
@@ -136,7 +152,7 @@ body {
 }
 
 .option.active {
-  background: #3f9389;
+  background: #3f8093;
   font-weight: bold;
 }
 
@@ -164,48 +180,4 @@ body {
 
 .filtres::-webkit-scrollbar-thumb:hover {
   background: #f5f5f5ca;
-}
-
-/* icone "?" */
-.help {
-  position: relative;
-  width: 19px;
-  height: 19px;
-  border-radius: 50%;
-  background: #666;
-  color: white;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
-  
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.help-popup {
-  position: absolute;
-  bottom: 130%;
-  right: 0;
-  width: 220px;
-
-  background: #3f8093;
-  color: white;
-  padding: 10px 12px;
-  border-radius: 10px;
-
-  font-size: 16px;
-  line-height: 1.4;
-
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(6px);
-  transition: 0.2s ease;
-  z-index: 50;
-}
-
-.help:hover .help-popup {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
 }

@@ -31,6 +31,10 @@
   </div>
 </header>
 
+<a href="router.php?action=UsePage_apropos&lang=Francais" class="bouton-retour">
+  ← Back
+</a>
+
 <main class="content-page">
 
   <section class="content-hero">

@@ -12,6 +12,9 @@
 <!-- HEADER -->
 <header class="header">
   <div class="left">
+    <!-- logo ici -->
+  </div>
+  <div class="lang">
     <a href="router.php?action=UsePage_index&lang=English">
     🌐 <span>EN</span>
     </a>
@@ -93,8 +96,38 @@
       <p>Evaporation, précipitations, PSU, estuaires</p>
     </a>
   </div>
-
 </section>
+
+<!-- DONNEES TELECHARGEES !-->
+<section class="downloads">
+  <h2>Données téléchargeables</h2>
+  <div class="downloads-grid">
+    <div class="download-card">
+      <h3>Température</h3>
+      <p>Données de température de surface des océans</p>
+      <a href="../downloads/" download class="bouton-download">
+        Télécharger CSV
+      </a>
+    </div>
+
+    <div class="download-card">
+      <h3>Chlorophylle A</h3>
+      <p>Indicateur de la concentration de phytoplancton</p>
+      <a href="../downloads/" download class="bouton-download">
+        Télécharger CSV 
+      </a>
+    </div>
+
+    <div class="download-card">
+      <h3>Salinité</h3>
+      <p>Mesures de la salinité des eaux</p>
+      <a href="../downloads/" download class="bouton-download">
+        Télécharger CSV 
+      </a>
+    </div>
+  </div>
+</section>
+
 
 <footer class="footer">
   <!-- lien github -->
@@ -161,13 +194,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let countersDone = false;
 
   function checkScroll() {
-
-    /* apparition des cartes */
-    cards.forEach(card => {
-      if (card.getBoundingClientRect().top < window.innerHeight * 0.85) {
-        card.classList.add("animate");
-      }
-    });
 
     /* animation des chiffres */
     if (!countersDone && impact.getBoundingClientRect().top < window.innerHeight * 0.8) {

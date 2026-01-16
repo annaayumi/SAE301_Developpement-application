@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body>
+<body onload="onloadShowDate()">
 <!-- HEADER -->
 <header class="header">
   <div class="left">
@@ -40,55 +40,65 @@
   <form method="get">
 
     <div class="titre">Filtres</div>
-
-  <button id="bouton_periode">Période</button>
-
   <!-- PERIODE -->
-  <div class="type">Période (Mois / Année)</div>
+   
+  <button type="button" class="type" onclick="toggleFilter('periodeHide','periodeButtonCheckbox')">Période (Mois / Année) 
+      <input type="checkbox" id="typeButtonCheckbox" hidden>
+      <input type="checkbox" id="typeButtonCheckbox"checked>
+  </button>
   <div class="periode" id="periode">
-    <span id="mois">Juillet</span>
-    <input type="range" min="1" max="12" id="sliderMois" name="mois">
+    <span id="periodeHide">
 
-    <span id="annee">2023</span>
-    <input type="range" min="2020" max="2025" id="sliderAnnee" name="annee">
+      <span id="mois"></span>
+      <input type="range" min="1" max="12" id="sliderMois" name="mois" value="<?php echo isset($_GET['mois']) ? $_GET['mois'] : '1' ?>">
 
+      <span  id="annee"></span>
+      <input  type="range" min="2020" max="2025" id="sliderAnnee" name="annee" value="<?php echo isset($_GET['annee']) ? $_GET['annee'] : '2020' ?>">
+    </span>
   </div>
 
     <!-- unite DE MESURE -->
     
     <div class="types">
       
-      <div class="type">Type de mesure</div>
+    <button type="button"  class="type " onclick="toggleFilter('typeHide','typeButtonCheckbox','')">Type de mesure 
+      <input type="checkbox" id="typeButtonCheckbox" hidden>
+      <input type="checkbox" id="typeButtonCheckbox"checked>
+    </button>
+    <span id="typeHide">
       <div class="options">
         <input type="radio" class="option" name="unite" value="PSAL">Salinité</input>
         <input type="radio" class="option" name="unite" value="CHLT">Chlorophylle A</input>
         <input type="radio" class="option" name="unite" value="TEMP">Température</input>
-
+    </span>
       </div>
     </div>
 
   <!-- TYPE DE PLATEFORME -->
   <div class="types">
-    <div class="type">Type de plateforme</div>
-      <span class="help"> ? 
-        <div class="help-popup"> Description ....... 
+    
+    <button type="button" id="bouton_periode" class="type" onclick="toggleFilter('typePlatformeHide','typePlatformeButtonCheckbox')">Type de plateforme 
+      <input type="checkbox" id="typeButtonCheckbox" hidden>
+      <input type="checkbox" id="typeButtonCheckbox"checked>
+    </button>
+
+    <span id="typePlatformeHide">
+      <div class="options">
+        <input class="option" name="platforme" value="BO" type="radio">Boreholes/ Bottom Landers (BO)</input>
+        <input class="option" name="platforme" value="CT" type="radio">CTD Profiles (CT)</input>
+        <input class="option" name="platforme" value="DB" type="radio">Drifting Buoys (DB)</input>
+        <input class="option" name="platforme" value="FB" type="radio">FerryBoxes (FB)</input>
+        <input class="option" name="platforme" value="GL" type="radio">Gliders (GL)</input>
+        <input class="option" name="platforme" value="ML" type="radio">Mini-Loggers (ML)</input>
+        <input class="option" name="platforme" value="MO" type="radio">Fixed Mooring / Moored Buoys (MO)</input>
+        <input class="option" name="platforme" value="PF" type="radio">Profiling Floats (PF)</input>
+        <input class="option" name="platforme" value="PR" type="radio">Profiling Floats - Alternative code (PR)</input>
+        <input class="option" name="platforme" value="SD" type="radio">Saildrones / Surface Drifters (SD)</input>
+        <input class="option" name="platforme" value="TG" type="radio">Tide Gauges (TG)</input>
+        <input class="option" name="platforme" value="TS" type="radio">ThermoSalinographs (TS)</input>  
+        <input class="option" name="platforme" value="XB" type="radio">Expendable Bathythermographs (XB)</input>
       </div>
-      </span>
-    <div class="options">
-      <input class="option" name="platforme" value="BO" type="radio">Boreholes/ Bottom Landers (BO)</input>
-      <input class="option" name="platforme" value="CT" type="radio">CTD Profiles (CT)</input>
-      <input class="option" name="platforme" value="DB" type="radio">Drifting Buoys (DB)</input>
-      <input class="option" name="platforme" value="FB" type="radio">FerryBoxes (FB)</input>
-      <input class="option" name="platforme" value="GL" type="radio">Gliders (GL)</input>
-      <input class="option" name="platforme" value="ML" type="radio">Mini-Loggers (ML)</input>
-      <input class="option" name="platforme" value="MO" type="radio">Fixed Mooring / Moored Buoys (MO)</input>
-      <input class="option" name="platforme" value="PF" type="radio">Profiling Floats (PF)</input>
-      <input class="option" name="platforme" value="PR" type="radio">Profiling Floats - Alternative code (PR)</input>
-      <input class="option" name="platforme" value="SD" type="radio">Saildrones / Surface Drifters (SD)</input>
-      <input class="option" name="platforme" value="TG" type="radio">Tide Gauges (TG)</input>
-      <input class="option" name="platforme" value="TS" type="radio">ThermoSalinographs (TS)</input>  
-      <input class="option" name="platforme" value="XB" type="radio">Expendable Bathythermographs (XB)</input>
-    </div>
+    </span>
     
     <input  type="submit" value="Appliquer"></input>
 
@@ -108,7 +118,7 @@
 <script>
 const map = L.map('map', {
   center: [46.5, 2.5], 
-  zoom: 6,
+  zoom: 5,
   minZoom: 4
 });
 
@@ -123,9 +133,19 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 echo "<script>";
 foreach  ($dataSet as $obj) {
+  $tempUnite = "";
+  if ($obj->getUnite() == "TEMP"){
+    $tempUnite = "°C";
+  }
+  if ($obj->getUnite() == "PSAL"){
+    $tempUnite = "psu";
+  }
+  if ($obj->getUnite() == "CHLT"){
+    $tempUnite = "mg/m<sup>-3</sup>";
+  }
   
   echo "L.marker([".$obj->getLatitude().",".$obj->getLongitude()."])
-  .bindPopup(`<strong>Valeur :</strong> ".$obj->getValeur()." ". $obj->getUnite()."<br>
+  .bindPopup(`<strong>Valeur :</strong> ".$obj->getValeur()." ". $tempUnite."<br>
   <strong>Date :</strong> ".$obj->getDate()."<br>
   <strong>Id plateforme :</strong>". $obj->getIdPlateforme()."<br>
   <strong>Type plateforme :</strong> ".$obj->getPlateformeType()."<br>
@@ -152,6 +172,29 @@ const moisNoms = [
   "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
 ];
 
+function toggleFilter(filterID,checkboxId){
+
+targetFilter = document.getElementById(filterID)
+targetCheckbox = document.getElementById(checkboxId)
+
+if(targetFilter.getAttribute("hidden")){
+  targetFilter.removeAttribute("hidden")
+  targetCheckbox.removeAttribute("hidden")
+}
+else{
+  targetFilter.setAttribute("hidden","")
+  targetCheckbox.setAttribute("hidden","")
+}
+
+
+}
+
+function onloadShowDate(){
+  annee.textContent = sliderAnnee.value;
+  mois.textContent = moisNoms[sliderMois.value-1];
+}
+
+
 /* afficher année */
 sliderAnnee.addEventListener("input", () => {
   annee.textContent = sliderAnnee.value;
@@ -159,7 +202,7 @@ sliderAnnee.addEventListener("input", () => {
 
 /* afficher mois */
 sliderMois.addEventListener("input", () => {
-  mois.textContent = moisNoms[sliderMois.value];
+  mois.textContent = moisNoms[sliderMois.value-1];
 });
 </script>
 

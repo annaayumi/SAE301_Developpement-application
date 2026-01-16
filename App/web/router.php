@@ -18,15 +18,26 @@
     $mois = $_GET['mois'] ?? "";
     $unite = $_GET['unite'] ?? ""; 
     $plateforme = $_GET['platforme'] ?? "";
+    $date_checkbox = $GET['date_checkbox'] ?? "FALSE";
 
+
+    $date = "";
+
+    if($date_checkbox == "FALSE"){
+
+    }
+    else{
 
     // annee + mois concat
-    $date = "";
 
     if ((int)$mois < 10 and $mois != ""){
         $mois = "0".$mois;
         $date = $annee."-".$mois;
     }
+    }
+  
+
+
 
 
 

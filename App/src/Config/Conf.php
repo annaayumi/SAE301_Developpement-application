@@ -5,11 +5,11 @@ class Conf {
         // Le nom d'hote est localhost sur votre machine
         'hostname' => 'localhost',
         // Sur votre machine, vous devrez creer une BDD
-        'database' => 'database',
+        'database' => 'gleaubal_db_sae301',
         // Sur votre machine, vous avez surement un compte 'root'
         'login' => 'root',
         // Sur votre machine, vous avez créé ou non ce mdp a l'installation
-        'password' => ''
+        'password' => 'vitrygtr'
         );
     static public function getLogin() : string {
         // L'attribut statique $databases s'obtient

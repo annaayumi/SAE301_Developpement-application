@@ -8,14 +8,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body>
-<!-- HEADER -->
-<header class="header">
-  <div class="left">
-    <a href="router.php?action=UsePage_phenomenes&lang=Francais">
-    🌐 <span>FR</span>
-    </a>
-  </div>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="left">
+      <!-- logo ici -->
+    </div>
+    <div class="lang">
+      <a href="router.php?action=UsePage_phenomenes&lang=Francais">
+      🌐 <span>FR</span>
+      </a>
+    </div>
 
   <nav class="nav">
     <a href="router.php?action=UsePage_index&lang=English">Welcome</a>
@@ -30,6 +32,11 @@
     <span></span>
   </div>
 </header>
+
+<body>
+<a href="router.php?action=UsePage_apropos&lang=Francais" class="bouton-retour">
+  ← Back
+</a>
 
 <main class="content-page">
 

@@ -12,7 +12,7 @@
 <!-- HEADER -->
 <header class="header">
   <div class="left">
-  <a href="router.php?action=UsePage_contact&lang=English">
+    <a href="router.php?action=UsePage_contact&lang=English">
     🌐 <span>EN</span>
   </a>
   </div>

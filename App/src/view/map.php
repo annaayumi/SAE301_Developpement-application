@@ -9,14 +9,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body>
-<!-- HEADER -->
-<header class="header">
-  <div class="left">
-    <a href="router.php?action=UsePage_carte&lang=Francais">
-    🌐 <span>FR</span>
-    </a>
-  </div>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="left">
+      <!-- logo ici -->
+    </div>
+    <div class="lang">
+      <a href="router.php?action=UsePage_carte&lang=Francais">
+      🌐 <span>EN</span>
+      </a>
+    </div>
 
   <nav class="nav">
     <a href="router.php?action=UsePage_index&lang=English">Welcome</a>
@@ -32,6 +35,8 @@
   </div>
 </header>
 
+
+<body>
 <div id="map"></div>
 
 <aside class="filtres">

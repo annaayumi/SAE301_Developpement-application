@@ -9,13 +9,16 @@
 </head>
 
 <body>
-
-<header class="header">
-  <div class="left">
-    <a href="router.php?action=UsePage_missions&lang=English">
+  <!-- HEADER -->
+  <header class="header">
+    <div class="left">
+      <!-- logo ici -->
+    </div>
+    <div class="lang">
+      <a href="router.php?action=UsePage_missions&lang=English">
       🌐 <span>EN</span>
-    </a>
-  </div>
+      </a>
+    </div>
 
   <nav class="nav">
     <a href="router.php?action=UsePage_index&lang=Francais">Accueil</a>

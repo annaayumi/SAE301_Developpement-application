@@ -95,16 +95,13 @@ class DatabaseConnection {
         $PdoStatement = DatabaseConnection::getPdo()->prepare($sql);
         
         if ($date != "") { 
-            $PdoStatement->bindParam(':date',$date, PDO::PARAM_STR);
-            }
+        $PdoStatement->bindParam(':date',$date, PDO::PARAM_STR);}
 
         if ($unite != "") { 
-            $PdoStatement->bindParam(':unite',$unite, PDO::PARAM_STR);
-            }
+        $PdoStatement->bindParam(':unite',$unite, PDO::PARAM_STR);}
 
         if ($plateforme != "") { 
-            $PdoStatement->bindParam(':plateforme',$plateforme, PDO::PARAM_STR);
-            }
+        $PdoStatement->bindParam(':plateforme',$plateforme, PDO::PARAM_STR);}
         
 
         // exec
@@ -112,8 +109,6 @@ class DatabaseConnection {
 
         // create dataset
         $DataSet = [];
-
-        $PdoStatement->fetch();
 
         foreach ( $PdoStatement as $row ){
             $tempObj = new Releve(
@@ -132,6 +127,26 @@ class DatabaseConnection {
         }
         return $DataSet;
        
+    }
+
+    public static function doQuery_avg_by_year_for_platform(string $idPlateforme): array {
+    $pdo = DatabaseConnection::getPdo(); // adapte au nom réel chez toi
+
+    $sql = "
+        SELECT
+          CAST(SUBSTRING_INDEX(r.date, '-', 1) AS UNSIGNED) AS annee,
+          m.unite AS unite,
+          AVG(r.valeur) AS moyenne
+        FROM releves r
+        JOIN mesure m ON m.id_mesure = r.id_mesure
+        WHERE r.id_plateforme = :idp
+        GROUP BY annee, unite
+        ORDER BY annee ASC
+    ";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':idp' => $idPlateforme]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
 }

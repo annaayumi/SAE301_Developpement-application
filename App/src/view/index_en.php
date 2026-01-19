@@ -8,10 +8,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body>
 <!-- HEADER -->
 <header class="header">
   <div class="left">
+    <!-- logo ici -->
+  </div>
+  <div class="lang">
     <a href="router.php?action=UsePage_index&lang=Francais">
     🌐 <span>FR</span>
     </a>
@@ -32,6 +34,7 @@
 
 </header>
 
+<body>
 <!-- SECTION ACCUEIL -->
 <section class="hero">
   <div class="overlay"></div>
@@ -97,7 +100,35 @@
 
 </section>
 
+<!-- DONNEES TELECHARGEES !-->
+<section class="downloads">
+  <h2>Données téléchargeables</h2>  <!-- a changer en anglais -->
+  <div class="downloads-grid">
+    <div class="download-card">
+      <h3>Temperature</h3>
+      <p>Ocean surface temperature data</p>
+      <a href="../downloads/" download class="bouton-download">
+        Download CSV
+      </a>
+    </div>
 
+    <div class="download-card">
+      <h3>Chlorophyll A</h3>
+      <p>Indicator of phytoplankton concentration</p>
+      <a href="../downloads/" download class="bouton-download">
+        Download CSV 
+      </a>
+    </div>
+
+    <div class="download-card">
+      <h3>Salinity</h3>
+      <p>Measurements of water salinity</p>
+      <a href="../downloads/" download class="bouton-download">
+        Download CSV 
+      </a>
+    </div>
+  </div>
+</section>
 
 
 <footer class="footer">

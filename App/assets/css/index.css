@@ -20,15 +20,10 @@ body {
   left: 0;
   right: 0; 
   height: 80px;
-  background: rgba(0, 0, 0, 0.85);
   display: flex;
   align-items: center;
   padding: 0 40px;
   z-index: 1000;
-
-  /* shadow */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
-  transition: transform 0.3s ease;
 }
 
 .hero-content {
@@ -36,22 +31,24 @@ body {
 }
 
 .left {
-  font-size: 20px;
+  flex: 1;
 }
 
-.left a:link, .left a:visited, .left a:active {
+.lang a:link, .lang a:visited, .lang a:active {
   color: white;
   text-decoration: none;
 }
 
-.left a:hover {
-  color: rgba(255,255,255,0.75);
+.lang a:hover {
+  color: rgba(255, 255, 255, 0.853);
 }
 
 .nav {
-  margin-left: auto;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  gap: 30px;
+  gap: 40px;
 }
 
 .nav a {
@@ -59,15 +56,35 @@ body {
   color: white;
   text-decoration: none;
   font-size: 18px;
+  padding: 2px 0;
   transition: color 0.25s ease;
 }
 
-.nav a:hover {
-  color: rgba(255,255,255,0.75);
+/* le trait */
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: #ffffff;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .nav a.active {
-  color: rgba(255,255,255,0.75);
+  color: #ffffff;
+}
+
+.nav a.active::after {
+  transform: scaleX(1);
 }
 
 .hero {
@@ -141,7 +158,7 @@ body {
 
 /* page contenu accueil */
 .impact {
-  background: rgb(14, 17, 18);
+  background: #0b1416; 
   color: #f3f3f3;
   padding: 120px 60px;
   text-align: center;
@@ -177,46 +194,100 @@ body {
 }
 
 .carte {
-  color : #f3f3f3;
-  background: #42a8a1c5;
+  background: rgba(63, 201, 192, 0.08);
+  color: #f3f3f3;
   padding: 35px;
   border-radius: 18px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
   text-decoration: none;
-}
 
-.carte:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 18px 35px rgba(90, 123, 131, 0.562);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .carte h3 {
-  font-size: 18px;
+  font-size: 20px;
   margin-bottom: 12px;
+  color: #3fc9c0; 
 }
 
 .carte p {
-  font-size: 14px;
-  color: #f3f3f3;
-  line-height: 1.4;
+  font-size: 15px;
+  line-height: 1.5;
+  opacity: 0.85;
+}
+
+.carte:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 30px rgba(0,0,0,0.35);
 }
 
 .carte:active {
   transform: scale(0.97);
 }
 
-/* animation des cartes */
-.carte {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+/* SECTION DOWNLOADS */
+.downloads {
+  background: #0b1416;
+  padding: 120px 60px;
+  text-align: center;
 }
 
-/* quand on scroll vers le bas les cartes apparaissent */
-.carte.animate {
-  opacity: 1;
-  transform: translateY(0);
+.downloads h2 {
+  font-size: 36px;
+  margin-bottom: 70px;
+  color: #ffffff;
 }
+
+.downloads-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+/* cartes téléchargement */
+.download-card {
+  background: rgba(63, 201, 192, 0.08);
+  border-radius: 18px;
+  padding: 35px;
+  text-align: left;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.download-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 30px rgba(0,0,0,0.35);
+}
+
+.download-card h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: #3fc9c0;
+}
+
+.download-card p {
+  font-size: 15px;
+  opacity: 0.85;
+  margin-bottom: 25px;
+}
+
+/* bouton CSV */
+.bouton-download {
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: 30px;
+  background: rgba(63, 201, 192, 0.15);
+  color: #3fc9c0;
+  border: 1px solid rgba(63, 201, 192, 0.4);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.25s ease;
+}
+
+.bouton-download:hover {
+  background: rgba(63, 201, 192, 0.35);
+  transform: translateX(4px);
+}
+
 
 .footer {
   background: #274242;
@@ -294,26 +365,6 @@ body {
 
 /* responsive */
 @media (max-width: 768px) {
-
-  /* menu */
-  .burger {
-    display: none;
-    flex-direction: column;
-    gap: 6px;
-    cursor: pointer;
-    margin-left: 20px;
-  }
-
-  .burger span {
-    width: 28px;
-    height: 3px;
-    background: white;
-    border-radius: 2px;
-  }
-
-  .burger {
-    z-index: 3000;
-  }
 
   .nav {
     position: fixed;

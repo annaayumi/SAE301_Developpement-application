@@ -45,9 +45,9 @@
     <div class="titre">Filtres</div>
   <!-- PERIODE -->
    
-  <button type="button" class="type" onclick="toggleFilter('periodeHide','periodeButtonCheckbox')">
-    Période (Mois / Année) 
-    <input type="checkbox" id="periodeButtonCheckbox" name="date_checkbox" checked>
+  <button type="button" class="type" onclick="toggleFilter('periodeHide','periodeButtonCheckbox')">Période (Mois / Année) 
+      <input type="checkbox" id="typeButtonCheckbox" hidden>
+      <input type="checkbox" id="typeButtonCheckbox"checked>
   </button>
   <div class="periode" id="periode">
     <span id="periodeHide">
@@ -64,9 +64,9 @@
     
     <div class="types">
       
-      <button type="button"  class="type" onclick="toggleFilter('typeHide','uniteButtonCheckbox')" >
-        Type de mesure 
-      <input type="checkbox" id="uniteButtonCheckbox" name="unite_checkbox" checked>
+      <button type="button"  class="type " onclick="toggleFilter('typeHide','typeButtonCheckbox','')">Type de mesure 
+        <input type="checkbox" id="typeButtonCheckbox" hidden>
+        <input type="checkbox" id="typeButtonCheckbox"checked>
       </button>
 
       <span id="typeHide">
@@ -93,13 +93,13 @@
 
   <!-- TYPE DE PLATEFORME -->
   <div class="types">
-
-    <button type="button" id="bouton_periode" class="type" onclick="toggleFilter('PlatformeHide','PlateformeButtonCheckbox')">
-      Type de plateforme 
-      <input type="checkbox" id="PlateformeButtonCheckbox" name="plateforme_checkbox" checked>
+    
+    <button type="button" id="bouton_periode" class="type" onclick="toggleFilter('typePlatformeHide','typePlatformeButtonCheckbox')">Type de plateforme 
+      <input type="checkbox" id="typeButtonCheckbox" hidden>
+      <input type="checkbox" id="typeButtonCheckbox"checked>
     </button>
 
-    <span id="PlatformeHide">
+    <span id="typePlatformeHide">
       <div class="options">
       <label class="option">
         <input type="radio" name="platforme" value="BO">
@@ -194,19 +194,6 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '© OpenStreetMap'
 }).addTo(map);
 
-
-var myIconClass = L.Icon.extend({
-    options: {
-        iconSize:     [40, 40],
-        iconAnchor:   [22, 94],
-        popupAnchor:  [-3, -76]
-    }
-});
-
-var icon = new myIconClass ({
-    iconUrl: '../assets/img/map-pin.png'
-});
-
 </script>
 
 <!-- marqueur -->
@@ -224,13 +211,17 @@ foreach  ($dataSet as $obj) {
   if ($obj->getUnite() == "CHLT"){
     $tempUnite = "mg/m<sup>-3</sup>";
   }
-
-  echo "L.marker([".$obj->getLatitude().",".$obj->getLongitude()."], {icon: icon})
+  
+  echo "L.marker([".$obj->getLatitude().",".$obj->getLongitude()."])
   .bindPopup(`<strong>Valeur :</strong> ".$obj->getValeur()." ". $tempUnite."<br>
   <strong>Date :</strong> ".$obj->getDate()."<br>
   <strong>Id plateforme :</strong>". $obj->getIdPlateforme()."<br>
   <strong>Type plateforme :</strong> ".$obj->getPlateformeType()."<br>
   <strong>Description :</strong> ".$obj->getPlateformeTypeDesc()."<br>
+  <strong>Graphique de la plateforme :</strong>
+  <a href=\"router.php?action=UsePage_graphique&lang=Francais&idPlateforme=".$obj->getIdPlateforme()."\">
+  Voir le graphique
+  </a>
   `).addTo(map);";
 }
 echo "</script>";
@@ -253,20 +244,18 @@ const moisNoms = [
   "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
 ];
 
-function toggleFilter(filterID,checkboxID){
+function toggleFilter(filterID,checkboxId){
 
 targetFilter = document.getElementById(filterID)
-targetCheckbox = document.getElementById(checkboxID)
+targetCheckbox = document.getElementById(checkboxId)
 
 if(targetFilter.getAttribute("hidden")){
   targetFilter.removeAttribute("hidden")
   targetCheckbox.removeAttribute("hidden")
-  targetCheckbox.removeAttribute("disabled")
 }
 else{
-  targetFilter.setAttribute("hidden","TRUE")
-  targetCheckbox.setAttribute("hidden","TRUE")
-  targetCheckbox.setAttribute("disabled","TRUE")
+  targetFilter.setAttribute("hidden","")
+  targetCheckbox.setAttribute("hidden","")
 }
 
 

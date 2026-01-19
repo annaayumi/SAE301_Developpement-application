@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body onload="onloadShowDate()">
+<body onload="NoResetForm()">
 <!-- HEADER -->
 <header class="header">
   <div class="left">
@@ -160,8 +160,10 @@ echo "</script>";
 
 
 
-<!-- FILTRES -->
+
 <script>
+
+  //filtres
 const sliderAnnee = document.getElementById("sliderAnnee");
 const sliderMois = document.getElementById("sliderMois");
 const annee = document.getElementById("annee");
@@ -191,25 +193,35 @@ else{
 
 }
 
-function onloadShowDate(){
+function NoResetForm(){
+
+  // Periode
   annee.textContent = sliderAnnee.value;
   mois.textContent = moisNoms[sliderMois.value-1];
+
+
+  if(<?php 
+    echo isset($_GET['unite']);
+  ?>){
+    //
+  }
+
+
+
+
 }
 
 
-/* afficher année */
+// afficher année 
 sliderAnnee.addEventListener("input", () => {
   annee.textContent = sliderAnnee.value;
 });
 
-/* afficher mois */
+// afficher mois 
 sliderMois.addEventListener("input", () => {
   mois.textContent = moisNoms[sliderMois.value-1];
 });
-</script>
 
-
-<script>
 const filtres = document.querySelector(".filtres");
 const dragBar = document.querySelector(".titre");
 
@@ -236,9 +248,7 @@ document.addEventListener("mouseup", () => {
   isDragging = false;
   dragBar.style.cursor = "grab";
 });
-</script>
 
-<script>
 const options = document.querySelectorAll(".option");
 
 options.forEach(option => {

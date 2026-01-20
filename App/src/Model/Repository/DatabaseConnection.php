@@ -130,18 +130,18 @@ class DatabaseConnection {
     }
 
     public static function doQuery_avg_by_year_for_platform(string $idPlateforme): array {
-    $pdo = DatabaseConnection::getPdo(); // adapte au nom réel chez toi
+    $pdo = DatabaseConnection::getPdo();
 
     $sql = "
-        SELECT
-          CAST(SUBSTRING_INDEX(r.date, '-', 1) AS UNSIGNED) AS annee,
-          m.unite AS unite,
-          AVG(r.valeur) AS moyenne
-        FROM releves r
-        JOIN mesure m ON m.id_mesure = r.id_mesure
-        WHERE r.id_plateforme = :idp
-        GROUP BY annee, unite
-        ORDER BY annee ASC
+            SELECT
+    r.date AS periode,             
+    m.unite AS unite,
+    AVG(r.valeur) AS moyenne
+    FROM releves r
+    JOIN mesure m ON m.id_mesure = r.id_mesure
+    WHERE r.id_plateforme = :idp
+    GROUP BY periode, unite
+    ORDER BY periode ASC;
     ";
 
     $stmt = $pdo->prepare($sql);

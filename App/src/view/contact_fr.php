@@ -5,57 +5,79 @@
 <title>Contact</title>
 
 <link rel="stylesheet" href="../assets/css/contact.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
-<!-- HEADER -->
-<header class="header">
-  <div class="left">
-    <a href="router.php?action=UsePage_contact&lang=English">
-    🌐 <span>EN</span>
-  </a>
-  </div>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="left">
+      <!-- logo ici -->
+    </div>
+    <div class="lang">
+      <a href="router.php?action=UsePage_contact&lang=English">
+      🌐 <span>EN</span>
+      </a>
+    </div>
 
-  <nav class="nav">
-    <a href="router.php?action=UsePage_index&lang=Francais">Accueil</a>
-    <a href="router.php?action=UsePage_carte&lang=Francais">Carte</a>
-    <a href="router.php?action=UsePage_apropos&lang=Francais">À propos</a>
-    <a href="router.php?action=UsePage_contact&lang=Francais" class="active">Contact</a>
+<div class="glass-header">
+  <nav class="glass-nav">
+    <ul class="glass-menu">
+      <li>
+        <i class="fa fa-home"></i>
+        <a href="router.php?action=UsePage_index&lang=Francais">Accueil</a>
+      </li>
+      <li>
+        <i class="fa fa-map"></i>
+        <a href="router.php?action=UsePage_carte&lang=Francais">Carte</a>
+      </li>
+      <li>
+        <i class="fa fa-info-circle"></i>
+        <a href="router.php?action=UsePage_apropos&lang=Francais">À propos</a>
+      </li>
+      <li class="active">
+        <i class="fa fa-envelope"></i>
+        <a href="router.php?action=UsePage_contact&lang=Francais">Contact</a>
+      </li>
+    </ul>
   </nav>
-
-  <div class="burger" id="burger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
+</div>
 </header>
 
-<main>
-  <form action="" method="post">
+<section class="avis">
+  <h2>Donner votre avis</h2>
 
-<div class="form-group">
-  <input type="text" id="prenom" name="prenom" required>
-  <label for="prenom">Prénom</label>
-</div>
+  <form method="post" class="avis-form">
+    
+    <input type="text" name="pseudo" placeholder="Votre pseudo" required>
 
-<div class="form-group">
-  <input type="tel" id="telephone" name="telephone" required>
-  <label for="telephone">Numéro de téléphone</label>
-</div>
+    <textarea name="commentaire" placeholder="Votre commentaire" required></textarea>
 
-<div class="form-group">
-  <input type="email" id="email" name="email" required>
-  <label for="email">Email</label>
-</div>
+    <!-- étoiles -->
+    <div class="stars">
+      <input type="radio" id="star5" name="note" value="5" required>
+      <label for="star5">★</label>
 
-<div class="form-group">
-  <textarea id="message" name="message" required></textarea>
-  <label for="message">Message</label>
-</div>
-  <button class="bouton_envoyer" type="submit">Envoyer</button>
+      <input type="radio" id="star4" name="note" value="4">
+      <label for="star4">★</label>
+
+      <input type="radio" id="star3" name="note" value="3">
+      <label for="star3">★</label>
+
+      <input type="radio" id="star2" name="note" value="2">
+      <label for="star2">★</label>
+
+      <input type="radio" id="star1" name="note" value="1">
+      <label for="star1">★</label>
+    </div>
+
+    <button type="submit">Envoyer</button>
+
+    <input type="hidden" name="action" value="submitAvis">
   </form>
-</main>
+</section>
+
 
 <footer class="footer">
   <!-- lien github -->

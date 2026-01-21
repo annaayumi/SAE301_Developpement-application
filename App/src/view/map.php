@@ -5,11 +5,12 @@
 <title>Map</title>
 
 <link rel="stylesheet" href="../assets/css/carte.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-
+<body>
   <!-- HEADER -->
   <header class="header">
     <div class="left">
@@ -35,8 +36,6 @@
   </div>
 </header>
 
-
-<body>
 <div id="map"></div>
 
 <aside class="filtres">

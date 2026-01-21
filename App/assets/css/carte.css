@@ -43,48 +43,68 @@ body {
   color: rgba(255, 255, 255, 0.853);
 }
 
-.nav {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 40px;
-}
+/* ===== GLASS NAV ===== */
 
-.nav a {
-  position: relative;
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-  padding: 2px 0;
-  transition: color 0.25s ease;
-}
-
-/* le trait */
-.nav a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
+.glass-header {
+  position: fixed;
+  top: 0;
   width: 100%;
-  height: 2px;
-  background: #ffffff;
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
 }
 
-.nav a:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
+.glass-nav {
+  margin-top: 20px;
 }
 
-.nav a.active {
-  color: #ffffff;
+.glass-menu {
+  list-style: none;
+  display: flex;
+  gap: 3rem;
+  padding: 14px 30px;
+  border-radius: 40px;
+
+  background: rgba(20, 20, 20, 0.45);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
-.nav a.active::after {
-  transform: scaleX(1);
+.glass-menu li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 30px;
+  transition: 0.3s ease;
+}
+
+.glass-menu li i {
+  color: #3fc9c0;
+}
+
+.glass-menu li a {
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+}
+
+.glass-menu li:hover {
+  background: rgba(63, 201, 192, 0.25);
+  box-shadow: 0 0 15px rgba(63, 201, 192, 0.4);
+}
+
+/* ACTIVE */
+.glass-menu li.active {
+  background: linear-gradient(135deg, #3fc9c0, #1c6f6b);
+  box-shadow: 0 0 18px rgba(63, 201, 192, 0.6);
+}
+
+.glass-menu li.active a,
+.glass-menu li.active i {
+  color: #fff;
 }
 
 #map {
@@ -103,7 +123,7 @@ body {
   top: 150px;
   left: 65px;
   width: 230px;
-  background: rgba(6, 6, 6, 0.914);
+  background: rgba(41, 43, 43, 0.764);
   border-radius: 20px;
   padding: 15px;
   display: flex;
@@ -121,18 +141,24 @@ body {
   border-radius: 22px 22px 0 0;
 }
 
-.filtres button {
-  background: #666;
+.filtres button.type {
+  background: transparent;
   border: none;
-  border-radius: 15px;
-  padding: 10px;
   color: white;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px 4px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   cursor: pointer;
 }
 
-.filtres button:hover {
-  background:#3f8093;
+.filtres button.type:hover {
+  color: #3fc9c0;
 }
+
 
 /* slider */
 .periode input[type="range"] {
@@ -156,32 +182,36 @@ body {
 }
 
 .option {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 8px;
-
-  background: #666;
-  border-radius: 20px;
-  padding: 10px 14px;
-
+  gap: 10px;
+  padding: 8px 6px;
+  background: transparent;
   cursor: pointer;
-  transition: 0.2s ease;
-  user-select: none;
-}
 
-/* cacher les radios */
-.option input {
-  display: none;
+  transition: background 0.2s ease;
 }
 
 .option:hover {
-  background: rgba(63, 201, 192, 0.4);
+  background: rgba(255,255,255,0.08);
 }
 
 .option:has(input:checked) {
-  background: rgba(63, 201, 192, 0.4);
-  font-weight: bold;
+  background: rgba(63, 201, 192, 0.25);
+  font-weight: 600;
 }
+
+.option::before {
+  content: "";
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  flex-shrink: 0;
+}
+
+.option:has(input:checked)::before {
+  background: #3fc9c0;
+}
+
 
 .type {
   display: flex;
@@ -192,18 +222,20 @@ body {
 }
 
 input[type="submit"] {
-  margin-top: 15px;
-  padding: 12px;
+  margin-top: 16px;
+  padding: 10px 0;
   width: 100%;
-
-  background: #666;
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 15px;
-
-  border: none;
-  border-radius: 18px;
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.661);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  border-color: white;
 }
 
 .filtres::-webkit-scrollbar {

@@ -5,9 +5,11 @@
   <title>Phénomènes climatiques</title>
 
   <link rel="stylesheet" href="../assets/css/phenomenes.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
+<body>
   <!-- HEADER -->
   <header class="header">
     <div class="left">
@@ -19,22 +21,30 @@
       </a>
     </div>
 
-
-  <nav class="nav">
-    <a href="router.php?action=UsePage_index&lang=Francais">Accueil</a>
-    <a href="router.php?action=UsePage_carte&lang=Francais">Carte</a>
-    <a href="router.php?action=UsePage_apropos&lang=Francais" class="active">À propos</a>
-    <a href="router.php?action=UsePage_contact&lang=Francais">Contact</a>
+<div class="glass-header">
+  <nav class="glass-nav">
+    <ul class="glass-menu">
+      <li>
+        <i class="fa fa-home"></i>
+        <a href="router.php?action=UsePage_index&lang=Francais">Accueil</a>
+      </li>
+      <li>
+        <i class="fa fa-map"></i>
+        <a href="router.php?action=UsePage_carte&lang=Francais">Carte</a>
+      </li>
+      <li class="active">
+        <i class="fa fa-info-circle"></i>
+        <a href="router.php?action=UsePage_apropos&lang=Francais">À propos</a>
+      </li>
+      <li>
+        <i class="fa fa-envelope"></i>
+        <a href="router.php?action=UsePage_contact&lang=Francais">Contact</a>
+      </li>
+    </ul>
   </nav>
-
-  <div class="burger" id="burger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
+</div>
 </header>
 
-<body>
 <a href="router.php?action=UsePage_apropos&lang=Francais" class="bouton-retour">
   ← Retour
 </a>

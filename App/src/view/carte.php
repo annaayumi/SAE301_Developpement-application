@@ -6,6 +6,7 @@
 
 <link rel="stylesheet" href="../assets/css/carte.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -21,19 +22,28 @@
       </a>
     </div>
 
-  <nav class="nav">
-    <a href="router.php?action=UsePage_index&lang=Francais">Accueil</a>
-    <a href="router.php?action=UsePage_carte&lang=Francais" class="active">Carte</a>
-    <a href="router.php?action=UsePage_apropos&lang=Francais">À propos</a>
-    <a href="router.php?action=UsePage_contact&lang=Francais">Contact</a>  
+<div class="glass-header">
+  <nav class="glass-nav">
+    <ul class="glass-menu">
+      <li>
+        <i class="fa fa-home"></i>
+        <a href="router.php?action=UsePage_index&lang=Francais">Accueil</a>
+      </li>
+      <li class="active">
+        <i class="fa fa-map"></i>
+        <a href="router.php?action=UsePage_carte&lang=Francais">Carte</a>
+      </li>
+      <li>
+        <i class="fa fa-info-circle"></i>
+        <a href="router.php?action=UsePage_apropos&lang=Francais">À propos</a>
+      </li>
+      <li>
+        <i class="fa fa-envelope"></i>
+        <a href="router.php?action=UsePage_contact&lang=Francais">Contact</a>
+      </li>
+    </ul>
   </nav>
-
-  <div class="burger" id="burger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-
+</div>
 </header>
 
 <div id="map"></div>
@@ -56,7 +66,7 @@
       <input type="range" min="1" max="12" id="sliderMois" name="mois" value="<?php echo isset($_GET['mois']) ? $_GET['mois'] : '1' ?>">
 
       <span  id="annee"></span>
-      <input  type="range" min="2020" max="2025" id="sliderAnnee" name="annee" value="<?php echo isset($_GET['annee']) ? $_GET['annee'] : '2020' ?>">
+      <input  type="range" min="2020" max="2026" id="sliderAnnee" name="annee" value="<?php echo isset($_GET['annee']) ? $_GET['annee'] : '2020' ?>">
     </span>
   </div>
 
@@ -73,17 +83,17 @@
         <div class="options">
 
           <label class="option">
-            <input type="radio" name="unite" value="PSAL">
+            <input type="checkbox" name="unite" value="PSAL">
             <span>Salinité</span>
           </label>
 
           <label class="option">
-            <input type="radio" name="unite" value="CHLT">
+            <input type="checkbox" name="unite" value="CHLT">
             <span>Chlorophylle A</span>
           </label>
 
           <label class="option">
-            <input type="radio" name="unite" value="TEMP">
+            <input type="checkbox" name="unite" value="TEMP">
             <span>Température</span>
           </label>
 
@@ -102,67 +112,67 @@
     <span id="typePlatformeHide">
       <div class="options">
       <label class="option">
-        <input type="radio" name="platforme" value="BO">
+        <input type="checkbox" name="platforme" value="BO">
         <span>Boreholes / Bottom Landers (BO)</span>
       </label>
 
       <label class="option">
-        <input type="radio" name="platforme" value="CT">
+        <input type="checkbox" name="platforme" value="CT">
         <span>CTD Profiles (CT)</span>
       </label>
 
       <label class="option">
-        <input type="radio" name="platforme" value="DB">
+        <input type="checkbox" name="platforme" value="DB">
         <span>Drifting Buoys (DB)</span>
       </label>
 
       <label class="option">
-        <input type="radio" name="platforme" value="FB">
+        <input type="checkbox" name="platforme" value="FB">
         <span>FerryBoxes (FB)</span>
       </label>
 
       <label class="option">
-        <input type="radio" name="platforme" value="GL">
+        <input type="checkbox" name="platforme" value="GL">
         <span>Gliders (GL)</span>
       </label>
 
       <label class="option">
-        <input type="radio" name="platforme" value="ML">
+        <input type="checkbox" name="platforme" value="ML">
         <span>Mini-Loggers (ML)</span>
       </label>
 
       <label class="option">
-        <input type="radio" name="platforme" value="MO">
+        <input type="checkbox" name="platforme" value="MO">
         <span>Fixed Mooring / Moored Buoys (MO)</span>
       </label>
 
       <label class="option">
-        <input type="radio" name="platforme" value="PF">
+        <input type="checkbox" name="platforme" value="PF">
         <span>Profiling Floats (PF)</span>
       </label>
 
       <label class="option">
-        <input type="radio" name="platforme" value="PR">
+        <input type="checkbox" name="platforme" value="PR">
         <span>Profiling Floats – Alternative code (PR)</span>
       </label>
 
       <label class="option">
-        <input type="radio" name="platforme" value="SD">
+        <input type="checkbox" name="platforme" value="SD">
         <span>Saildrones / Surface Drifters (SD)</span>
       </label>
 
       <label class="option">
-        <input type="radio" name="platforme" value="TG">
+        <input type="checkbox" name="platforme" value="TG">
         <span>Tide Gauges (TG)</span>
       </label>
 
       <label class="option">
-        <input type="radio" name="platforme" value="TS">
+        <input type="checkbox" name="platforme" value="TS">
         <span>ThermoSalinographs (TS)</span>
       </label>
 
       <label class="option">
-        <input type="radio" name="platforme" value="XB">
+        <input type="checkbox" name="platforme" value="XB">
         <span>Expendable Bathythermographs (XB)</span>
       </label>
 

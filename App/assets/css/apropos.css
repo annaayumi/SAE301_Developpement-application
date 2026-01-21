@@ -4,13 +4,13 @@
   box-sizing: border-box;
 }
 
-html{
-  overscroll-behavior: none;
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: "Open Sans", sans-serif;
-  background: black;
+  background: url("../img/bgi.png") center / cover no-repeat;
   color: white;
 }
 
@@ -26,67 +26,92 @@ body {
   z-index: 1000;
 }
 
+.hero-content {
+  padding: 160px 40px 0;
+}
+
 .left {
-  font-size: 20px;
+  flex: 1;
 }
 
-.left a:link, .left a:visited, .left a:active {
+.lang a:link, .lang a:visited, .lang a:active {
   color: white;
   text-decoration: none;
 }
 
-.left a:hover {
-  color: rgba(255,255,255,0.75);
+.lang a:hover {
+  color: rgba(255, 255, 255, 0.853);
 }
 
-.nav {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 40px;
-}
 
-.nav a {
-  position: relative;
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-  padding: 2px 0;
-  transition: color 0.25s ease;
-}
+/* ===== GLASS NAV ===== */
 
-/* le trait */
-.nav a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
+.glass-header {
+  position: fixed;
+  top: 0;
   width: 100%;
-  height: 2px;
-  background: #ffffff;
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
 }
 
-.nav a:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
+.glass-nav {
+  margin-top: 20px;
 }
 
-.nav a.active {
-  color: #ffffff;
+.glass-menu {
+  list-style: none;
+  display: flex;
+  gap: 3rem;
+  padding: 14px 30px;
+  border-radius: 40px;
+
+  background: rgba(20, 20, 20, 0.45);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
-.nav a.active::after {
-  transform: scaleX(1);
+.glass-menu li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 30px;
+  transition: 0.3s ease;
 }
+
+.glass-menu li i {
+  color: #3fc9c0;
+}
+
+.glass-menu li a {
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+}
+
+.glass-menu li:hover {
+  background: rgba(63, 201, 192, 0.25);
+  box-shadow: 0 0 15px rgba(63, 201, 192, 0.4);
+}
+
+/* ACTIVE */
+.glass-menu li.active {
+  background: linear-gradient(135deg, #3fc9c0, #1c6f6b);
+  box-shadow: 0 0 18px rgba(63, 201, 192, 0.6);
+}
+
+.glass-menu li.active a,
+.glass-menu li.active i {
+  color: #fff;
+}
+
 
 /* SECTION */
 .apropos {
   min-height: 100vh;
-  background: url("../img/bgi.png") center / cover no-repeat;
   padding-top: 140px; 
   padding-bottom: 200px;
 }

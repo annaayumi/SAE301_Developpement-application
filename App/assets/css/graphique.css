@@ -29,7 +29,7 @@ h1 {
 
 .graph-container canvas {
   width: 100% !important;
-  height: 800px !important; 
+  height: calc(100vh - 180px) !important;
 }
 
 .chartjs-legend {

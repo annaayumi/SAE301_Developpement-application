@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body onload="onloadShowDate()">
+<body onload="NoResetForm()">
   <!-- HEADER -->
   <header class="header">
     <div class="left">
@@ -55,9 +55,9 @@
     <div class="titre">Filtres</div>
   <!-- PERIODE -->
    
-  <button type="button" class="type" onclick="toggleFilter('periodeHide','periodeButtonCheckbox')">
-    Période (Mois / Année) 
-    <input type="checkbox" id="periodeButtonCheckbox" name="date_checkbox" checked>
+  <button type="button" class="type" onclick="toggleFilter('periodeHide','periodeButtonCheckbox')">Période (Mois / Année) 
+      <input type="checkbox" id="typeButtonCheckbox" hidden>
+      <input type="checkbox" id="typeButtonCheckbox"checked>
   </button>
   <div class="periode" id="periode">
     <span id="periodeHide">
@@ -74,9 +74,9 @@
     
     <div class="types">
       
-      <button type="button"  class="type" onclick="toggleFilter('typeHide','uniteButtonCheckbox')" >
-        Type de mesure 
-      <input type="checkbox" id="uniteButtonCheckbox" name="unite_checkbox" checked>
+      <button type="button"  class="type " onclick="toggleFilter('typeHide','typeButtonCheckbox','')">Type de mesure 
+        <input type="checkbox" id="typeButtonCheckbox" hidden>
+        <input type="checkbox" id="typeButtonCheckbox"checked>
       </button>
 
       <span id="typeHide">
@@ -103,13 +103,13 @@
 
   <!-- TYPE DE PLATEFORME -->
   <div class="types">
-
-    <button type="button" id="bouton_periode" class="type" onclick="toggleFilter('PlatformeHide','PlateformeButtonCheckbox')">
-      Type de plateforme 
-      <input type="checkbox" id="PlateformeButtonCheckbox" name="plateforme_checkbox" checked>
+    
+    <button type="button" id="bouton_periode" class="type" onclick="toggleFilter('typePlatformeHide','typePlatformeButtonCheckbox')">Type de plateforme 
+      <input type="checkbox" id="typeButtonCheckbox" hidden>
+      <input type="checkbox" id="typeButtonCheckbox"checked>
     </button>
 
-    <span id="PlatformeHide">
+    <span id="typePlatformeHide">
       <div class="options">
       <label class="option">
         <input type="checkbox" name="platforme" value="BO">
@@ -204,19 +204,6 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '© OpenStreetMap'
 }).addTo(map);
 
-
-var myIconClass = L.Icon.extend({
-    options: {
-        iconSize:     [40, 40],
-        iconAnchor:   [22, 94],
-        popupAnchor:  [-3, -76]
-    }
-});
-
-var icon = new myIconClass ({
-    iconUrl: '../assets/img/map-pin.png'
-});
-
 </script>
 
 <!-- marqueur -->
@@ -234,13 +221,17 @@ foreach  ($dataSet as $obj) {
   if ($obj->getUnite() == "CHLT"){
     $tempUnite = "mg/m<sup>-3</sup>";
   }
-
-  echo "L.marker([".$obj->getLatitude().",".$obj->getLongitude()."], {icon: icon})
+  
+  echo "L.marker([".$obj->getLatitude().",".$obj->getLongitude()."])
   .bindPopup(`<strong>Valeur :</strong> ".$obj->getValeur()." ". $tempUnite."<br>
   <strong>Date :</strong> ".$obj->getDate()."<br>
   <strong>Id plateforme :</strong>". $obj->getIdPlateforme()."<br>
   <strong>Type plateforme :</strong> ".$obj->getPlateformeType()."<br>
   <strong>Description :</strong> ".$obj->getPlateformeTypeDesc()."<br>
+  <strong>Graphique de la plateforme :</strong>
+  <a href=\"router.php?action=UsePage_graphique&lang=Francais&idPlateforme=".$obj->getIdPlateforme()."\">
+  Voir le graphique
+  </a>
   `).addTo(map);";
 }
 echo "</script>";
@@ -251,8 +242,10 @@ echo "</script>";
 
 
 
-<!-- FILTRES -->
+
 <script>
+
+  //filtres
 const sliderAnnee = document.getElementById("sliderAnnee");
 const sliderMois = document.getElementById("sliderMois");
 const annee = document.getElementById("annee");
@@ -263,44 +256,52 @@ const moisNoms = [
   "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
 ];
 
-function toggleFilter(filterID,checkboxID){
+function toggleFilter(filterID,checkboxId){
 
 targetFilter = document.getElementById(filterID)
-targetCheckbox = document.getElementById(checkboxID)
+targetCheckbox = document.getElementById(checkboxId)
 
 if(targetFilter.getAttribute("hidden")){
   targetFilter.removeAttribute("hidden")
   targetCheckbox.removeAttribute("hidden")
-  targetCheckbox.removeAttribute("disabled")
 }
 else{
-  targetFilter.setAttribute("hidden","TRUE")
-  targetCheckbox.setAttribute("hidden","TRUE")
-  targetCheckbox.setAttribute("disabled","TRUE")
+  targetFilter.setAttribute("hidden","")
+  targetCheckbox.setAttribute("hidden","")
 }
 
 
 }
 
-function onloadShowDate(){
+function NoResetForm(){
+
+  // Periode
   annee.textContent = sliderAnnee.value;
   mois.textContent = moisNoms[sliderMois.value-1];
+
+
+  if(<?php 
+    echo isset($_GET['unite']);
+  ?>){
+    //
+  }
+
+
+
+
 }
 
 
-/* afficher année */
+// afficher année 
 sliderAnnee.addEventListener("input", () => {
   annee.textContent = sliderAnnee.value;
 });
 
-/* afficher mois */
+// afficher mois 
 sliderMois.addEventListener("input", () => {
   mois.textContent = moisNoms[sliderMois.value-1];
 });
-</script>
 
-
-<script>
 const filtres = document.querySelector(".filtres");
 const dragBar = document.querySelector(".titre");
 
@@ -327,9 +328,7 @@ document.addEventListener("mouseup", () => {
   isDragging = false;
   dragBar.style.cursor = "grab";
 });
-</script>
 
-<script>
 const options = document.querySelectorAll(".option");
 
 options.forEach(option => {

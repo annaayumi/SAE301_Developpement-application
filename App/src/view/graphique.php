@@ -2,25 +2,32 @@
 $idPlateforme = $idPlateforme ?? '';
 $rows = $series ?? [];
 
-// pivot par année
-$byYear = [];
+$byPeriod = [];
+
 foreach ($rows as $r) {
-  $y = (int)$r['annee'];
+  $p = $r['periode'];
   $u = $r['unite'];
   $m = (float)$r['moyenne'];
 
-  if (!isset($byYear[$y])) $byYear[$y] = ['TEMP'=>null,'PSAL'=>null,'CHLT'=>null];
-  if (array_key_exists($u, $byYear[$y])) $byYear[$y][$u] = $m;
+  if (!isset($byPeriod[$p])) {
+    $byPeriod[$p] = ['TEMP'=>null,'PSAL'=>null,'CHLT'=>null];
+  }
+  if (array_key_exists($u, $byPeriod[$p])) {
+    $byPeriod[$p][$u] = $m;
+  }
 }
-ksort($byYear);
 
-$labels = array_keys($byYear);
+ksort($byPeriod);
+
+$labels = array_keys($byPeriod);
+
 $temp = $psal = $chlt = [];
-foreach ($byYear as $vals) {
+foreach ($byPeriod as $vals) {
   $temp[] = $vals['TEMP'];
   $psal[] = $vals['PSAL'];
   $chlt[] = $vals['CHLT'];
 }
+
 ?>
 <!doctype html>
 <html lang="fr">
@@ -29,11 +36,14 @@ foreach ($byYear as $vals) {
   <title>Graphique - <?= htmlspecialchars($idPlateforme) ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="../assets/css/graphique.css">
 </head>
 <body>
 <h1>Plateforme <?= htmlspecialchars($idPlateforme) ?></h1>
 
-<canvas id="chart" style="max-width:1100px;height:420px"></canvas>
+<div class="graph-container">
+  <canvas id="chart"></canvas>
+</div>
 
 <script>
 new Chart(document.getElementById('chart'), {
@@ -46,13 +56,47 @@ new Chart(document.getElementById('chart'), {
       { label: "Chlorophylle A (mg/m³)", data: <?= json_encode($chlt) ?>, spanGaps: true },
     ]
   },
-  options: {
+ options: {
   responsive: true,
+  maintainAspectRatio: false,
   interaction: { mode: 'index', intersect: false },
-  plugins: { legend: { position: 'bottom' } },
+  plugins: {
+    legend: {
+    position: 'bottom',
+    labels: {
+      color: '#eaf3f6', 
+      boxWidth: 14,
+      boxHeight: 14
+    }
+  }
+  },
   scales: {
+    x: {
+      type: 'category',
+      ticks: {
+        autoSkip: false,
+        maxRotation: 90,
+        minRotation: 90,
+        color: '#ffffff'
+      },
+      grid: {
+        color: 'rgba(255, 255, 255, 0.29)'
+      },
+      border: {
+        color: '#ffffff'
+      }
+    },
     y: {
-      beginAtZero: true
+      beginAtZero: true,
+      ticks: {
+        color: '#eaf3f6'
+      },
+      grid: {
+        color: 'rgba(255, 255, 255, 0.29)'
+      },
+      border: {
+        color: '#ffffff'
+      }
     }
   }
 }

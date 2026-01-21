@@ -9,7 +9,7 @@ class Conf {
         // Sur votre machine, vous avez surement un compte 'root'
         'login' => 'root',
         // Sur votre machine, vous avez créé ou non ce mdp a l'installation
-        'password' => ''
+        'password' => 'vitrygtr'
         );
     static public function getLogin() : string {
         // L'attribut statique $databases s'obtient

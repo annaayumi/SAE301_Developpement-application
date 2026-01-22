@@ -74,26 +74,26 @@
       
       <div class="types">
         
-    <button type="button"  class="type " onclick="toggleFilter('typeHide','uniteButtonCheckbox')">
+    <button type="button"  class="type " onclick="toggleFilter('uniteHide','uniteButtonCheckbox')">
       Type de mesure 
       <input type="checkbox" id="uniteButtonCheckbox" name="unite_checkbox" checked>
     </button>
 
-        <span id="typeHide">
+        <span id="uniteHide">
           <div class="options">
 
           <label class="option">
-            <input type="checkbox" name="unite" value="PSAL">
+            <input type="checkbox" name="unite[]" value="PSAL">
             <span>Salinité</span>
           </label>
 
           <label class="option">
-            <input type="checkbox" name="unite" value="CHLT">
+            <input type="checkbox" name="unite[]" value="CHLT">
             <span>Chlorophylle A</span>
           </label>
 
           <label class="option">
-            <input type="checkbox" name="unite" value="TEMP">
+            <input type="checkbox" name="unite[]" value="TEMP">
             <span>Température</span>
           </label>
 
@@ -101,78 +101,78 @@
         </span>
       </div>
 
-    <!-- TYPE DE PLATEFORME -->
+    <!-- TYPE DE plateforme -->
     <div class="types">
       
-    <button type="button" id="bouton_periode" class="type" onclick="toggleFilter('PlatformeHide','PlateformeButtonCheckbox')">
+    <button type="button" id="bouton_periode" class="type" onclick="toggleFilter('typeplateformeHide','plateformeButtonCheckbox')">
       Type de plateforme 
-      <input type="checkbox" id="PlateformeButtonCheckbox" name="plateforme_checkbox" checked>
+      <input type="checkbox" id="plateformeButtonCheckbox" name="plateforme_checkbox" checked>
     </button>
 
-    <span id="typePlatformeHide">
+    <span id="typeplateformeHide">
       <div class="options">
       <label class="option">
-        <input type="checkbox" name="platforme" value="BO">
+        <input type="checkbox" name="plateforme[]" value="BO">
         <span>Boreholes / Bottom Landers (BO)</span>
       </label>
 
       <label class="option">
-        <input type="checkbox" name="platforme" value="CT">
+        <input type="checkbox" name="plateforme[]" value="CT">
         <span>CTD Profiles (CT)</span>
       </label>
 
       <label class="option">
-        <input type="checkbox" name="platforme" value="DB">
+        <input type="checkbox" name="plateforme[]" value="DB">
         <span>Drifting Buoys (DB)</span>
       </label>
 
       <label class="option">
-        <input type="checkbox" name="platforme" value="FB">
+        <input type="checkbox" name="plateforme[]" value="FB">
         <span>FerryBoxes (FB)</span>
       </label>
 
       <label class="option">
-        <input type="checkbox" name="platforme" value="GL">
+        <input type="checkbox" name="plateforme[]" value="GL">
         <span>Gliders (GL)</span>
       </label>
 
       <label class="option">
-        <input type="checkbox" name="platforme" value="ML">
+        <input type="checkbox" name="plateforme[]" value="ML">
         <span>Mini-Loggers (ML)</span>
       </label>
 
       <label class="option">
-        <input type="checkbox" name="platforme" value="MO">
+        <input type="checkbox" name="plateforme[]" value="MO">
         <span>Fixed Mooring / Moored Buoys (MO)</span>
       </label>
 
       <label class="option">
-        <input type="checkbox" name="platforme" value="PF">
+        <input type="checkbox" name="plateforme[]" value="PF">
         <span>Profiling Floats (PF)</span>
       </label>
 
       <label class="option">
-        <input type="checkbox" name="platforme" value="PR">
+        <input type="checkbox" name="plateforme[]" value="PR">
         <span>Profiling Floats – Alternative code (PR)</span>
       </label>
 
       <label class="option">
-        <input type="checkbox" name="platforme" value="SD">
+        <input type="checkbox" name="plateforme[]" value="SD">
         <span>Saildrones / Surface Drifters (SD)</span>
       </label>
 
       <label class="option">
-        <input type="checkbox" name="platforme" value="TG">
+        <input type="checkbox" name="plateforme[]" value="TG">
         <span>Tide Gauges (TG)</span>
       </label>
 
       <label class="option">
-        <input type="checkbox" name="platforme" value="TS">
+        <input type="checkbox" name="plateforme[]" value="TS">
         <span>ThermoSalinographs (TS)</span>
       </label>
 
       <label class="option">
-        <input type="checkbox" name="platforme" value="XB">
+        <input type="checkbox" name="plateforme[]" value="XB">
         <span>Expendable Bathythermographs (XB)</span>
       </label>
 
@@ -194,6 +194,7 @@
 
   <!-- CARTE -->
   <script>
+    
   const map = L.map('map', {
     center: [46.5, 2.5], 
     zoom: 5,
@@ -257,6 +258,7 @@
 
         targetFilter = document.getElementById(filterID)
         targetCheckbox = document.getElementById(checkboxID)
+        console.log(targetFilter);
 
         if(targetFilter.getAttribute("hidden")){
           targetFilter.removeAttribute("hidden")
@@ -272,71 +274,67 @@
 
       function NoResetForm(){
 
-      const sliderAnnee = document.getElementById("sliderAnnee");
-      const sliderMois = document.getElementById("sliderMois");
-      const annee = document.getElementById("annee");
-      const mois = document.getElementById("mois");
+        const sliderAnnee = document.getElementById("sliderAnnee");
+        const sliderMois = document.getElementById("sliderMois");
+        const annee = document.getElementById("annee");
+        const mois = document.getElementById("mois");
 
-        // Periode slider
+        // Periode slider anti reset
         annee.textContent = sliderAnnee.value;
         mois.textContent = moisNoms[sliderMois.value-1];
 
 
-        option_list = document.querySelectorAll("input[name = unite], input[name = platforme]");
-        // periode span
-        if(<?php echo isset($_GET['date_checkbox']) ? "true": "false" ?>){
-
-          date = <?php echo"'".($_GET['periode'] ?? 'NULL')."'" ?>;
-          console.log('run not toggle periode');
-        }
+        const input_list = document.getElementsByTagName("input");
+        console.log(input_list);
         
-        else{
-          toggleFilter('periodeHide','periodeButtonCheckbox');
-          console.log("run toggle periode")
-        }
 
-        // unite span
 
-        if(<?php echo isset($_GET['unite']) ? "true": "false" ?>){
+        // hide or not depending on checkbox state
+        <?php echo isset($_GET['date_checkbox']) ? "": "toggleFilter('periodeHide','periodeButtonCheckbox');" ?>
+        <?php echo isset($_GET['unite_checkbox']) ? "": "toggleFilter('uniteHide','uniteButtonCheckbox');" ?>
+        <?php echo isset($_GET['plateforme_checkbox']) ? "": "toggleFilter('typeplateformeHide','plateformeButtonCheckbox');" ?>
+      
 
-          unite = <?php echo"'".($_GET['unite'] ?? 'NULL')."'" ?>;
-          console.log('run not toggle unite');
-          console.log(option_list.length)
-          for(var i = 0; option_list.length > i; i++){
+        // unite checkbox reactivate
 
-            
-            
-            if(option_list[i].value == unite){
-              console.log(option_list[i]);
-              option_list[i].setAttribute("checked","TRUE");
+        unite_list = new Array();
+        <?php
+          foreach($_GET['unite']?? [] as $i){
+            echo "unite_list.push('".$i."');";
+          }?>
+          
+        console.log(unite_list);
+
+        unite_list.forEach((unite) => {
+
+          for (let item of input_list) {
+            if (item.value == unite){
+              item.setAttribute("checked","TRUE");
             }
           }
-        }
-        else{
-          toggleFilter('typeHide','uniteButtonCheckbox');
-          console.log("run toggle unite")
-        }
+        })
+        
 
-        // unite span
+        // plateforme checkbox reactivate
 
-        if(<?php echo isset($_GET['platforme']) ? "true" : "false" ?>){
+        plateforme_list = new Array();
+        <?php
+          foreach($_GET['plateforme'] ?? [] as $i){
+            echo "plateforme_list.push('".$i."');";
+          }?>
+        console.log(plateforme_list);
 
-          plateforme = <?php echo "'".($_GET['platforme'] ?? 'NULL')."'"?>;
-          console.log('run not toggle plateforme');
-          for(var i = 0; option_list.length > i; i++){
 
-            if(option_list[i].value == plateforme){
-              console.log(option_list[i])
-              option_list[i].setAttribute("checked","TRUE");
+        plateforme_list.forEach((plateforme) => {
+
+          for (let item of input_list) {
+            if (item.value == plateforme){
+              item.setAttribute("checked","TRUE");
             }
           }
-        }
-        else{
-          toggleFilter('PlatformeHide','PlateformeButtonCheckbox');
-          console.log("run toggle plateforme")  
-        }
-
+        })
       }
+      
 
 
       // afficher année 

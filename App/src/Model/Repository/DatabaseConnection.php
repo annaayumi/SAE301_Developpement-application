@@ -44,9 +44,10 @@ class DatabaseConnection {
     }
 
 
-    public static function doQuery_with_filters(string $date, string $unite , string $plateforme){
+    public static function doQuery_with_filters(string $date, array $unite , array $plateforme){
         
-        
+        $nUnite = count($unite);
+        $nPlateforme = count($plateforme);
 
         $sql = "
         select releves.id_releve, mesure.unite, releves.id_plateforme, type_plateforme.type, 
@@ -63,46 +64,85 @@ class DatabaseConnection {
             $sql = $sql." where releves.date = :date";
         }
 
-        if ($unite != "") {
+        if ($nUnite != 0) {
+            $count = $nUnite;
+            $tagNumber = 0;
+
             if ($date != ""){
-                $sql = $sql." and ";
+                $sql = $sql." and (";
             }
             else{
-                $sql = $sql." where ";
+                $sql = $sql." where (";
             }
+            
+            foreach($unite as $i){ 
+                $sql = $sql." mesure.unite = :unite".$tagNumber;
+                $tagNumber = $tagNumber+1;
 
-            $sql = $sql." mesure.unite = :unite";
-
+                if($count != 1){
+                    $count--;
+                    $sql = $sql." or ";
+                }
+            }
+            $sql = $sql.")";
         }
 
-        if ($plateforme != "")  {
 
-            if ($date != "" or $unite != ""){
-                $sql = $sql." and ";
+        if ($nPlateforme != 0)  {
+            $count = $nPlateforme;
+            $tagNumber = 0;
+
+            if ($date != "" or $nUnite != 0){
+                $sql = $sql." and (";
             }
             else{
-                $sql = $sql." where ";
+                $sql = $sql." where (";
             }
 
-            $sql = $sql." type_plateforme.type = :plateforme";
+            foreach($plateforme as $i){ 
+                $sql = $sql." type_plateforme.type = :plateforme".$tagNumber;
+                $tagNumber = $tagNumber+1;
 
+                if($count != 1){
+
+                    $count--;
+                    $sql = $sql." or ";
+                }
+            }
+            $sql = $sql.")";
         }
         
 
-        $sql = $sql." ;";
+        $sql = $sql.";";
+
+        echo $sql;
 
         // prep sql
         $PdoStatement = DatabaseConnection::getPdo()->prepare($sql);
         
-        if ($date != "") { 
-        $PdoStatement->bindParam(':date',$date, PDO::PARAM_STR);}
+        if ($date != "") {
+            $PdoStatement->bindParam(":date",$date, PDO::PARAM_STR);
+        }
 
-        if ($unite != "") { 
-        $PdoStatement->bindParam(':unite',$unite, PDO::PARAM_STR);}
+        if ($nUnite != 0) { 
+            $count = 0;
+            foreach($unite as $bindParamUnite){
+                $PdoStatement->bindValue(":unite".$count,$bindParamUnite, PDO::PARAM_STR);
+                $count++;
+            }
+        }
 
-        if ($plateforme != "") { 
-        $PdoStatement->bindParam(':plateforme',$plateforme, PDO::PARAM_STR);}
-        
+        if ($nPlateforme != 0) {
+            $count = 0;
+            foreach($plateforme as $bindParamPlateforme){
+                $PdoStatement->bindValue(":plateforme".$count,$bindParamPlateforme, PDO::PARAM_STR);
+                $count++;
+            }
+        }
+        //print_r($unite);
+        //print_r($plateforme);
+
+        //$PdoStatement->debugDumpParams();
 
         // exec
         $PdoStatement->execute();

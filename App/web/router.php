@@ -8,12 +8,12 @@
 
     use App\Gleaubal\Model\Repository\DatabaseConnection;
 
-
+    print_r($_GET);
 
     $action = $_GET['action'] ?? 'UsePage_index';
     $lang = $_GET['lang'] ?? 'Francais';
 
-    // check toggle filtres carte
+    // verify checkbox toggle (filtres carte)
 
 
     if(isset($_GET['date_checkbox'])){
@@ -29,20 +29,15 @@
         }
     }
 
-    if(isset($_GET['unite_checkbox'])){
-        $unite = $_GET['unite'] ?? ""; 
-    }
-
-    if(isset($_GET['plateforme_checkbox'])){
-        $plateforme = $_GET['platforme'] ?? "";
-    }
-
-
+    isset($_GET['unite_checkbox'])? $unite = $_GET['unite']: NULL;
+    isset($_GET['plateforme_checkbox'])? $plateforme = $_GET['plateforme']: NULL;
 
     // page carte avec filtres
     if ((isset($unite) or isset($date) or isset($plateforme)) and $action == 'UsePage_carte'){
 
-        $dataSet = DatabaseConnection::doQuery_with_filters($date ?? "",$unite ?? "",$plateforme ?? "");
+        $dataSet = DatabaseConnection::doQuery_with_filters($date ?? "",$unite ?? [],$plateforme ?? []);
+
+        //var_dump($dataSet);
         if($lang == "Francais"){Controller::UsePage('carte.php',['dataSet' => $dataSet]);}
         if($lang == "English"){Controller::UsePage('map.php',['dataSet' => $dataSet]);}
         
@@ -112,24 +107,24 @@
     /*
         // Use page Graphique
     if ($action == 'UsePage_graphique') {
-        $idPlateforme = $_GET['idPlateforme'] ?? '';
+        $idplateforme = $_GET['idplateforme'] ?? '';
 
-        if ($idPlateforme == '') {
-            die("Paramètre idPlateforme manquant.");
+        if ($idplateforme == '') {
+            die("Paramètre idplateforme manquant.");
         }
 
-        $series = DatabaseConnection::doQuery_avg_by_year_for_platform($idPlateforme);
+        $series = DatabaseConnection::doQuery_avg_by_year_for_platform($idplateforme);
 
         if ($lang == "Francais") {
             Controller::UsePage('graphique.php', [
-                'idPlateforme' => $idPlateforme,
+                'idplateforme' => $idplateforme,
                 'series' => $series
             ]);
         }
 
         if ($lang == "English") {
             Controller::UsePage('graph.php', [
-                'idPlateforme' => $idPlateforme,
+                'idplateforme' => $idplateforme,
                 'series' => $series
             ]);
         }

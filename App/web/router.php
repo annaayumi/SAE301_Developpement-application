@@ -28,8 +28,12 @@
         }
     }
 
-    isset($_GET['unite_checkbox'])? $unite = $_GET['unite']: NULL;
-    isset($_GET['plateforme_checkbox'])? $plateforme = $_GET['plateforme']: NULL;
+    if(isset($_GET['unite_checkbox'])){
+        $unite = $_GET['unite'];
+    }
+    if(isset($_GET['plateforme_checkbox'])){
+        $plateforme = $_GET['plateforme'];
+    }
 
     // page carte avec filtres
     if ((isset($unite) or isset($date) or isset($plateforme)) and $action == 'UsePage_carte'){

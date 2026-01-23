@@ -13,13 +13,13 @@
 </head>
 
 <body>
-<!-- HEADER -->
-<header class="header">
-  <div class="lang">
-    <a href="router.php?action=UsePage_contact&lang=Francais">
-    🌐 <span>FR</span>
-    </a>
-  </div>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="lang">
+      <a href="router.php?action=UsePage_apropos&lang=Francais">
+      🌐 <span>FR</span>
+      </a>
+    </div>
 
   <button class="burger" aria-label="Menu">
     ☰
@@ -29,7 +29,7 @@
     <ul class="glass-menu">
       <li>
         <i class="fa fa-home"></i>
-        <a href="router.php?action=UsePage_index&lang=English">Welcome</a>
+        <a href="router.php?action=UsePage_index&lang=English">Home</a>
       </li>
       <li>
         <i class="fa fa-map"></i>
@@ -47,41 +47,68 @@
   </nav>
 </header>
 
+
 <section class="avis">
-  <h2>Donner votre avis</h2>
+  <h2>Give us your feedback</h2>
 
-  <form method="post" class="avis-form">
+  <form method="POST" class="avis-form">
     
-    <input type="text" name="pseudo" placeholder="Your username" required>
+    <input type="text" name="pseudo" placeholder="Votre pseudo" required>
 
-    <textarea name="commentaire" placeholder="Your comment" required></textarea>
+    <textarea name="commentaire" placeholder="Votre commentaire" required></textarea>
 
     <!-- étoiles -->
     <div class="stars">
-      <input type="radio" id="star1" name="note" value="1" required>
-      <label for="star1">★</label>
-
-      <input type="radio" id="star2" name="note" value="2">
-      <label for="star2">★</label>
-
-      <input type="radio" id="star3" name="note" value="3">
-      <label for="star3">★</label>
+      <input type="radio" id="star5" name="note" value="5" required>
+      <label for="star5">★</label>
 
       <input type="radio" id="star4" name="note" value="4">
       <label for="star4">★</label>
 
-      <input type="radio" id="star5" name="note" value="5">
-      <label for="star5">★</label>
+      <input type="radio" id="star3" name="note" value="3">
+      <label for="star3">★</label>
+
+      <input type="radio" id="star2" name="note" value="2">
+      <label for="star2">★</label>
+
+      <input type="radio" id="star1" name="note" value="1">
+      <label for="star1">★</label>
     </div>
+    <!-- submit -->
+    <input id="submit_input" type="submit" value="Envoyer" style="border-bottom: 0px;">
 
-    <button type="submit">Send</button>
-
-    <input type="hidden" name="action" value="submitAvis">
+    <input type="hidden" name="action" value="UsePage_contact">
+    <input type="hidden" name="lang" value="Francais">
   </form>
+  <?php
+
+    if(isset($_POST['pseudo'])){
+      echo "Your feedback has been sent succesfully.";
+    }
+  ?>
 </section>
+
+<aside>
+  <?php
+    foreach  ($liste_avis as $obj) {
+      echo "<article><b>".$obj->getPseudo()."</b>";
+      echo "<p> Date : ".$obj->getCreated_at()."</p>";
+
+      $star_counter = "";
+      for($i = 0; $obj->getNote() > $i; $i++){
+        $star_counter = $star_counter."★";
+      }
+
+      echo "<p> Rating : ".$star_counter."</p>";
+
+      echo "<p>".$obj->getCommentaire()."</p></article>";
+    }
+  ?>
+</aside>
 
 
 <footer class="footer">
+
   <!-- lien github -->
   <div class="footer-col footer-github">
     <a href="https://github.com/annaayumi/SAE301_Developpement-application"
@@ -94,10 +121,10 @@
         <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
       </svg>
     </a>
-    
-   <div>
+
+    <div>
       <strong>GitHub</strong><br>
-      Address : 122 Rue Paul Armangot,<br>
+      Adress : 122 Rue Paul Armangot,<br>
       94400 Vitry-sur-Seine
     </div>
   </div>
@@ -132,9 +159,9 @@
 
 </footer>
 
+<!-- Copyright !-->
 <div class="copyright">
   © Gl'eaubal 2025-2026 All rights reserved | Legal mentions
 </div>
-
 </body>
 </html>

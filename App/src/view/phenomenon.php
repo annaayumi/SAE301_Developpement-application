@@ -28,7 +28,7 @@
     <ul class="glass-menu">
       <li>
         <i class="fa fa-home"></i>
-        <a href="router.php?action=UsePage_index&lang=English">Welcome</a>
+        <a href="router.php?action=UsePage_index&lang=English">Home</a>
       </li>
       <li>
         <i class="fa fa-map"></i>

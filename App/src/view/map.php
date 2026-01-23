@@ -30,7 +30,7 @@
     <ul class="glass-menu">
       <li>
         <i class="fa fa-home"></i>
-        <a href="router.php?action=UsePage_index&lang=English">Welcome</a>
+        <a href="router.php?action=UsePage_index&lang=English">Home</a>
       </li>
       <li class="active">
         <i class="fa fa-map"></i>
@@ -59,7 +59,7 @@
       
     <!-- PERIODE -->
   <button type="button" class="type" onclick="toggleFilter('periodeHide','periodeButtonCheckbox')">
-    Période (Mois / Année) 
+    Period (Month / Year) 
     <input type="checkbox" id="periodeButtonCheckbox" name="date_checkbox" checked>
   </button>
     <div class="periode" id="periode">
@@ -78,7 +78,7 @@
       <div class="types">
         
     <button type="button"  class="type " onclick="toggleFilter('uniteHide','uniteButtonCheckbox')">
-      Type de mesure 
+      Type of measure 
       <input type="checkbox" id="uniteButtonCheckbox" name="unite_checkbox" checked>
     </button>
 
@@ -87,17 +87,17 @@
 
           <label class="option">
             <input type="checkbox" name="unite[]" value="PSAL">
-            <span>Salinité</span>
+            <span>Salinity</span>
           </label>
 
           <label class="option">
             <input type="checkbox" name="unite[]" value="CHLT">
-            <span>Chlorophylle A</span>
+            <span>Chlorophyll A</span>
           </label>
 
           <label class="option">
             <input type="checkbox" name="unite[]" value="TEMP">
-            <span>Température</span>
+            <span>Temperature</span>
           </label>
 
           </div>
@@ -108,7 +108,7 @@
     <div class="types">
       
     <button type="button" id="bouton_periode" class="type" onclick="toggleFilter('typeplateformeHide','plateformeButtonCheckbox')">
-      Type de plateforme 
+      Platform type 
       <input type="checkbox" id="plateformeButtonCheckbox" name="plateforme_checkbox" checked>
     </button>
 
@@ -185,7 +185,7 @@
       <input  type="submit" value="Appliquer">
 
       <input type="hidden" name="action" value="UsePage_carte">
-      <input type="hidden" name="lang" value="Francais">
+      <input type="hidden" name="lang" value="English">
 
 
     </form>
@@ -225,13 +225,13 @@
     
     echo "
     L.marker([".$obj->getLatitude().",".$obj->getLongitude()."])
-    .bindPopup(`<strong>Valeur :</strong> ".$obj->getValeur()." ". $tempUnite."<br>
+    .bindPopup(`<strong>Value :</strong> ".$obj->getValeur()." ". $tempUnite."<br>
     <strong>Date :</strong> ".$obj->getDate()."<br>
-    <strong>Id plateforme :</strong>". $obj->getIdPlateforme()."<br>
-    <strong>Type plateforme :</strong> ".$obj->getPlateformeType()."<br>
+    <strong>Platform ID :</strong>". $obj->getIdPlateforme()."<br>
+    <strong>Platform type :</strong> ".$obj->getPlateformeType()."<br>
     <strong>Description :</strong> ".$obj->getPlateformeTypeDesc()."<br>
-    <strong>Graphique de la plateforme :</strong>
-    <a href=\"router.php?action=UsePage_graphique&lang=Francais&idPlateforme=".$obj->getIdPlateforme()."\">
+    <strong>Platform graphic :</strong>
+    <a href=\"router.php?action=UsePage_graphique&lang=English&idPlateforme=".$obj->getIdPlateforme()."\">
     Voir le graphique
     </a>
     `).addTo(map);";
@@ -312,8 +312,8 @@
       const mois = document.getElementById("mois");
 
       const moisNoms = [
-        "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
-        "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+        "January","February","March","April","May","June",
+        "July","August","September","October,","November","December"
       ];
 
       // afficher année 

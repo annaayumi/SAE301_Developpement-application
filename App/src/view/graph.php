@@ -5,7 +5,7 @@ $rows = $series ?? [];
 $byPeriod = [];
 
 foreach ($rows as $r) {
-  $p = $r['periode']; 
+  $p = $r['periode'];
   $u = $r['unite'];
   $m = (float)$r['moyenne'];
 
@@ -30,16 +30,15 @@ foreach ($byPeriod as $vals) {
 
 ?>
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="utf-8">
-  <title>Graph – <?= htmlspecialchars($idPlateforme) ?></title>
+  <title>Graph - <?= htmlspecialchars($idPlateforme) ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="../assets/css/graphique.css">
 </head>
 <body>
-
 <h1>Platform <?= htmlspecialchars($idPlateforme) ?></h1>
 
 <div class="graph-container">
@@ -52,16 +51,16 @@ new Chart(document.getElementById('chart'), {
   data: {
     labels: <?= json_encode($labels) ?>,
     datasets: [
-      { label: "Temperature (°C)", data: <?= json_encode($temp) ?>, spanGaps: true },
-      { label: "Salinity (psu)", data: <?= json_encode($psal) ?>, spanGaps: true },
-      { label: "Chlorophyll A (mg/m³)", data: <?= json_encode($chlt) ?>, spanGaps: true }
+      { label: "Température (°C)", data: <?= json_encode($temp) ?>, spanGaps: true },
+      { label: "Salinité (psu)", data: <?= json_encode($psal) ?>, spanGaps: true },
+      { label: "Chlorophylle A (mg/m³)", data: <?= json_encode($chlt) ?>, spanGaps: true },
     ]
   },
-  options: {
+ options: {
   responsive: true,
   maintainAspectRatio: false,
   interaction: { mode: 'index', intersect: false },
- plugins: {
+  plugins: {
     legend: {
     position: 'bottom',
     labels: {
@@ -103,6 +102,5 @@ new Chart(document.getElementById('chart'), {
 }
 });
 </script>
-
 </body>
 </html>

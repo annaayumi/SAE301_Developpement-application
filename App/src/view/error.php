@@ -11,7 +11,7 @@
 
   <h1>ERROR 404</h1>
   <div class="mini_jeu">
-    <div id="timer">Temps : 40s</div>
+    <div id="timer">Temps / Time : 40s</div>
     <div class="score_game">
       <span id="score">0</span> / 404
     </div>
@@ -31,7 +31,7 @@
       </p>
 
       <a href="router.php?action=UsePage_index&lang=Francais" class="bouton_retour">
-        Retour au site
+        Retour au site / Back to website
       </a>
     </div>
   </div>

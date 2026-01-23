@@ -29,19 +29,19 @@
     <ul class="glass-menu">
       <li>
         <i class="fa fa-home"></i>
-        <a href="router.php?action=UsePage_index&lang=Francais">Welcome</a>
+        <a href="router.php?action=UsePage_index&lang=English">Home</a>
       </li>
       <li>
         <i class="fa fa-map"></i>
-        <a href="router.php?action=UsePage_carte&lang=Francais">Map</a>
+        <a href="router.php?action=UsePage_carte&lang=English">Map</a>
       </li>
       <li class="active">
         <i class="fa fa-info-circle"></i>
-        <a href="router.php?action=UsePage_apropos&lang=Francais">About</a>
+        <a href="router.php?action=UsePage_apropos&lang=English">About</a>
       </li>
       <li>
         <i class="fa fa-envelope"></i>
-        <a href="router.php?action=UsePage_contact&lang=Francais">Contact</a>
+        <a href="router.php?action=UsePage_contact&lang=English">Contact</a>
       </li>
     </ul>
   </nav>
@@ -55,24 +55,24 @@
 
 <!-- a mettre en anglais !-->
   <section class="intro">
-    <h1>Nos missions</h1>
+    <h1>Our missions</h1>
     <p>
-      GLEAUBAL est un projet pédagogique visant à rendre les données climatiques marines
-      accessibles, compréhensibles et utiles pour tous.
+      GLEAUBAL is an educational project aimed at making marine climate data
+      accessible, understandable, and useful to everyone.
 
-      Le site est accessible à tous et est destiné à ceux qui souhaitent consulter les données 
-      par simple curiosité et aux utilisateurs avancés dans le domaine comme les scientifiques 
-      et les chercheurs qui souhaitent télécharger ces données pour faire des études sur celles-ci 
-      et/ou travailler avec ce support pour divers projets.
+      The site is accessible to everyone and is intended for those who wish to consult the data 
+      out of simple curiosity and for advanced users in the field, such as scientists 
+      and researchers who wish to download this data to study it 
+      and/or work with it for various projects.
     </p>
   
     <div class="section">
-      <h3>Développer des compétences à travers cette SAE</h3>
+      <h3>  Developing skills through this SAE</h3>
       <p>
-        Réaliser un développement d'application, Optimiser des applications,
-        Administrer des systèmes informatiques communicants complexes,
-        Gérer des données de l'information, Conduire un projet, 
-        Collaborer au sein d'une équipe informatique.
+        Develop applications, optimize applications,
+        Administer complex communication IT systems,
+        Manage information data, Lead projects, 
+        Collaborate within an IT team.
       </p>
     </div>
 
@@ -95,7 +95,7 @@
 
     <div>
       <strong>GitHub</strong><br>
-      Address : 122 Rue Paul Armangot,<br>
+      Adress : 122 Rue Paul Armangot,<br>
       94400 Vitry-sur-Seine
     </div>
   </div>
@@ -130,6 +130,7 @@
 
 </footer>
 
+<!-- Copyright !-->
 <div class="copyright">
   © Gl'eaubal 2025-2026 All rights reserved | Legal mentions
 </div>

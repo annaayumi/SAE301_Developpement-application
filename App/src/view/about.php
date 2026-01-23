@@ -13,13 +13,13 @@
 </head>
 
 <body>
-<!-- HEADER -->
-<header class="header">
-  <div class="lang">
-    <a href="router.php?action=UsePage_apropos&lang=Francais">
-    🌐 <span>FR</span>
-    </a>
-  </div>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="lang">
+      <a href="router.php?action=UsePage_apropos&lang=Francais">
+      🌐 <span>FR</span>
+      </a>
+    </div>
 
   <button class="burger" aria-label="Menu">
     ☰
@@ -27,17 +27,17 @@
 
   <nav class="glass-nav">
     <ul class="glass-menu">
-      <li class="active">
+      <li>
         <i class="fa fa-home"></i>
-        <a href="router.php?action=UsePage_index&lang=English">Welcome</a>
+        <a href="router.php?action=UsePage_index&lang=English">Home</a>
       </li>
       <li>
         <i class="fa fa-map"></i>
         <a href="router.php?action=UsePage_carte&lang=English">Map</a>
       </li>
-      <li>
+      <li class="active">
         <i class="fa fa-info-circle"></i>
-        <a href="router.php?action=UsePage_apropos&lang=English" class="active">About</a>
+        <a href="router.php?action=UsePage_apropos&lang=English">About</a>
       </li>
       <li>
         <i class="fa fa-envelope"></i>
@@ -47,24 +47,24 @@
   </nav>
 </header>
 
-<!-- CONTENU -->
+<!-- Contenu -->
 <section class="apropos">
 
   <div class="cards">
 
     <div class="card">
-      <p>The main phenomenon linked to global warming</p>
+      <p>The main phenomena linked to global warming</p>
       <a href="router.php?action=UsePage_phenomenes&lang=English" class="arrow">→</a>
 
     </div>
 
     <div class="card">
-      <p>The different sources of scientific data and their proposed format</p>
+      <p>The various sources of scientific data and their proposed formats</p>
       <a href="router.php?action=UsePage_sources&lang=English" class="arrow">→</a>
     </div>
 
     <div class="card">
-      <p>Our missions and goals we have set for ourselves in this project</p>
+      <p>Our missions and the objectives we have set ourselves in this project</p>
       <a href="router.php?action=UsePage_missions&lang=English" class="arrow">→</a>
     </div>
 
@@ -88,7 +88,7 @@
 
     <div>
       <strong>GitHub</strong><br>
-      Address : 122 Rue Paul Armangot,<br>
+      Adress : 122 Rue Paul Armangot,<br>
       94400 Vitry-sur-Seine
     </div>
   </div>
@@ -123,6 +123,7 @@
 
 </footer>
 
+<!-- Copyright !-->
 <div class="copyright">
   © Gl'eaubal 2025-2026 All rights reserved | Legal mentions
 </div>

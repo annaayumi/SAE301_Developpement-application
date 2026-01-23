@@ -1,21 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>Welcome</title>
+  <meta charset="UTF-8">
+  <title>Welcome</title>
 
-<link rel="stylesheet" href="../assets/css/index.css">
-<link rel="stylesheet" href="../assets/css/main.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="../assets/js/menu_burger.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../assets/css/index.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="../assets/js/menu_burger.js"></script>
 </head>
 
 <body>
 <!-- HEADER -->
 <header class="header">
   <div class="left">
-    <!-- logo ici -->
+    <img src="../assets/img/logo.svg" alt="Logo GL'EAUBAL" class="logo">
   </div>
   <div class="lang">
     <a href="router.php?action=UsePage_index&lang=Francais">
@@ -27,13 +28,26 @@
     ☰
   </button>
 
-  <nav class="nav">
-    <a href="router.php?action=UsePage_index&lang=English" class="active">Welcome</a>
-    <a href="router.php?action=UsePage_carte&lang=English">Map</a>
-    <a href="router.php?action=UsePage_apropos&lang=English">About</a>
-    <a href="router.php?action=UsePage_contact&lang=English">Contact</a>
+  <nav class="glass-nav">
+    <ul class="glass-menu">
+      <li class="active">
+        <i class="fa fa-home"></i>
+        <a href="router.php?action=UsePage_index&lang=English">Home</a>
+      </li>
+      <li>
+        <i class="fa fa-map"></i>
+        <a href="router.php?action=UsePage_carte&lang=English">Map</a>
+      </li>
+      <li>
+        <i class="fa fa-info-circle"></i>
+        <a href="router.php?action=UsePage_apropos&lang=English">About</a>
+      </li>
+      <li>
+        <i class="fa fa-envelope"></i>
+        <a href="router.php?action=UsePage_contact&lang=English">Contact</a>
+      </li>
+    </ul>
   </nav>
-
 </header>
 
 
@@ -104,12 +118,12 @@
 
 <!-- DONNEES TELECHARGEES !-->
 <section class="downloads">
-  <h2>Données téléchargeables</h2>  <!-- a changer en anglais -->
+  <h2>Données téléchargeables</h2>  <!-- a changer en anglais (je suis pas sur) -->
   <div class="downloads-grid">
     <div class="download-card">
       <h3>Temperature</h3>
       <p>Ocean surface temperature data</p>
-      <a href="../downloads/" download class="bouton-download">
+      <a href="../assets/downloads/" class="bouton-download">
         Download CSV
       </a>
     </div>
@@ -117,7 +131,7 @@
     <div class="download-card">
       <h3>Chlorophyll A</h3>
       <p>Indicator of phytoplankton concentration</p>
-      <a href="../downloads/" download class="bouton-download">
+      <a href="../assets/downloads/" class="bouton-download">
         Download CSV 
       </a>
     </div>
@@ -125,7 +139,7 @@
     <div class="download-card">
       <h3>Salinity</h3>
       <p>Measurements of water salinity</p>
-      <a href="../downloads/" download class="bouton-download">
+      <a href="../assets/downloads/" class="bouton-download">
         Download CSV 
       </a>
     </div>

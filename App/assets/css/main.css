@@ -76,7 +76,8 @@ html, body {
 .glass-nav {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .glass-menu {
@@ -117,7 +118,6 @@ html, body {
   box-shadow: 0 0 15px rgba(63, 201, 192, 0.4);
 }
 
-/* ACTIVE */
 .glass-menu li.active {
   background: linear-gradient(135deg, #3fc9c0, #1c6f6b);
   box-shadow: 0 0 18px rgba(63, 201, 192, 0.6);
@@ -187,6 +187,7 @@ html, body {
   color: white;
 }
 
+/* menu burger */
 .burger {
   display: none;
   position: absolute;
@@ -203,13 +204,12 @@ html, body {
   background: none;
   border: none;
   padding: 0;
-
-  cursor: pointer;
   transition: opacity 0.2s ease;
 
   z-index: 1001;
 }
 
+/* responsive */
 @media (max-width: 768px) {
 
   /* afficher le burger */
@@ -229,14 +229,20 @@ html, body {
     display: none;
   }
 
-  /* transformer le nav desktop en menu mobile */
+  /* nav en responsive */
   .glass-nav {
     position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.95);
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 50vh;
+    width: 100%;
+
+    background: rgba(20, 20, 20, 0.45);
     backdrop-filter: blur(12px);
 
-    transform: translateX(100%);
+    transform: translateY(-100%);
     transition: transform 0.3s ease;
 
     z-index: 1000;
@@ -244,7 +250,7 @@ html, body {
 
   /* nav ouvert */
   .glass-nav.active {
-    transform: translateX(0);
+    transform: translateY(0);
   }
 
   /* menu en colonne */
@@ -254,12 +260,14 @@ html, body {
     justify-content: center;
     align-items: center;
     gap: 30px;
+    border-radius: 0;
   }
 
   .glass-menu li a {
     font-size: 22px;
   }
 
+  /* footer */
   .footer {
     grid-template-columns: 1fr;
     gap: 30px;

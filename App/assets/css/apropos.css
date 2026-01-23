@@ -120,51 +120,39 @@ footer a:hover {
   color: white;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
-  /* menu */
-  .burger {
-    display: none;
+
+  .apropos {
+    padding-top: 130px;
+    padding-bottom: 130px;
+  }
+
+  .cards {
     flex-direction: column;
-    gap: 6px;
-    cursor: pointer;
-    margin-left: 20px;
+    gap: 24px;
+    padding: 0 16px;
   }
 
-  .burger span {
-    width: 28px;
-    height: 3px;
-    background: white;
-    border-radius: 2px;
+  .card {
+    width: 100%;
+    min-height: auto;
+    font-size: 16px;
+    padding: 20px;
+    border-radius: 18px;
   }
 
-  .burger {
-    z-index: 3000;
+  .arrow {
+    width: auto;
+    height: auto;
+    border: none;
+    border-radius: 0;
+    bottom: 16px;
+    right: 16px;
+    font-size: 20px;
+    opacity: 0.7;
   }
 
-  .nav {
-    position: fixed;
-    top: 80px;
-    right: 0;
-    width: 220px;
-    height: calc(100vh - 80px);
-    background: rgba(0,0,0,0.97);
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 30px 20px;
-    gap: 25px;
-
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
+  .arrow:hover {
+    opacity: 1;
   }
-
-  .nav.active {
-    transform: translateX(0);
-  }
-
-  .footer {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
 }

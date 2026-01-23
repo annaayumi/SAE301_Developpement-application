@@ -50,7 +50,6 @@
       </li>
     </ul>
   </nav>
-</div>
 </header>
 
 <!-- SECTION ACCUEIL -->
@@ -126,7 +125,7 @@
     <div class="download-card">
       <h3>Température</h3>
       <p>Données de température de surface des océans</p>
-      <a href="../downloads/" download class="bouton-download">
+      <a href="../assets/downloads/temp.csv" class="bouton-download">
         Télécharger CSV
       </a>
     </div>
@@ -134,7 +133,7 @@
     <div class="download-card">
       <h3>Chlorophylle A</h3>
       <p>Indicateur de la concentration de phytoplancton</p>
-      <a href="../downloads/" download class="bouton-download">
+      <a href="../assets/downloads/" class="bouton-download">
         Télécharger CSV 
       </a>
     </div>
@@ -142,7 +141,7 @@
     <div class="download-card">
       <h3>Salinité</h3>
       <p>Mesures de la salinité des eaux</p>
-      <a href="../downloads/" download class="bouton-download">
+      <a href="../assets/downloads/" class="bouton-download">
         Télécharger CSV 
       </a>
     </div>

@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le : lun. 12 jan. 2026 à 09:49
--- Version du serveur : 9.1.0
--- Version de PHP : 8.3.14
+-- Hôte : 127.0.0.1
+-- Généré le : ven. 23 jan. 2026 à 09:54
+-- Version du serveur : 10.4.32-MariaDB
+-- Version de PHP : 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,15 +24,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `avis`
+--
+
+CREATE TABLE `avis` (
+  `id` int(11) NOT NULL,
+  `pseudonyme` varchar(50) NOT NULL,
+  `commentaire` text NOT NULL,
+  `note` int(11) NOT NULL CHECK (`note` between 1 and 5),
+  `created_at` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `mesure`
 --
 
-DROP TABLE IF EXISTS `mesure`;
-CREATE TABLE IF NOT EXISTS `mesure` (
-  `id_mesure` int NOT NULL AUTO_INCREMENT,
-  `unite` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`id_mesure`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `mesure` (
+  `id_mesure` int(11) NOT NULL,
+  `unite` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `mesure`
@@ -49,12 +61,9 @@ INSERT INTO `mesure` (`id_mesure`, `unite`) VALUES
 -- Structure de la table `plateforme`
 --
 
-DROP TABLE IF EXISTS `plateforme`;
-CREATE TABLE IF NOT EXISTS `plateforme` (
-  `id` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `id_type` int NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id_type` (`id_type`)
+CREATE TABLE `plateforme` (
+  `id` varchar(255) NOT NULL,
+  `id_type` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -2080,19 +2089,15 @@ INSERT INTO `plateforme` (`id`, `id_type`) VALUES
 -- Structure de la table `releves`
 --
 
-DROP TABLE IF EXISTS `releves`;
-CREATE TABLE IF NOT EXISTS `releves` (
-  `id_releve` int NOT NULL AUTO_INCREMENT,
-  `id_mesure` int NOT NULL,
-  `id_plateforme` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `latitude` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `longitude` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `date` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `valeur` float NOT NULL,
-  PRIMARY KEY (`id_releve`),
-  KEY `id_mesure` (`id_mesure`),
-  KEY `id_plateforme` (`id_plateforme`)
-) ENGINE=InnoDB AUTO_INCREMENT=33189 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `releves` (
+  `id_releve` int(11) NOT NULL,
+  `id_mesure` int(11) NOT NULL,
+  `id_plateforme` varchar(255) NOT NULL,
+  `latitude` varchar(255) NOT NULL,
+  `longitude` varchar(255) NOT NULL,
+  `date` varchar(255) NOT NULL,
+  `valeur` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `releves`
@@ -35334,13 +35339,11 @@ INSERT INTO `releves` (`id_releve`, `id_mesure`, `id_plateforme`, `latitude`, `l
 -- Structure de la table `type_plateforme`
 --
 
-DROP TABLE IF EXISTS `type_plateforme`;
-CREATE TABLE IF NOT EXISTS `type_plateforme` (
-  `id_type` int NOT NULL AUTO_INCREMENT,
-  `type` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `desc` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`id_type`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `type_plateforme` (
+  `id_type` int(11) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `desc` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `type_plateforme`
@@ -35362,6 +35365,71 @@ INSERT INTO `type_plateforme` (`id_type`, `type`, `desc`) VALUES
 (13, 'XB', 'Sondes de temperature jetables lancees depuis des navires en mouvement (Expendable Bathythermographs)');
 
 --
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `avis`
+--
+ALTER TABLE `avis`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `mesure`
+--
+ALTER TABLE `mesure`
+  ADD PRIMARY KEY (`id_mesure`);
+
+--
+-- Index pour la table `plateforme`
+--
+ALTER TABLE `plateforme`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_type` (`id_type`);
+
+--
+-- Index pour la table `releves`
+--
+ALTER TABLE `releves`
+  ADD PRIMARY KEY (`id_releve`),
+  ADD KEY `id_mesure` (`id_mesure`),
+  ADD KEY `id_plateforme` (`id_plateforme`);
+
+--
+-- Index pour la table `type_plateforme`
+--
+ALTER TABLE `type_plateforme`
+  ADD PRIMARY KEY (`id_type`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `avis`
+--
+ALTER TABLE `avis`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `mesure`
+--
+ALTER TABLE `mesure`
+  MODIFY `id_mesure` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT pour la table `releves`
+--
+ALTER TABLE `releves`
+  MODIFY `id_releve` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33189;
+
+--
+-- AUTO_INCREMENT pour la table `type_plateforme`
+--
+ALTER TABLE `type_plateforme`
+  MODIFY `id_type` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
 -- Contraintes pour les tables déchargées
 --
 
@@ -35369,13 +35437,13 @@ INSERT INTO `type_plateforme` (`id_type`, `type`, `desc`) VALUES
 -- Contraintes pour la table `plateforme`
 --
 ALTER TABLE `plateforme`
-  ADD CONSTRAINT `plateforme_ibfk_1` FOREIGN KEY (`id_type`) REFERENCES `type_plateforme` (`id_type`) ON DELETE RESTRICT ON UPDATE CASCADE;
+  ADD CONSTRAINT `plateforme_ibfk_1` FOREIGN KEY (`id_type`) REFERENCES `type_plateforme` (`id_type`) ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `releves`
 --
 ALTER TABLE `releves`
-  ADD CONSTRAINT `releves_ibfk_1` FOREIGN KEY (`id_mesure`) REFERENCES `mesure` (`id_mesure`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  ADD CONSTRAINT `releves_ibfk_1` FOREIGN KEY (`id_mesure`) REFERENCES `mesure` (`id_mesure`) ON UPDATE CASCADE,
   ADD CONSTRAINT `releves_ibfk_2` FOREIGN KEY (`id_plateforme`) REFERENCES `plateforme` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 

@@ -88,8 +88,9 @@ body {
   transform: translateY(-2px);
 }
 
+
 /* RESPONSIVE */
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .contact-content {
     grid-template-columns: 1fr;
     gap: 50px;

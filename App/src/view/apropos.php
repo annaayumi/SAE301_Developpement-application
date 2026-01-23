@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>A propos</title>
+  <meta charset="UTF-8">
+  <title>A propos</title>
 
-<link rel="stylesheet" href="../assets/css/apropos.css">
-<link rel="stylesheet" href="../assets/css/main.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="../assets/js/menu_burger.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../assets/css/apropos.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="../assets/js/menu_burger.js"></script>
 </head>
 
 <body>
@@ -47,10 +48,9 @@
       </li>
     </ul>
   </nav>
-</div>
 </header>
 
-<!-- CONTENU -->
+<!-- Contenu -->
 <section class="apropos">
 
   <div class="cards">
@@ -126,6 +126,7 @@
 
 </footer>
 
+<!-- Copyright !-->
 <div class="copyright">
   © Gl'eaubal 2025-2026 Tous droits réservés | Mentions légales
 </div>

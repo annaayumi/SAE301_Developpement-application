@@ -5,6 +5,7 @@
   <title>Carte</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <link rel="stylesheet" href="../assets/css/carte.css">
   <link rel="stylesheet" href="../assets/css/main.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
@@ -58,8 +59,8 @@
     <form method="get">
 
       <div class="titre">Filtres</div>
+      
     <!-- PERIODE -->
-    
   <button type="button" class="type" onclick="toggleFilter('periodeHide','periodeButtonCheckbox')">
     Période (Mois / Année) 
     <input type="checkbox" id="periodeButtonCheckbox" name="date_checkbox" checked>

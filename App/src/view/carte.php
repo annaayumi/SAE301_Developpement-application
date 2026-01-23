@@ -246,38 +246,8 @@
   ?>
 
 
-
+  <script src="../assets/js/fonction_carte.js" ></script>
   <script>
-
-      //filtres
-      const sliderAnnee = document.getElementById("sliderAnnee");
-      const sliderMois = document.getElementById("sliderMois");
-      const annee = document.getElementById("annee");
-      const mois = document.getElementById("mois");
-
-      const moisNoms = [
-        "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
-        "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
-      ];
-
-      function toggleFilter(filterID,checkboxID){
-
-        targetFilter = document.getElementById(filterID)
-        targetCheckbox = document.getElementById(checkboxID)
-        console.log(targetFilter);
-
-        if(targetFilter.getAttribute("hidden")){
-          targetFilter.removeAttribute("hidden")
-          targetCheckbox.removeAttribute("hidden")
-          targetCheckbox.removeAttribute("disabled")
-        }
-        else{
-          targetFilter.setAttribute("hidden","TRUE")
-          targetCheckbox.setAttribute("hidden","TRUE")
-          targetCheckbox.setAttribute("disabled","TRUE")
-        }
-      }
-
       function NoResetForm(){
 
         const sliderAnnee = document.getElementById("sliderAnnee");
@@ -340,8 +310,18 @@
           }
         })
       }
-      
 
+
+      //filtres
+      const sliderAnnee = document.getElementById("sliderAnnee");
+      const sliderMois = document.getElementById("sliderMois");
+      const annee = document.getElementById("annee");
+      const mois = document.getElementById("mois");
+
+      const moisNoms = [
+        "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+        "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+      ];
 
       // afficher année 
       sliderAnnee.addEventListener("input", () => {

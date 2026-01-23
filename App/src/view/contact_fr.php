@@ -92,12 +92,12 @@
 
 <aside>
   <?php
-    foreach  ($dataSet ?? [] as $obj) {
+    foreach  ($liste_avis as $obj) {
       echo "<b>".$obj->getPseudo()."</b>";
       echo "<p>".$obj->getCreated_at()."</p>";
 
       $star_counter = "";
-      foreach($obj->getNote() as $k){
+      for($i = 0; $obj->getNote() > $i; $i++){
         $star_counter = $star_counter."★";
       }
 

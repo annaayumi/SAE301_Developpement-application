@@ -37,7 +37,7 @@
 
     // Use page Contact
 
-    if($action == 'UsePage_contact'){
+    if($action == 'UsePage_contact' and isset($_GET['pseudo'])){
 
         if(isset($_GET['pseudo'])){
             $pseudo = $_GET['pseudo'];
@@ -46,11 +46,17 @@
 
             DatabaseConnection::insertAvis($pseudo,$commentaire,$note);
 
-            $liste_avis = DatabaseConnection::getAvis();
+            
         }
 
-        if($lang == "Francais"){Controller::UsePage('contact_fr.php',$liste_avis ?? []);}
-        if($lang == "English"){Controller::UsePage('contact_en.php',$liste_avis ?? []);}
+        if($lang == "Francais"){Controller::UsePage('index_fr.php');}
+        if($lang == "English"){Controller::UsePage('index_en.php');}
+    }
+    else{
+        $liste_avis = DatabaseConnection::getAvis();
+        if($lang == "Francais"){Controller::UsePage('contact_fr.php',['liste_avis' => $liste_avis]);}
+        if($lang == "English"){Controller::UsePage('contact_en.php',['liste_avis' => $liste_avis]);}
+
     }
 
  

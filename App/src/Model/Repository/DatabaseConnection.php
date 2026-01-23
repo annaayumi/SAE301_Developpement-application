@@ -136,10 +136,7 @@ class DatabaseConnection {
                 $count++;
             }
         }
-        //print_r($unite);
-        //print_r($plateforme);
 
-        //$PdoStatement->debugDumpParams();
 
         // exec
         $PdoStatement->execute();
@@ -190,9 +187,10 @@ class DatabaseConnection {
     public static function insertAvis(string $pseudo, string $commentaire, int $note ): void {
 
         $pdo = DatabaseConnection::getPdo();
+        
 
         $PdoStatement = $pdo->prepare(
-            "INSERT INTO avis (pseudo, commentaire, note)
+            "INSERT INTO avis (pseudonyme, commentaire, note)
              VALUES (:pseudo, :commentaire, :note)"
         );
 
@@ -204,18 +202,21 @@ class DatabaseConnection {
     }
 
     public static function getAvis(): array {
-        $pdo = DatabaseConnection::getPDO();
-        $query = $pdo->query("SELECT * FROM avis ORDER BY created_at DESC")->fetchAll(PDO::FETCH_ASSOC);
+
+        $query = DatabaseConnection::getPdo()->query("SELECT * FROM avis ORDER BY created_at DESC");
+        print_r($query);
+        $DataSet = [];
+
         foreach ($query as $row ){
             $tempObj = new Avis(
                     $row['id'], 
-                    $row['pseudo'], 
+                    $row['pseudonyme'], 
                     $row['commentaire'], 
                     $row['note'], 
                     $row['created_at']);
-
             $DataSet[] = $tempObj;
         }
+        
         return $DataSet;
     }
 

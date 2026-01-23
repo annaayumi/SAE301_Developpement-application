@@ -60,6 +60,10 @@
         if(isset($_GET['unite']) or isset($_GET['date']) or isset($_GET['plateforme'])){
             $dataSet = DatabaseConnection::doQuery_with_filters($date ?? "",$unite ?? [],$plateforme ?? []);
         }
+        
+        if($lang == "Francais"){Controller::UsePage('carte.php',['dataSet' => $dataSet ?? NULL]);}
+        if($lang == "English"){Controller::UsePage('map.php',['dataSet' => $dataSet ?? NULL]);}
+       
     }
     
 

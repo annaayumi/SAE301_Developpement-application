@@ -71,10 +71,6 @@ class Releve /*extends AbstractDataObject */{
         $this->latitude = $latitude;
         $this->longitude = $longitude;
         $this->date = $date;
-        $this->valeur = $valeur;
-
-
-   
+        $this->valeur = $valeur;  
     }
 }
-    

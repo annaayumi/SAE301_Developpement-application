@@ -160,8 +160,9 @@ class DatabaseConnection {
   
         }
         return $DataSet;
-       
+        $PdoStatement = NULL;
     }
+
 
     public static function doQuery_avg_by_year_for_platform(string $idPlateforme): array {
     $pdo = DatabaseConnection::getPdo();
@@ -181,17 +182,29 @@ class DatabaseConnection {
     $PdoStatement = $pdo->prepare($sql);
     $PdoStatement->execute([':idp' => $idPlateforme]);
     return $PdoStatement->fetchAll(PDO::FETCH_ASSOC);
+    $PdoStatement = NULL;
+    $sql = NULL;
+
     }
 
 
-    public static function insertAvis(string $pseudo, string $commentaire, int $note ): void {
+    public static function insertAvis(string $pseudo, string $commentaire, int $note ) {
+
+        foreach(DatabaseConnection::getAvis() as $row){
+            if($row->getPseudo() == $pseudo){
+                
+                $pdo = DatabaseConnection::getPdo();
+                $PdoStatement = $pdo->query(
+                    "DELETE FROM avis where id = ".$row->getId().";"
+                );
+            }
+        }
 
         $pdo = DatabaseConnection::getPdo();
-        
-
+    
         $PdoStatement = $pdo->prepare(
             "INSERT INTO avis (pseudonyme, commentaire, note)
-             VALUES (:pseudo, :commentaire, :note)"
+            VALUES (:pseudo, :commentaire, :note)"
         );
 
         $PdoStatement->bindValue(":pseudo",$pseudo, PDO::PARAM_STR);
@@ -199,12 +212,15 @@ class DatabaseConnection {
         $PdoStatement->bindValue(":note",$note, PDO::PARAM_INT);
 
         $PdoStatement->execute();
+
+        $pdo = NULL;
+        
+
     }
 
     public static function getAvis(): array {
 
         $query = DatabaseConnection::getPdo()->query("SELECT * FROM avis ORDER BY created_at DESC");
-        print_r($query);
         $DataSet = [];
 
         foreach ($query as $row ){
@@ -216,8 +232,11 @@ class DatabaseConnection {
                     $row['created_at']);
             $DataSet[] = $tempObj;
         }
-        
+
+        $query = NULL;
+
         return $DataSet;
+        
     }
 
 }

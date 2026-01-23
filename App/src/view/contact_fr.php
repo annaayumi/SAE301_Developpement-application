@@ -50,7 +50,7 @@
 <section class="avis">
   <h2>Donner votre avis</h2>
 
-  <form method="get" class="avis-form">
+  <form method="POST" class="avis-form">
     
     <input type="text" name="pseudo" placeholder="Votre pseudo" required>
 
@@ -58,30 +58,30 @@
 
     <!-- étoiles -->
     <div class="stars">
-      <input type="radio" id="star1" name="note" value="1" required>
-      <label for="star1">★</label>
-
-      <input type="radio" id="star2" name="note" value="2">
-      <label for="star2">★</label>
-
-      <input type="radio" id="star3" name="note" value="3">
-      <label for="star3">★</label>
+      <input type="radio" id="star5" name="note" value="5" required>
+      <label for="star5">★</label>
 
       <input type="radio" id="star4" name="note" value="4">
       <label for="star4">★</label>
 
-      <input type="radio" id="star5" name="note" value="5">
-      <label for="star5">★</label>
+      <input type="radio" id="star3" name="note" value="3">
+      <label for="star3">★</label>
+
+      <input type="radio" id="star2" name="note" value="2">
+      <label for="star2">★</label>
+
+      <input type="radio" id="star1" name="note" value="1">
+      <label for="star1">★</label>
     </div>
     <!-- submit -->
     <input id="submit_input" type="submit" value="Envoyer" style="border-bottom: 0px;">
-    
 
     <input type="hidden" name="action" value="UsePage_contact">
     <input type="hidden" name="lang" value="Francais">
   </form>
   <?php
-    if(isset($_GET['pseudo'])){
+
+    if(isset($_POST['pseudo'])){
       echo "Votre avis à bien été soumis.";
     }
   ?>
@@ -90,8 +90,8 @@
 <aside>
   <?php
     foreach  ($liste_avis as $obj) {
-      echo "<b>".$obj->getPseudo()."</b>";
-      echo "<p>".$obj->getCreated_at()."</p>";
+      echo "<article><b>".$obj->getPseudo()."</b>";
+      echo "<p> Date : ".$obj->getCreated_at()."</p>";
 
       $star_counter = "";
       for($i = 0; $obj->getNote() > $i; $i++){
@@ -100,7 +100,7 @@
 
       echo "<p> Note : ".$star_counter."</p>";
 
-      echo "<p>".$obj->getCommentaire()."</p>";
+      echo "<p>".$obj->getCommentaire()."</p></article>";
     }
   ?>
 </aside>

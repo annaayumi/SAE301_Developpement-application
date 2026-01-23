@@ -11,42 +11,61 @@
     $found = false;
 
 
-    $action = $_GET['action'] ?? 'UsePage_index';
-    $lang = $_GET['lang'] ?? 'Francais';
-
-    // verify checkbox toggle (filtres carte)
+    $action = $_GET['action'] ?? $_POST['action'] ??'UsePage_index';
+    $lang = $_GET['lang'] ?? $_POST['lang'] ??'Francais';
 
 
-    if(isset($_GET['date_checkbox'])){
-        
-        $date = "";
-        $annee = $_GET['annee'] ?? "";
-        $mois = $_GET['mois'] ?? "";
 
-        // annee + mois concat
-        if ((int)$mois < 10 and $mois != ""){
-            $mois = "0".$mois;
-            $date = $annee."-".$mois;
-        }
-    }
 
-    if(isset($_GET['unite_checkbox'])){
-        $unite = $_GET['unite'];
-    }
-    if(isset($_GET['plateforme_checkbox'])){
-        $plateforme = $_GET['plateforme'];
-    }
+    // Use page Contact
 
-    // page carte avec filtres
-    if ((isset($unite) or isset($date) or isset($plateforme)) and $action == 'UsePage_carte'){
+    if($action == 'UsePage_contact'){
         $found = true;
-        $dataSet = DatabaseConnection::doQuery_with_filters($date ?? "",$unite ?? [],$plateforme ?? []);
 
-        //var_dump($dataSet);
-        if($lang == "Francais"){Controller::UsePage('carte.php',['dataSet' => $dataSet]);}
-        if($lang == "English"){Controller::UsePage('map.php',['dataSet' => $dataSet]);}
-        
+        if(isset($_POST['pseudo'])){
+            $pseudo = $_POST['pseudo'];
+            $commentaire = $_POST['commentaire'];
+            $note = $_POST['note'];
+
+            DatabaseConnection::insertAvis($pseudo,$commentaire,$note);            
+        }
+        $liste_avis = DatabaseConnection::getAvis();
+        if($lang == "Francais"){Controller::UsePage('contact_fr.php',['liste_avis' => $liste_avis]);}
+        if($lang == "English"){Controller::UsePage('contact_en.php',['liste_avis' => $liste_avis]);}
     }
+
+
+    // Use page carte
+    if ($action == 'UsePage_carte'){
+        $found = true;
+        if(isset($_GET['date_checkbox'])){
+        
+            $date = "";
+            $annee = $_GET['annee'] ?? "";
+            $mois = $_GET['mois'] ?? "";
+
+            // annee + mois concat
+            if ((int)$mois < 10 and $mois != ""){
+                $mois = "0".$mois;
+                $date = $annee."-".$mois;
+            }
+        }
+
+        if(isset($_GET['unite_checkbox'])){
+            $unite = $_GET['unite'];
+        }
+        if(isset($_GET['plateforme_checkbox'])){
+            $plateforme = $_GET['plateforme'];
+        }
+        if(isset($_GET['unite']) or isset($_GET['date']) or isset($_GET['plateforme'])){
+            $dataSet = DatabaseConnection::doQuery_with_filters($date ?? "",$unite ?? [],$plateforme ?? []);
+        }
+        
+        if($lang == "Francais"){Controller::UsePage('carte.php',['dataSet' => $dataSet ?? NULL]);}
+        if($lang == "English"){Controller::UsePage('map.php',['dataSet' => $dataSet ?? NULL]);}
+       
+    }
+    
 
 
     // Use page Index
@@ -89,22 +108,6 @@
             if($lang == "English"){Controller::UsePage('missions_en.php');}
         }
 
-
-    // Use page Contact
-
-        if($action == 'UsePage_contact'){
-            $found = true;
-            if($lang == "Francais"){Controller::UsePage('contact_fr.php');}
-            if($lang == "English"){Controller::UsePage('contact_en.php');}
-        }
-
-        
-        if($action == 'UsePage_carte'){
-            $found = true;
-            if($lang == "Francais"){Controller::UsePage('carte.php');}
-            if($lang == "English"){Controller::UsePage('map.php');}
-
-        }
 
     // Use page donnees
 

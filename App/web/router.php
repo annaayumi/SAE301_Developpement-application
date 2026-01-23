@@ -52,10 +52,10 @@
         }
 
         if(isset($_GET['unite_checkbox'])){
-            $unite = $_GET['unite'];
+            $unite = $_GET['unite']??NULL;
         }
         if(isset($_GET['plateforme_checkbox'])){
-            $plateforme = $_GET['plateforme'];
+            $plateforme = $_GET['plateforme']??NULL;
         }
         if(isset($_GET['unite']) or isset($_GET['date']) or isset($_GET['plateforme'])){
             $dataSet = DatabaseConnection::doQuery_with_filters($date ?? "",$unite ?? [],$plateforme ?? []);

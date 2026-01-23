@@ -59,7 +59,7 @@
     </div>
 
     <div class="card">
-      <p>The different sources of scientific data and their proposed format</p>
+      <p>The different sources of scientific data</p>
       <a href="router.php?action=UsePage_sources&lang=English" class="arrow">→</a>
     </div>
 

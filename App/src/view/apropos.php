@@ -59,7 +59,7 @@
     </div>
 
     <div class="card">
-      <p>Les différentes sources de données scientifiques et ses formats proposés</p>
+      <p>Les différentes sources de données scientifiques</p>
       <a href="router.php?action=UsePage_sources&lang=Francais" class="arrow">→</a>
     </div>
 

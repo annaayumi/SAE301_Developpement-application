@@ -65,16 +65,15 @@
       et/ou travailler avec ce support pour divers projets.
     </p>
   
-    <div class="section">
-      <h3>Développer des compétences à travers cette SAE</h3>
-      <p>
-        Réaliser un développement d'application, Optimiser des applications,
-        Administrer des systèmes informatiques communicants complexes,
-        Gérer des données de l'information, Conduire un projet, 
-        Collaborer au sein d'une équipe informatique.
-      </p>
-    </div>
-
+    <ul class="competences">
+      <li>Réaliser un développement d'application</li>
+      <li>Optimiser des applications</li>
+      <li>Administrer des systèmes informatiques communicants complexes</li>
+      <li>Gérer des données de l'information</li>
+      <li>Conduire un projet</li>
+      <li>Collaborer au sein d'une équipe informatique</li>
+    </ul>
+  </section>
 </main>
 
 <footer class="footer">

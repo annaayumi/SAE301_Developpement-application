@@ -114,7 +114,7 @@
 
 <!-- DONNEES TELECHARGEES !-->
 <section class="downloads">
-  <h2>Données téléchargeables</h2>  <!-- a changer en anglais (je suis pas sur) -->
+  <h2>Dowloadable data</h2>
   <div class="downloads-grid">
     <div class="download-card">
       <h3>Temperature</h3>

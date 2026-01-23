@@ -27,7 +27,7 @@
       </h1>
 
       <p class="end-message">
-        Bravo, tu as sauvé les lemmings !
+        Bravo, tu as sauvé les lemmings
       </p>
 
       <a href="router.php?action=UsePage_index&lang=Francais" class="bouton_retour">

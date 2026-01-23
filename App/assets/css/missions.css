@@ -4,8 +4,14 @@ body {
 
 /* Intro */
 .intro {
+  max-width: 900px;
+  margin: 0 auto 120px;
+  padding: 0 20px;
   text-align: center;
-  margin-bottom: 100px;
+}
+
+main.missions {
+  padding-top: 160px; 
 }
 
 .intro h1 {
@@ -22,19 +28,18 @@ body {
 }
 
 .section {
-  text-align: center;
-  padding: 30px;
+  margin-top: 40px;
 }
 
 .section h3 {
-  font-size: 22px;
-  margin-bottom: 12px;
+  font-size: 24px;
+  margin-bottom: 16px;
   color: #3fc9c0;
 }
 
 .section p {
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.7;
   opacity: 0.85;
 }
 
@@ -58,4 +63,40 @@ body {
 .bouton-retour:hover {
   background: rgba(63, 201, 192, 0.3);
   transform: translateX(-4px);
+}
+
+
+.competences {
+  margin: 50px auto 0;
+  padding: 30px 40px;
+  max-width: 800px;
+
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(63, 201, 192, 0.25);
+  border-radius: 18px;
+
+  list-style: none;
+}
+
+.competences li {
+  position: relative;
+  padding: 14px 0 14px 36px;
+
+  font-size: 16px;
+  line-height: 1.6;
+  color: #eaeaea;
+}
+
+/* icône */
+.competences li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 22px;
+
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+
+  background: #3fc9c0;
 }

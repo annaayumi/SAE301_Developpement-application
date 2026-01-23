@@ -85,9 +85,6 @@
         Open platform for sharing marine scientific data.
       </p>
     </div>
-
-  </div>
-
 </section>
 
 

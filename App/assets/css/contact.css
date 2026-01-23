@@ -1,5 +1,26 @@
 body {
-  background: url("../img/bgi.png") center / cover no-repeat;
+  background-color : #0b1416ea;
+}
+
+#submit_input {
+  margin-top: 10px;
+  padding: 12px;
+
+  border-radius: 999px;
+  border: none;
+
+  background: #3fc9c0;
+  color: black;
+  font-weight: 600;
+  font-size: 14px;
+
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#submit_input:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(63, 201, 192, 0.35);
 }
 
 /* SECTION AVIS */
@@ -71,7 +92,6 @@ body {
   color: #3fc9c0;
 }
 
-/* BOUTON */
 .avis-form button {
   margin-top: 10px;
   padding: 12px;
@@ -88,45 +108,44 @@ body {
   transform: translateY(-2px);
 }
 
-/* LISTE AVIS */
+/* AVIS À DROITE */
+aside {
+  position: fixed;
+  top: 140px;
+  right: 30px;
 
-aside{
-  width:300px;
-  height:300px;
-  position: relative;
-  left:1150px;
-  bottom:500px;
-  border: solid;
-  border-color: rgb(120, 120, 120);
-  overflow: scroll;
+  width: 320px;
+  max-height: 60vh;
+
+  padding: 16px;
+  overflow-y: auto;
+
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
 }
 
-article{
-  background-color: rgb(72, 171, 184);
-  border-bottom: solid;
-  border-color: black;
+aside article {
+  margin: 12px;
+  padding: 14px 16px;
+
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
-/*
-article b{}
-article p{}
-*/
 
+aside article:hover {
+  transform: scale(1.04);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+}
 
+aside article b {
+  font-size: 14px;
+}
 
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .contact-content {
-    grid-template-columns: 1fr;
-    gap: 50px;
-    text-align: center;
-  }
-
-  .contact-item {
-    justify-content: center;
-  }
-
-  .social-links {
-    justify-content: center;
-  }
+aside article p {
+  font-size: 13px;
+  opacity: 0.8;
 }

@@ -3,6 +3,7 @@ namespace App\Gleaubal\Model\Repository;
 use App\Gleaubal\Config\Conf as Conf;
 
 use App\Gleaubal\Model\DataObject\Releve;
+use App\Gleaubal\Model\DataObject\Avis;
 
 use PDO;
 class DatabaseConnection {
@@ -44,7 +45,7 @@ class DatabaseConnection {
     }
 
 
-    public static function doQuery_with_filters(string $date, array $unite , array $plateforme){
+    public static function doQuery_with_filters(string $date, array $unite , array $plateforme): array{
         
         $nUnite = count($unite);
         $nPlateforme = count($plateforme);
@@ -56,8 +57,6 @@ class DatabaseConnection {
         join mesure on releves.id_mesure = mesure.id_mesure
         join plateforme on releves.id_plateforme = plateforme.id
         join type_plateforme on plateforme.id_type = type_plateforme.id_type";
-
-        
 
         // check filters, concat and bind param
         if ($date != "") { 
@@ -137,10 +136,7 @@ class DatabaseConnection {
                 $count++;
             }
         }
-        //print_r($unite);
-        //print_r($plateforme);
 
-        //$PdoStatement->debugDumpParams();
 
         // exec
         $PdoStatement->execute();
@@ -182,9 +178,46 @@ class DatabaseConnection {
     ORDER BY periode ASC;
     ";
 
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([':idp' => $idPlateforme]);
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $PdoStatement = $pdo->prepare($sql);
+    $PdoStatement->execute([':idp' => $idPlateforme]);
+    return $PdoStatement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    public static function insertAvis(string $pseudo, string $commentaire, int $note ): void {
+
+        $pdo = DatabaseConnection::getPdo();
+        
+
+        $PdoStatement = $pdo->prepare(
+            "INSERT INTO avis (pseudonyme, commentaire, note)
+             VALUES (:pseudo, :commentaire, :note)"
+        );
+
+        $PdoStatement->bindValue(":pseudo",$pseudo, PDO::PARAM_STR);
+        $PdoStatement->bindValue(":commentaire",$commentaire, PDO::PARAM_STR);
+        $PdoStatement->bindValue(":note",$note, PDO::PARAM_INT);
+
+        $PdoStatement->execute();
+    }
+
+    public static function getAvis(): array {
+
+        $query = DatabaseConnection::getPdo()->query("SELECT * FROM avis ORDER BY created_at DESC");
+        print_r($query);
+        $DataSet = [];
+
+        foreach ($query as $row ){
+            $tempObj = new Avis(
+                    $row['id'], 
+                    $row['pseudonyme'], 
+                    $row['commentaire'], 
+                    $row['note'], 
+                    $row['created_at']);
+            $DataSet[] = $tempObj;
+        }
+        
+        return $DataSet;
     }
 
 }

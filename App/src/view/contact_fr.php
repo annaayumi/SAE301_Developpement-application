@@ -50,7 +50,7 @@
 <section class="avis">
   <h2>Donner votre avis</h2>
 
-  <form method="post" class="avis-form">
+  <form method="get" class="avis-form">
     
     <input type="text" name="pseudo" placeholder="Votre pseudo" required>
 
@@ -73,12 +73,37 @@
       <input type="radio" id="star5" name="note" value="5">
       <label for="star5">★</label>
     </div>
+    <!-- submit -->
+    <input id="submit_input" type="submit" value="Envoyer" style="border-bottom: 0px;">
+    
 
-    <button type="submit">Envoyer</button>
-
-    <input type="hidden" name="action" value="submitAvis">
+    <input type="hidden" name="action" value="UsePage_contact">
+    <input type="hidden" name="lang" value="Francais">
   </form>
+  <?php
+    if(isset($_GET['pseudo'])){
+      echo "Votre avis à bien été soumis.";
+    }
+  ?>
 </section>
+
+<aside>
+  <?php
+    foreach  ($liste_avis as $obj) {
+      echo "<b>".$obj->getPseudo()."</b>";
+      echo "<p>".$obj->getCreated_at()."</p>";
+
+      $star_counter = "";
+      for($i = 0; $obj->getNote() > $i; $i++){
+        $star_counter = $star_counter."★";
+      }
+
+      echo "<p> Note : ".$star_counter."</p>";
+
+      echo "<p>".$obj->getCommentaire()."</p>";
+    }
+  ?>
+</aside>
 
 
 <footer class="footer">

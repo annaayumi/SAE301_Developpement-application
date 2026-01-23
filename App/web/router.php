@@ -49,7 +49,7 @@
     }
 
 
-        // Use page Index
+    // Use page Index
 
         if($action == 'UsePage_index'){
             $found = true;
@@ -57,7 +57,7 @@
             if($lang == "English"){Controller::UsePage('index_en.php');}
         }
 
-        // Use page A propos    
+    // Use page A propos    
 
         if($action == 'UsePage_apropos'){
             $found = true;
@@ -65,7 +65,7 @@
             if($lang == "English"){Controller::UsePage('about.php');}
         }
 
-        // Use page Contenu A propos
+    // Use page Contenu A propos
 
         if($action == 'UsePage_phenomenes'){
             $found = true;
@@ -90,7 +90,7 @@
         }
 
 
-        // Use page Contact
+    // Use page Contact
 
         if($action == 'UsePage_contact'){
             $found = true;
@@ -106,16 +106,17 @@
 
         }
 
-        // Use page donnees
+    // Use page donnees
 
     if($action == 'UsePage_donnees'){
         $found = true;
         if($lang == "Francais"){Controller::UsePage('donnees.php');}
         if($lang == "English"){Controller::UsePage('data.php');}
     }
+    
 
 
-        // Use page Graphique
+    // Use page Graphique
     if ($action == 'UsePage_graphique') {
         $found = true;
         $idPlateforme = $_GET['idPlateforme'] ?? '';

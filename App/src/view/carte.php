@@ -195,7 +195,7 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <!-- CARTE -->
   <script>
-    
+  
   const map = L.map('map', {
     center: [46.5, 2.5], 
     zoom: 5,

@@ -197,7 +197,6 @@ class DatabaseConnection {
                 $PdoStatement = $pdo->query(
                     "DELETE FROM avis where id = ".$row->getId().";"
                 );
-                echo "RUNN";
             }
         }
 

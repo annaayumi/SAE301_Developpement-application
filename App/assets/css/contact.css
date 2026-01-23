@@ -88,6 +88,31 @@ body {
   transform: translateY(-2px);
 }
 
+/* LISTE AVIS */
+
+aside{
+  width:300px;
+  height:300px;
+  position: relative;
+  left:1150px;
+  bottom:500px;
+  border: solid;
+  border-color: rgb(120, 120, 120);
+  overflow: scroll;
+}
+
+article{
+  background-color: rgb(72, 171, 184);
+  border-bottom: solid;
+  border-color: black;
+}
+/*
+article b{}
+article p{}
+*/
+
+
+
 
 /* RESPONSIVE */
 @media (max-width: 768px) {

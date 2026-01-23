@@ -91,7 +91,7 @@
   <?php
     foreach  ($liste_avis as $obj) {
       echo "<article><b>".$obj->getPseudo()."</b>";
-      echo "<p>".$obj->getCreated_at()."</p>";
+      echo "<p> Date : ".$obj->getCreated_at()."</p>";
 
       $star_counter = "";
       for($i = 0; $obj->getNote() > $i; $i++){

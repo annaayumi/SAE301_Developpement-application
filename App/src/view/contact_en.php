@@ -16,7 +16,7 @@
   <!-- HEADER -->
   <header class="header">
     <div class="lang">
-      <a href="router.php?action=UsePage_apropos&lang=Francais">
+      <a href="router.php?action=UsePage_contact&lang=Francais">
       🌐 <span>FR</span>
       </a>
     </div>
@@ -53,9 +53,9 @@
 
   <form method="POST" class="avis-form">
     
-    <input type="text" name="pseudo" placeholder="Votre pseudo" required>
+    <input type="text" name="pseudo" placeholder="Your username" required>
 
-    <textarea name="commentaire" placeholder="Votre commentaire" required></textarea>
+    <textarea name="commentaire" placeholder="Your comment" required></textarea>
 
     <!-- étoiles -->
     <div class="stars">

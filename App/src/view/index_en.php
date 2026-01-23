@@ -28,7 +28,7 @@
 
   <nav class="glass-nav">
     <ul class="glass-menu">
-      <li>
+      <li class="active">
         <i class="fa fa-home"></i>
         <a href="router.php?action=UsePage_index&lang=English">Home</a>
       </li>
@@ -40,7 +40,7 @@
         <i class="fa fa-info-circle"></i>
         <a href="router.php?action=UsePage_apropos&lang=English">About</a>
       </li>
-      <li class="active">
+      <li>
         <i class="fa fa-envelope"></i>
         <a href="router.php?action=UsePage_contact&lang=English">Contact</a>
       </li>
@@ -146,6 +146,7 @@
 
 
 <footer class="footer">
+
   <!-- lien github -->
   <div class="footer-col footer-github">
     <a href="https://github.com/annaayumi/SAE301_Developpement-application"
@@ -161,7 +162,7 @@
 
     <div>
       <strong>GitHub</strong><br>
-      Adresse : 122 Rue Paul Armangot,<br>
+      Adress : 122 Rue Paul Armangot,<br>
       94400 Vitry-sur-Seine
     </div>
   </div>
@@ -176,7 +177,7 @@
 
   <!-- Membres -->
   <div class="footer-col">
-    <strong>Membres de l’équipe</strong><br>
+    <strong>Members of the team</strong><br>
     CHEREF Rayane<br>
     FALCONNET BANEYX Simon<br>
     MARDAUS Patrick<br>
@@ -196,8 +197,9 @@
 
 </footer>
 
+<!-- Copyright !-->
 <div class="copyright">
-  © Gl'eaubal 2025-2026 Tous droits réservés | Mentions légales
+  © Gl'eaubal 2025-2026 All rights reserved | Legal mentions
 </div>
 
 <!-- animations javascript pour les cartes info -->

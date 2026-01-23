@@ -8,6 +8,7 @@
 
   <link rel="stylesheet" href="../assets/css/carte.css">
   <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="../assets/js/menu_burger.js"></script>
   <script src="../assets/js/fonction_carte.js" ></script>
@@ -194,9 +195,10 @@
   <!-- Import leaflet -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <!-- CARTE -->
+
   <script>
     
-  const map = L.map('map', {
+    const map = L.map('map', {
     center: [46.5, 2.5], 
     zoom: 5,
     minZoom: 4
@@ -240,6 +242,7 @@
   ?>
 
 
+  
   <script>
       function NoResetForm(){
 
@@ -312,8 +315,8 @@
       const mois = document.getElementById("mois");
 
       const moisNoms = [
-        "January","February","March","April","May","June",
-        "July","August","September","October,","November","December"
+        "January", "February", "March", "April", "May", "June",
+        "July","August","September","October","November","December"
       ];
 
       // afficher année 
@@ -366,6 +369,5 @@
         });
       });
     </script>
-
   </body> 
 </html>

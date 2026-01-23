@@ -16,7 +16,7 @@
   <!-- HEADER -->
   <header class="header">
     <div class="lang">
-      <a href="router.php?action=UsePage_missions&lang=Francais">
+      <a href="router.php?action=UsePage_missions&lang=English">
       🌐 <span>FR</span>
       </a>
     </div>
@@ -47,7 +47,7 @@
   </nav>
 </header>
 
-<a href="router.php?action=UsePage_apropos&lang=Francais" class="bouton-retour">
+<a href="router.php?action=UsePage_apropos&lang=English" class="bouton-retour">
   ← Back
 </a>
 

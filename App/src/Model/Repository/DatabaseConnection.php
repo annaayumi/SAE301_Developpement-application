@@ -87,6 +87,8 @@ class DatabaseConnection {
         }
 
 
+
+
         if ($nPlateforme != 0)  {
             $count = $nPlateforme;
             $tagNumber = 0;
@@ -113,6 +115,8 @@ class DatabaseConnection {
         
 
         $sql = $sql.";";
+
+        print($sql);
 
         // prep sql
         $PdoStatement = DatabaseConnection::getPdo()->prepare($sql);

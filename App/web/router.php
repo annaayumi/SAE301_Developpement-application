@@ -44,9 +44,11 @@
             $mois = $_GET['mois'] ?? "";
 
             // annee + mois concat
-            if ((int)$mois < 10 and $mois != ""){
+            if ((int)$mois < 10 && $mois != "" && $annee != ""){
                 $mois = "0".$mois;
                 $date = $annee."-".$mois;
+            } else if ($mois >= 10 && $annee != "") {
+                $date = $annee . "-" . $mois;
             }
         }
 

@@ -198,9 +198,10 @@ class DatabaseConnection {
             if($row->getPseudo() == $pseudo){
                 
                 $pdo = DatabaseConnection::getPdo();
-                $PdoStatement = $pdo->query(
+                $PdoStatement = $pdo->prepare(
                     "DELETE FROM avis where id = ".$row->getId().";"
                 );
+                $PdoStatement->execute();
             }
         }
 
